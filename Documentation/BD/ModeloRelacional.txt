@@ -18,3 +18,8 @@ LINEASPEDIDO (idPedido, idProducto, cantidad)
 	PRIMARY KEY (idPedido, idProducto)
 	FOREIGN KEY idPedido REFERENCES PEDIDOS (id)
 	FOREIGN KEY idProducto REFERENCES PRODUCTOS (id)
+
+VALORACIONES (idProducto, idUsuario, nota, comentario)
+	PRIMARY KEY (idProducto, idUsuario)
+	FOREIGN KEY (idProducto) REFERENCES PRODUCTOS (id) 
+	FOREIGN KEY (idUsuario) REFERENCES USUARIOS (id) 
