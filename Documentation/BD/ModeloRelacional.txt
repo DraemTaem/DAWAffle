@@ -1,0 +1,20 @@
+=== MODELO RELACIONAL ===
+
+USUARIOS (id, nombre, email, categoria, direccion, administrador, alias, contrasena, registrado)
+	PRIMARY KEY id
+
+PEDIDOS (id, precio, idUsuario, fecha)
+	PRIMARY KEY id
+	FOREIGN KEY idUsuario REFERENCES USUARIOS (id)
+
+PRODUCTOS (id, nombre, descripcion, precio, imagen)
+	PRIMARY KEY id
+
+INVENTARIO (idProducto, stock)
+	PRIMARY KEY idProducto
+	FOREIGN KEY idProducto REFERENCES PRODUCTOS (id)
+
+LINEASPEDIDO (idPedido, idProducto, cantidad)
+	PRIMARY KEY (idPedido, idProducto)
+	FOREIGN KEY idPedido REFERENCES PEDIDOS (id)
+	FOREIGN KEY idProducto REFERENCES PRODUCTOS (id)
