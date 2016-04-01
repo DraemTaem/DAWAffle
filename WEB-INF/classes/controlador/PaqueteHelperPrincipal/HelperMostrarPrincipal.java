@@ -6,16 +6,12 @@ import modelo.TiendaAuxiliarArchivo;
 
 public class HelperMostrarPrincipal implements controlador.Helper {
 
-    HttpServletRequest request;
-
-    public HelperMostrarPrincipal(HttpServletRequest request) {
-        this.request = request;
+    public HelperMostrarPrincipal() {
     }
 
     @Override
     public void ejecutar() {
-        /*La tienda ahora está disponible en el requestScope*/
-        request.setAttribute("tienda", new TiendaAuxiliarArchivo());
+        
     }
 
 }

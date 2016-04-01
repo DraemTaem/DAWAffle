@@ -129,8 +129,8 @@ public class Controlador extends HttpServlet {
         return "Controlador de la aplicación de nuestra tienda simple";
     }
 
-    private void goToPage(String direccion, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(direccion);
+    private void goToPage(String address, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(address);
         rd.forward(request, response);
     }
 
