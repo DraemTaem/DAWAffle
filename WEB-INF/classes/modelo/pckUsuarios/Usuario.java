@@ -1,6 +1,8 @@
-package modelo;
+package modelo.pckUsuarios;
 
 import java.util.ArrayList;
+import modelo.Carrito;
+import modelo.Carrito;
 
 public class Usuario {
 

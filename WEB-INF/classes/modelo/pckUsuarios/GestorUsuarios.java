@@ -1,4 +1,4 @@
-package modelo;
+package modelo.pckUsuarios;
 
 public class GestorUsuarios {
 
