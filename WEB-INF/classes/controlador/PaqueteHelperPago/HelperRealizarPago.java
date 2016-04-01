@@ -2,8 +2,8 @@ package controlador.PaqueteHelperPago;
 
 import javax.servlet.http.HttpSession;
 import modelo.Pedido;
-import modelo.TiendaAuxiliarArchivo;
 import modelo.pckUsuarios.Usuario;
+
 
 
 public class HelperRealizarPago implements controlador.Helper {
@@ -22,11 +22,11 @@ public class HelperRealizarPago implements controlador.Helper {
 
     public void ejecutar() {
 
-        usuario.setNombre(nombre);
-        usuario.setCorreoElectronico(email);
+        //Anhadir datos de usuario a this.usuario si é necesario.
         
-        
-        Pedido pedido=new Pedido(new TiendaAuxiliarArchivo(),usuario);
+        //Aqui si necesitamos coller os datos da tienda actualizados para facer o pedido
+
+        Pedido pedido=new Pedido(tienda, usuario);
         
         sesion.setAttribute("pedido", pedido);
         

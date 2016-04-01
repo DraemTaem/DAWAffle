@@ -9,6 +9,19 @@ public class Tienda {
 
     ArrayList<Producto> productosDisponibles;
 
+    
+    public Tienda(){
+    
+        //TODO
+        
+        this.productosDisponibles= new ArrayList<>();
+        
+        Producto producto = new Producto(1, "Cacota", 10.3f);
+        
+        this.productosDisponibles.add(producto);
+        
+    }
+    
     public Producto getProductoById(int id) {
 
         for (Producto p : this.productosDisponibles) {
@@ -29,24 +42,7 @@ public class Tienda {
 
     public final boolean leerProductos(ArrayList<Producto> lista, String path) {
 
-        productosDisponibles = new ArrayList<>();
-
-        File file = new File(path);
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            int i = 1;
-            while ((line = br.readLine()) != null) {
-                CD cd;
-                cd = new CD(i, line);
-                this.productosDisponibles.add((Producto) cd);
-                i++;
-            }
-        } catch (Exception e) {
-            String msg = e.getMessage();
-            //Podríamos crear una vista de error para mostrar este tipo de cosas
-            return false;
-        }
+        //TODO
         return true;
     }
 

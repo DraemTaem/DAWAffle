@@ -4,8 +4,8 @@ import modelo.Carrito;
 import modelo.LineaCarrito;
 import modelo.Producto;
 import modelo.Tienda;
-import modelo.TiendaAuxiliarArchivo;
 import modelo.pckUsuarios.Usuario;
+
 
 public class HelperAnadirLineaCarrito implements controlador.Helper {
 
@@ -21,7 +21,7 @@ public class HelperAnadirLineaCarrito implements controlador.Helper {
 
     public void ejecutar() {
 
-        Tienda tienda = new TiendaAuxiliarArchivo();
+        //Tienda tienda -- Coller tienda da sesión si está instanciada, senón instanciala
         Producto producto = tienda.getProductoById(idProducto);
 
         if (producto != null) {
