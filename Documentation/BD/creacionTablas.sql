@@ -37,6 +37,17 @@ CREATE TABLE productos (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE cd (
+	idProducto integer,
+	autor varchar(50) NOT NULL,
+	pais varchar(20),
+
+	PRIMARY KEY (idProducto),
+	FOREIGN KEY (idProducto) REFERENCES productos(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
 CREATE TABLE inventario (
 	idProducto integer,
 	stock integer NOT NULL DEFAULT 0,
