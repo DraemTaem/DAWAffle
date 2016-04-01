@@ -2,7 +2,7 @@ package controlador.PaqueteHelperPago;
 
 import modelo.Carrito;
 import modelo.TiendaAuxiliarArchivo;
-import modelo.Usuario;
+import modelo.pckUsuarios.Usuario;
 
 public class HelperMostrarVentanaDePago implements controlador.Helper {
 

@@ -2,7 +2,8 @@ package controlador.PaqueteHelperPago;
 
 import javax.servlet.http.HttpSession;
 import modelo.Pedido;
-import modelo.Usuario;
+import modelo.pckUsuarios.Usuario;
+
 
 
 public class HelperRealizarPago implements controlador.Helper {
