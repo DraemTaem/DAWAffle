@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import modelo.Carrito;
 import modelo.Pedido;
-import modelo.Usuario;
+import modelo.pckUsuarios.Usuario;
 
 /**
  *

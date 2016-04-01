@@ -11,7 +11,7 @@ import controlador.PaqueteHelperCarrito.*;
 import controlador.PaqueteHelperPago.*;
 import controlador.PaqueteHelperPrincipal.*;
 import javax.servlet.http.HttpSession;
-import modelo.Usuario;
+import modelo.pckUsuarios.Usuario;
 
 public class Controlador extends HttpServlet {
 

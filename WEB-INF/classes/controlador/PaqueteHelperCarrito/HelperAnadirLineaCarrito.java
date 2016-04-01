@@ -5,7 +5,7 @@ import modelo.LineaCarrito;
 import modelo.Producto;
 import modelo.Tienda;
 import modelo.TiendaAuxiliarArchivo;
-import modelo.Usuario;
+import modelo.pckUsuarios.Usuario;
 
 public class HelperAnadirLineaCarrito implements controlador.Helper {
 
