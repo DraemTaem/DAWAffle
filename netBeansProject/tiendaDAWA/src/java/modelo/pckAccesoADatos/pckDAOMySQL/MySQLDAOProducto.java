@@ -66,7 +66,6 @@ public class MySQLDAOProducto implements DAOProducto {
         return null;
     }
 
-
     @Override
     public VOProducto getDetallesProducto(int id) {
         try {
@@ -180,7 +179,6 @@ public class MySQLDAOProducto implements DAOProducto {
         }
         return null;
     }
-
 
     @Override
     public VOColeccionProductos getProductos(float precioMaximo, String nombre, String autor, int ano) {
@@ -698,4 +696,45 @@ public class MySQLDAOProducto implements DAOProducto {
             return false;
         }
     }
+    
+    @Override
+    public boolean checkCompra(VOUsuario usuario, VOProducto producto) {
+        try {
+            MySQLConnector connector = new MySQLConnector();
+            Connection con = connector.getConnection();
+            PreparedStatement pstmt, pstmt2;
+
+            String sqlPedidos =
+                    "SELECT * FROM pedidos " +
+                            "WHERE idUsuario = ?;";
+
+            pstmt = con.prepareStatement(sqlPedidos);
+            pstmt.setInt(1, usuario.getId());
+
+            String sqlLineasPedido =
+                    "SELECT * FROM lineaspedido " +
+                            "WHERE idPedido = ?;";
+
+            pstmt2 = con.prepareStatement(sqlPedidos);
+
+            ResultSet res = pstmt.executeQuery();
+
+            while(res.next()){
+                pstmt2.setInt(1, res.getInt("id"));
+                ResultSet res2 = pstmt2.executeQuery();
+                while(res2.next()){
+                    if(res2.getInt("idProducto") == producto.getId()){
+                        return true;
+                    }
+                }
+            }
+            return false;
+
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta");
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
 }

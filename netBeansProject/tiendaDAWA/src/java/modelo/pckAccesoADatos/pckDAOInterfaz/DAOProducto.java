@@ -4,6 +4,7 @@ package modelo.pckAccesoADatos.pckDAOInterfaz;
 import modelo.pckAccesoADatos.pckVO.VOCd;
 import modelo.pckAccesoADatos.pckVO.VOColeccionProductos;
 import modelo.pckAccesoADatos.pckVO.VOProducto;
+import modelo.pckAccesoADatos.pckVO.VOUsuario;
 import modelo.pckAccesoADatos.pckVO.VOValoracion;
 
 public interface DAOProducto {
@@ -29,6 +30,8 @@ public interface DAOProducto {
     boolean anadirUnidades(VOProducto producto, int unidades);
 
     boolean anadirValoracion(VOValoracion valoracion);
+    
+    boolean checkCompra(VOUsuario usuario, VOProducto producto);
 
 
 
