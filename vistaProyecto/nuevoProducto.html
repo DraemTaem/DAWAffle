@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+     	<title>Musica</title>
+		<meta charset="utf-8">
+		<meta content="DreamTeam" name="author">
+		<meta content="página de venta de cds" name="description">
+		<meta content="musica, cds, venta, tienda" name="keywords">
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<link rel="stylesheet" type="text/css" href="admin.css"> 
+    </head>
+    <body>
+    	<center>
+    	<header>
+    		<h1> Música </h1>
+    		<nav>
+    			<ul id="menu">
+    				<li><a href="">Inicio</a></li>
+    				<li><a href="">Añadir productos</a></li>
+	    			<li><a href="">Gestionar usuarios</a></li>
+	    			<li><a href="">Cerrar sesión</a></li>
+    			</ul>
+    		</nav>
+    	</header>
+
+    	<figure id="guitarra">
+    		<img src="guitarra.jpg" width="1080" height="200">
+    	</figure>
+
+    	<section id="contenido">
+	    	<article id="productos">
+	    	<h1 class="nombre">Introducción de un nuevo producto</h1>
+	    	<table>
+	    		<form method="post" action="">
+	    			<h1><input type="text" placeholder="Nombre producto" pattern="[A-Za-z]"{3,}></h1>
+		    		<td>
+		    		<p>Imagen:</p>
+		    		<input type="file" name="file"></td>
+		    		<td>
+			    		<p>Descripción:</p>
+			    		<textarea id="textarea" placeholder="Introduce una breve descripción sobre el producto"></textarea></p>
+			    		<p>Unidades: </p>
+			    		<input type="number" min="0">
+			    		</p>
+			    		<p>Precio: </p>
+			    		<input type="text" pattern="[0-9\.]{1,}">
+			    		</p>
+			    		<input type="submit" value="Guardar" name="anadirProducto" id="actualizar" class="mover">
+		    		</td>
+
+				</form>
+				
+			</table>
+		  	</article>
+	  	</section>
+	  </center>
+    </body>
+</html>

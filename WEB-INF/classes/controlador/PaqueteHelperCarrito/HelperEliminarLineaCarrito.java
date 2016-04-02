@@ -1,7 +1,6 @@
 package controlador.PaqueteHelperCarrito;
 
 import modelo.Carrito;
-import modelo.TiendaAuxiliarArchivo;
 import modelo.pckUsuarios.Usuario;
 
 public class HelperEliminarLineaCarrito implements controlador.Helper {
@@ -14,10 +13,11 @@ public class HelperEliminarLineaCarrito implements controlador.Helper {
         this.idProducto = idProducto;
     }
 
-    public void ejecutar() {
+    public boolean ejecutar() {
+        
         Carrito carrito = usuario.getCarrito();
-        carrito.eliminarLineaById(idProducto);
-        carrito.actualizar(new TiendaAuxiliarArchivo());
+        return carrito.eliminarLineaById(idProducto);
+        
     }
 
 }

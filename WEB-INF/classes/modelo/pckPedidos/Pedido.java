@@ -1,10 +1,11 @@
-package modelo;
+package modelo.pckProductos;
 
 import java.util.ArrayList;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+import modelo.pckUsuarios.Usuario;
 
 public class Pedido {
 
@@ -65,7 +66,14 @@ public class Pedido {
         this.fecha = fecha;
     }
 
-    public void enviarCorreoUsuario(String from, String pass) {
+    public boolean registrarPedido() {
+        
+        //TODO things con las cosas de TOMI
+        return true;
+        
+    }
+
+    public void enviarCorreoUsuario() {
 
         String to = this.usuario.getCorreoElectronico();
 
@@ -91,12 +99,10 @@ public class Pedido {
 
         contenido += "</ul>";
         contenido += "<h3>Precio Total: [" + this.precioTotal + "]</h3>";
-        
-        
-        Modelo.GestorCorreos gc= new Modelo.GestorCorreos();
-        
+
+        Modelo.GestorCorreos gc = new Modelo.GestorCorreos();
+
         gc.enviarCorreoGmail(to, subject, contenido);
-        
 
     }
 

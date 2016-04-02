@@ -1,4 +1,4 @@
-package modelo;
+package modelo.pckProductos;
 
 public class LineaCarrito {
 
@@ -12,17 +12,23 @@ public class LineaCarrito {
         actualizarPrecioDeLaLinea();
     }
 
-    public boolean actualizar(Tienda tienda) {
+    public int actualizar(Tienda tienda) {
 
         Producto p = tienda.getProductoById(this.producto.getID());
         if (p == null) {
-            return false;
+            return -1;
         }
 
         this.producto = p;
+        
+        if(this.cantidad>this.producto.getStock()){
+            this.cantidad=this.producto.getStock();
+            return -2;
+        }
+        
         actualizarPrecioDeLaLinea();
 
-        return true;
+        return 0;
     }
 
     public int getCantidad() {
