@@ -33,6 +33,7 @@ CREATE TABLE productos (
 	descripcion varchar(500) NOT NULL,
 	precio decimal NOT NULL,
 	imagen varchar(100),
+	tipo varchar(10),
 
 	PRIMARY KEY (id)
 );
@@ -64,7 +65,7 @@ CREATE TABLE valoraciones (
 	nota integer NOT NULL DEFAULT -1,
 	comentario varchar(500),
 
-	PRIMARY KEY (idProducto, idUsuario)
+	PRIMARY KEY (idProducto, idUsuario),
 	FOREIGN KEY (idProducto) REFERENCES productos(id)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE,
