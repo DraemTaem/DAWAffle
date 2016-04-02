@@ -1,11 +1,11 @@
 package controlador.PaqueteHelperUsuarios;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;   //TODO CAMBIAR RUTA!
+import modelo.VOUsuario;
 import modelo.pckUsuarios.GestorUsuarios;
 
-public class HelperVisualizacionCuentaIndividual implements controlador.Helper{
-    
+public class HelperVisualizacionCuentaIndividual implements controlador.Helper {
+
     private Integer id;
     private HttpServletRequest peticion;
 
@@ -16,9 +16,12 @@ public class HelperVisualizacionCuentaIndividual implements controlador.Helper{
 
     @Override
     public boolean ejecutar() {
-        peticion.setAttribute("usuarioSolicitado", GestorUsuarios.visualizarCuenta(id));     
+        VOUsuario user = null;
+        if (user != null) {
+            peticion.setAttribute("usuarioSolicitado", GestorUsuarios.visualizarCuenta(id));
+            return true;
+        }
+        return false;
     }
-    
-    
-    
+
 }
