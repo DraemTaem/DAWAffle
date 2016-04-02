@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+     	<title>Musica</title>
+		<meta charset="utf-8">
+		<meta content="DreamTeam" name="author">
+		<meta content="página de venta de cds" name="description">
+		<meta content="musica, cds, venta, tienda" name="keywords">
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
+    <body>
+    	<center>
+    	<header>
+    		<h1> Música </h1>
+    		<nav>
+    			<ul id="menu">
+    				<li><a href="Controlador?pagina=inicio">Inicio</a></li>
+    				<li><a href="Controlador?pagina=carrito">Ver carrito</a></li>
+	    			<li><a href="Controlador?pagina=usuarios">Inicio sesión/Registrarse</a></li>
+    			</ul>
+    		</nav>
+    	</header>
+
+    	<figure id="guitarra">
+    		<img src="guitarra.jpg" width="1080" height="200">
+    	</figure>
+
+    	<section id="contenido">
+    	<form id="filtro" method="post" action="Controlador">
+    		<div id="primeros">
+
+	    		<!--<label for="titulo">Titulo:</label>-->
+	    		<input type="text" class="caja" name="titulo" placeholder="Título" pattern="[A-Za-z]{2,}">
+
+	    		<!--<label for="autor">Autor:</label>-->
+	    		<input type="text" class="caja" name="autor" placeholder="Autor" pattern="[A-Za-z]{2,}">
+
+	    		<!--<label for="ano">Año:</label>-->
+	    		<input type="number" class="caja" placeholder="Año" name="ano" min="1900" max="2016">
+    		</div>
+
+    		<div id="segundos">
+	    		<label for="precio">Precio:</label>
+	    		<select name="precio" id="precio">
+		    		<option>Hasta 10€</option>
+		    		<option>Hasta 15€</option>
+		    		<option>Hasta 20€</option>
+		    		<option>Hasta 30€</option>
+		    		<option>Hasta 40€</option>
+		    		<option>Hasta 50€</option>
+		    		<option>Más de 50€</option>
+	    		</select>
+
+	    		<input type="submit" id="actualizar" name="actualizar" value="Actualizar">
+    		</div>
+
+    		
+
+    	</form>
+    <hr>
+    <div id="productos">
+	  <table>
+
+	  		<!--Donde se pillarían los elementos de la BD-->
+		  <c:forEach var="p" items="${sessionScope.productos.lista}">
+			  <tr>
+			  	<div id="datosCD">
+			  		<td>${p.getImagen()}</td>
+				  	<td><a href="Controlador?id=${p.getCodigo()}"><p class=""nombre>${p.getTitulo()}, ${p.getAutor()}</p></a>
+				  	<p>Precio: ${p.getPrecio()}€, código: ${p.getCodigo()}</p></td>
+			  	</div>
+			  	<form method="post" id="seleccionar">
+				  	<td><input type="number" id="cantidad" placeholder="Cantidad" name="cantidad" min="1" required></td>
+				  	<td><input type="submit" id="anadir" name="seleccionar" value="Seleccionar"></td>
+			  	</form>
+			  </tr>
+		  </c:forEach>
+	  </table>
+	  </div>
+	  </section>
+	  </center>
+    </body>
+</html>
