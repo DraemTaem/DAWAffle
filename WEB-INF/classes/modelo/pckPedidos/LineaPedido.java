@@ -1,4 +1,4 @@
-package modelo;
+package modelo.pckProductos;
 
 public class LineaPedido {
 

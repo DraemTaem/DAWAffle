@@ -8,7 +8,9 @@ public class Carrito {
     private float precioTotal;
 
     public Carrito() {
+
         this.lineasCarrito = new ArrayList<>();
+
     }
 
     public boolean insertarLinea(LineaCarrito lc) {
