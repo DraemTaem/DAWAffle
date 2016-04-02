@@ -1,6 +1,7 @@
 package AccesoDatos;
 
 
+import Modelo.VOColeccionUsuarios;
 import Modelo.VOUsuario;
 
 public interface DAOUsuario {
@@ -10,6 +11,9 @@ public interface DAOUsuario {
     VOUsuario getUsuarioByNombre(String nombre);
     VOUsuario getUsuarioByEmail(String email);
     VOUsuario getUsuarioByAlias(String alias);
+
+    VOColeccionUsuarios getUsuarios();
+
     VOUsuario validarUsuario(String alias, String contrasena);
 
     boolean registrarUsuario(VOUsuario usuario);

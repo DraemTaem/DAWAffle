@@ -1,12 +1,14 @@
 package MySQL;
 
 import AccesoDatos.DAOUsuario;
+import Modelo.VOColeccionUsuarios;
 import Modelo.VOUsuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class MySQLDAOUsuario implements DAOUsuario {
@@ -119,6 +121,38 @@ public class MySQLDAOUsuario implements DAOUsuario {
                 VOUsuario usuario = new VOUsuario(res.getInt("id"), res.getString("nombre"), res.getString("email"), res.getInt("categoria"), res.getString("direccion"), res.getBoolean("administrador"), alias, res.getString("contrasena"), res.getBoolean("registrado"));
                 return usuario;
             }
+
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public VOColeccionUsuarios getUsuarios() {
+        try {
+            MySQLConnector connector = new MySQLConnector();
+            Connection con = connector.getConnection();
+            PreparedStatement pstmt = null;
+
+            String sqlSelect =
+                    "SELECT * FROM usuarios;";
+
+
+            pstmt = con.prepareStatement(sqlSelect);
+
+
+            ResultSet res = pstmt.executeQuery();
+
+            ArrayList<VOUsuario> resultado = new ArrayList<>();
+
+            while (res.next()) {
+                VOUsuario usuario = new VOUsuario(res.getInt("id"), res.getString("nombre"), res.getString("email"), res.getInt("categoria"), res.getString("direccion"), res.getBoolean("administrador"), res.getString("alias"), res.getString("contrasena"), res.getBoolean("registrado"));
+                resultado.add(usuario);
+            }
+
+            return new VOColeccionUsuarios(resultado);
 
         } catch (SQLException e) {
             System.out.println("Error en la consulta");
