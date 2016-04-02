@@ -1,4 +1,4 @@
-package MySQL;
+package modelo.pckAccesoADatos.pckDAOMySQL;
 
 
 import java.sql.Connection;

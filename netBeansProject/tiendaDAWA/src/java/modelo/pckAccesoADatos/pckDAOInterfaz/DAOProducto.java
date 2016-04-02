@@ -1,10 +1,10 @@
-package AccesoDatos;
+package modelo.pckAccesoADatos.pckDAOInterfaz;
 
 
-import Modelo.VOCd;
-import Modelo.VOColeccionProductos;
-import Modelo.VOProducto;
-import Modelo.VOValoracion;
+import modelo.pckAccesoADatos.pckVO.VOCd;
+import modelo.pckAccesoADatos.pckVO.VOColeccionProductos;
+import modelo.pckAccesoADatos.pckVO.VOProducto;
+import modelo.pckAccesoADatos.pckVO.VOValoracion;
 
 public interface DAOProducto {
 

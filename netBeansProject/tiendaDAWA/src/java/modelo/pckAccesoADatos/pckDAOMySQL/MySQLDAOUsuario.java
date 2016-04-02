@@ -1,8 +1,8 @@
-package MySQL;
+package modelo.pckAccesoADatos.pckDAOMySQL;
 
-import AccesoDatos.DAOUsuario;
-import Modelo.VOColeccionUsuarios;
-import Modelo.VOUsuario;
+import modelo.pckAccesoADatos.pckDAOInterfaz.DAOUsuario;
+import modelo.pckAccesoADatos.pckVO.VOColeccionUsuarios;
+import modelo.pckAccesoADatos.pckVO.VOUsuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

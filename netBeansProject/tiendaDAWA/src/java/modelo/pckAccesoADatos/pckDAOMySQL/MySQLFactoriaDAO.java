@@ -1,8 +1,8 @@
-package MySQL;
+package modelo.pckAccesoADatos.pckDAOMySQL;
 
-import AccesoDatos.DAOProducto;
-import AccesoDatos.DAOUsuario;
-import AccesoDatos.FactoriaDAO;
+import modelo.pckAccesoADatos.pckDAOInterfaz.DAOProducto;
+import modelo.pckAccesoADatos.pckDAOInterfaz.DAOUsuario;
+import modelo.pckAccesoADatos.pckDAOInterfaz.FactoriaDAO;
 
 
 public class MySQLFactoriaDAO extends FactoriaDAO {

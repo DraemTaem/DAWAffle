@@ -1,9 +1,9 @@
 package modelo.pckUsuarios;
 
+
 import java.util.ArrayList;
-import modelo.Carrito;
-import modelo.Carrito;
-import modelo.VOUsuario;    //TODO          REEMPLAZAR CON RUTA REAL!!!!
+import modelo.pckProductos.Carrito;
+import Modelo.VOUsuario;
 
 public class Usuario {
 

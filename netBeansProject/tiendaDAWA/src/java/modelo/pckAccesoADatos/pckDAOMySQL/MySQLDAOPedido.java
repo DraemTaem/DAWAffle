@@ -1,6 +1,6 @@
-package MySQL;
+package modelo.pckAccesoADatos.pckDAOMySQL;
 
-import AccesoDatos.DAOPedido;
+import modelo.pckAccesoADatos.pckDAOInterfaz.DAOPedido;
 
 
 public class MySQLDAOPedido implements DAOPedido{

@@ -1,5 +1,4 @@
-package Modelo;
-
+package modelo.pckAccesoADatos.pckVO;
 
 import java.util.ArrayList;
 

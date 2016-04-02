@@ -1,7 +1,7 @@
-package AccesoDatos;
+package modelo.pckAccesoADatos.pckDAOInterfaz;
 
 
-import MySQL.MySQLFactoriaDAO;
+import modelo.pckAccesoADatos.pckDAOMySQL.MySQLFactoriaDAO;
 
 public abstract class FactoriaDAO {
 

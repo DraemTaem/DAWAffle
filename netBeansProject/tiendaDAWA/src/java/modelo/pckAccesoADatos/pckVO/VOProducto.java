@@ -1,5 +1,4 @@
-package Modelo;
-
+package modelo.pckAccesoADatos.pckVO;
 
 public class VOProducto {
     private int id;

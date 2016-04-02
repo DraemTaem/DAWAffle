@@ -1,8 +1,8 @@
-package AccesoDatos;
+package modelo.pckAccesoADatos.pckDAOInterfaz;
 
 
-import Modelo.VOColeccionUsuarios;
-import Modelo.VOUsuario;
+import modelo.pckAccesoADatos.pckVO.VOColeccionUsuarios;
+import modelo.pckAccesoADatos.pckVO.VOUsuario;
 
 public interface DAOUsuario {
 
