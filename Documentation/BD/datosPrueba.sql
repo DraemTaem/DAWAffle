@@ -15,3 +15,6 @@ INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)
 
 INSERT INTO cd (idProducto, autor, pais)
 	VALUES (1, 'autor 1', 'pais 1');
+
+INSERT INTO lineaspedido (idPedido, idProducto, cantidad)
+	VALUES (2, 1, 10);
