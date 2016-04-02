@@ -1,7 +1,10 @@
 package controlador.PaqueteHelperUsuarios;
 
-public class HelperModificarContrasena implements controlador.Helper{
-    
+import modelo.VOUsuario;    //TODO CAMBIAR RUTA!
+import modelo.pckUsuarios.GestorUsuarios;
+
+public class HelperModificarContrasena implements controlador.Helper {
+
     private Integer id;
     private String nuevaContrasena;
 
@@ -11,10 +14,16 @@ public class HelperModificarContrasena implements controlador.Helper{
     }
 
     @Override
-    public void ejecutar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean ejecutar() {
+        //TODO 
+        VOUsuario user = GestorUsuarios.modificarContrasena(id, nuevaContrasena);
+        if (user == null) {
+
+            return false;
+        }    // Devuelve NULL si la contraseña no se ha podido cambiar, si no devuelve un VO
+
+        // Si es necesario, podemos meter el VO en request o sesión
+        return true;
     }
-    
-    
-    
+
 }

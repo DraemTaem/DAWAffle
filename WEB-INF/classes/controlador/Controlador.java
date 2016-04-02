@@ -41,7 +41,7 @@ public class Controlador extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null) {
 
-            helper = new HelperMostrarPrincipal(request);
+            helper = new HelperMostrarPrincipal();
             helper.ejecutar();
             goToPage("/index.jsp", request, response);
 
@@ -71,7 +71,7 @@ public class Controlador extends HttpServlet {
 
                 case ("irAPrincipal"):
 
-                    helper = new HelperMostrarPrincipal(request);
+                    helper = new HelperMostrarPrincipal();
                     helper.ejecutar();
                     goToPage("/index.jsp", request, response);
                     break;
@@ -83,7 +83,7 @@ public class Controlador extends HttpServlet {
                         helper.ejecutar();
                         goToPage("/pagando.jsp", request, response);
                     } else {
-                        helper = new HelperMostrarPrincipal(request);
+                        helper = new HelperMostrarPrincipal();
                         helper.ejecutar();
                         goToPage("/index.jsp", request, response);
                     }
@@ -98,13 +98,13 @@ public class Controlador extends HttpServlet {
 
                 case ("confirmarPago"):
 
-                    helper = new HelperConfirmarPago(request.getSession(), request);
+                    helper = new HelperConfirmarPago(request.getSession());
                     helper.ejecutar();
                     goToPage("/exitoEnElPago.jsp", request, response);
                     break;
 
                 default:
-                    helper = new HelperMostrarPrincipal(request);
+                    helper = new HelperMostrarPrincipal();
                     helper.ejecutar();
                     goToPage("/index.jsp", request, response);
             }
