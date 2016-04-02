@@ -1,16 +1,22 @@
 package controlador.PaqueteHelperUsuarios;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import modelo.pckUsuarios.GestorUsuarios;
+
 public class HelperVisualizacionCuentaIndividual implements controlador.Helper{
     
     private Integer id;
+    private HttpServletRequest peticion;
 
-    public HelperVisualizacionCuentaIndividual(Integer id) {
+    public HelperVisualizacionCuentaIndividual(Integer id, HttpServletRequest peticion) {
         this.id = id;
+        this.peticion = peticion;
     }
 
     @Override
-    public void ejecutar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean ejecutar() {
+        peticion.setAttribute("usuarioSolicitado", GestorUsuarios.visualizarCuenta(id));     
     }
     
     

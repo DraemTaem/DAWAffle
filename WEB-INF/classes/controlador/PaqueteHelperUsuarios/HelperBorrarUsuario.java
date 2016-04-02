@@ -1,7 +1,9 @@
 package controlador.PaqueteHelperUsuarios;
 
+import modelo.pckUsuarios.GestorUsuarios;
+
 public class HelperBorrarUsuario implements controlador.Helper {
-    
+
     private Integer id;
 
     public HelperBorrarUsuario(Integer id) {
@@ -9,10 +11,16 @@ public class HelperBorrarUsuario implements controlador.Helper {
     }
 
     @Override
-    public void ejecutar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean ejecutar() {
+        //TODO
+        if (GestorUsuarios.borrarUsuario(id)) {
+            // Se ha borrado correctamente el usuario
+            return true;
+        } else {
+            // No se ha logrado borrar el usuario
+            return false;
+        }
+
     }
-    
-    
-    
+
 }
