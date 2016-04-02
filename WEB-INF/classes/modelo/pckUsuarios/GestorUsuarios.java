@@ -1,5 +1,6 @@
 package modelo.pckUsuarios;
 
+import java.util.ArrayList;
 import modelo.VOUsuario;    //TODO MODIFICAR A RUTA REAL !!
 
 public class GestorUsuarios {
@@ -33,14 +34,21 @@ public class GestorUsuarios {
         return true;
 
     }
-    
-    public static VOUsuario visualizarCuenta(Integer id){    
+
+    public static VOUsuario visualizarCuenta(Integer id) {
         VOUsuario user = null;
         //TODO
-        
+
         // Llamada a DAO para traer el VOUsuario del id proporcionado
-    
         return user;
+    }
+
+    public static ArrayList<VOUsuario> visualizacionDeListaCuentas() {   //TODO se utiliza colección de VO o sólo un array list?
+        ArrayList<VOUsuario> usuarios = null;
+
+        //TODO
+        
+        return usuarios; // Llamada a DAO para traer la colección de VOs
     }
 
 }

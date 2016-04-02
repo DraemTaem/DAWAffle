@@ -9,10 +9,10 @@ public class HelperMostrarPrincipal implements controlador.Helper {
     }
 
     @Override
-    public void ejecutar() {
+    public boolean ejecutar() {
 
         
-
+        return true;
     }
 
 }
