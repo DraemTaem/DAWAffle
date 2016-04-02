@@ -2,6 +2,6 @@ package controlador;
 
 public interface Helper {
 
-    public void ejecutar();
+    public boolean ejecutar();
 
 }
