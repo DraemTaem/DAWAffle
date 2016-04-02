@@ -1,0 +1,145 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-color: white;
+	width: 1080px;
+	height: auto;
+	margin: 0 auto;
+}
+
+h1{
+	color: white;
+}
+
+p{
+	margin-bottom: 20px;
+}
+
+header{
+	z-index: 100;
+	background: rgba(0,0,0,0.9);
+	position: fixed;
+	width: 1080px;
+}
+
+nav ul{
+	list-style: none;
+	overflow: hidden;
+	margin-left: 32%;
+}
+
+nav ul li{
+	float: left;
+	font-family: Arial;
+}
+
+nav ul li a{
+	display: block;
+	color: white;
+	padding: 20px;
+	text-decoration: none;
+}
+
+nav ul li:hover{
+	background-color: #F0F8FF;
+}
+nav ul li a:hover{
+	color: black;
+}
+
+#contenido{
+	padding-top: 30px;
+	width: 80%;
+	margin: auto;
+	overflow: hidden; 
+}
+
+#guitarra{
+	padding-top: 95px;
+}
+
+select{
+ 	padding: 3px;
+ 	border: 0;
+	-webkit-box-shadow:0 5px 10px 3px #ADD8E6;
+	border-radius: 10px;
+}
+select:hover{
+	background-color: #F0F8FF;
+}
+
+input[type='text'], input[type='number'], input[type='password'], input[type='email'], textarea{
+    padding: 3px 3px;
+    width: 150px; /* una longitud definida */
+    border: none;
+    box-shadow:0 0 0 3px #EEF5F7;
+    border-radius: 10px;
+}
+input[type='text']:hover, input[type='number']:hover, input[type='password']:hover, input[type='email']:hover, textarea:hover{
+    outline: none; /* reset especifico para Chrome/Safari */
+    box-shadow:0 0 0 3px #dde9ec;
+}
+
+#primeros, #segundos{
+	margin-bottom: 20px;
+}
+
+.caja, #precio{
+	margin-right: 5%;
+}
+
+#actualizar, #anadir, #comentar, #comprar{
+    border: 1px solid #CED5D7;
+    box-shadow:0 0 0 3px #EEF5F7;
+    padding: 3px 3px;
+    border-radius: 10px;
+ 
+    background: #e4f1f6; /* Para navegadores que no soporten degradados */
+    background: -moz-linear-gradient(top, #e4f1f6 0%, #cfe6ef 100%);
+    background: -webkit-linear-gradient(top, #e4f1f6 0%,#cfe6ef 100%);
+}
+#actualizar:hover, #anadir:hover, #comentar:hover, #comprar:hover{
+    background: #edfcff;
+    background: -moz-linear-gradient(top, #edfcff 0%, #cfe6ef 100%);
+    background: -webkit-linear-gradient(top, #edfcff 0%,#cfe6ef 100%);
+}
+
+#cantidad{
+	width: 65px;
+}
+
+#filtro{
+	border-radius: 20px;
+	background-color: #F0F8FF;
+	padding-top: 15px;
+	padding-bottom: 1px;
+}
+
+.nombre{
+	font-weight: bold;
+	color: black;
+}
+
+table td{
+	padding: 20px;
+}
+
+#productos{
+	background-color: #F0F8FF;
+	border-radius: 20px;
+	margin: 20px;
+	padding: 20px;
+}
+
+hr {
+	border: 0;
+	height: 24px;
+}
+hr:after {
+	content:"\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605\2600\2605";
+	font-size: 14px;
+	color: aquamarine;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+     	<title>Musica</title>
+		<meta charset="utf-8">
+		<meta content="DreamTeam" name="author">
+		<meta content="página de venta de cds" name="description">
+		<meta content="musica, cds, venta, tienda" name="keywords">
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<link rel="stylesheet" type="text/css" href="admin.css"> 
+    </head>
+    <body>
+    	<center>
+    	<header>
+    		<h1> Música </h1>
+    		<nav>
+    			<ul id="menu">
+    				<li><a href="">Inicio</a></li>
+    				<li><a href="">Añadir productos</a></li>
+	    			<li><a href="">Gestionar usuarios</a></li>
+	    			<li><a href="">Cerrar sesión</a></li>
+    			</ul>
+    		</nav>
+    	</header>
+
+    	<figure id="guitarra">
+    		<img src="guitarra.jpg" width="1080" height="200">
+    	</figure>
+
+    	<section id="contenido">
+	    	<article id="productos">
+		    	<table>
+		    		<c:set var="u" value="${sessionScope.usuario}"></c:set>
+			    		<form method="post" action="">
+			    			<h1>
+			    				<input type="text" value="${u.getNombre()}" pattern="[A-Za-z]"{3,}>
+			    				<input type="text" value="${u.getAlias()}" pattern="[A-Za-z]"{3,}>
+			    			</h1>
+				    		<td>
+				    			<figure id="imagen">${p.getImagen()}</figure>
+				    			<input type="file" name="file">
+				    		</td>
+				    		<td>
+					    		<p>Email:</p>
+					    			<input type="email" value="${u.getEmail()}">
+					    		</p>
+					    		<p>Categoría:</p>
+					    			<select>
+					    				<option value="basico">Básico</option>
+					    				<option value="vip">VIP</option>
+					    			</select>
+					    		</p>
+
+					    		<p>Administrador: </p>
+					    			<input type="number" value="${u.getAdministrador()}" min="0" max="1">
+					    		</p>
+
+					    		<p>Dirección:</p>
+					    		<input type="text" value="${u.getDireccion()}" pattern="[A-Za-z0-9\.\/]{5,}">
+					    		</p>
+
+					    		<p>Contraseña:</p>
+					    			<input type="text" value="u.getContrasena()" pattern="[A-Za-z0-9\.\,\-\_]{8,}">
+					    		</p>
+					    		<input type="submit" value="Guardar" name="guardarUsuario" id="actualizar" class="mover">
+					    		<input type="submit" value="Eliminar" name="eliminarUsuario" class="eliminar mover">
+				    		</td>
+
+						</form>
+				</table>
+		  	</article>
+	  	</section>
+	  </center>
+    </body>
+</html>

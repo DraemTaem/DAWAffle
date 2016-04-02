@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Musica</title>
+        <meta charset="utf-8">
+        <meta content="DreamTeam" name="author">
+        <meta content="página de venta de cds" name="description">
+        <meta content="musica, cds, venta, tienda" name="keywords">
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
+    <body>
+        <center>
+        <header>
+            <h1> Música </h1>
+            <nav>
+                <ul id="menu">
+                    <li><a href="">Inicio</a></li>
+                    <li><a href="">Ver carrito</a></li>
+                    <li><a href="">Inicio sesión/Registrarse</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <figure id="guitarra">
+            <img src="guitarra.jpg" width="1080" height="200">
+        </figure>
+
+
+        <section id="contenido">
+        <article id="productos">
+            <h1 class="nombre">TOTAL A PAGAR:</h1>
+                <c:set var="precio" value="${sessionScope.productos.precioTotal()}"></c:set>
+            <p>${precio}</p>
+
+            <p>¿Deseas finalizar la compra?</p>
+            <form action="Controlador" method="post">
+                <input type="submit" name="confirmar" id="comprar" value="Comprar">
+            </form>
+        </article>
+        </section>
+        </center>
+    </body>
+</html>
