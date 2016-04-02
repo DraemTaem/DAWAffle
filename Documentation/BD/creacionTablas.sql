@@ -17,6 +17,7 @@ CREATE TABLE usuarios (
 CREATE TABLE pedidos (
 	id integer AUTO_INCREMENT,
 	idUsuario integer NOT NULL,
+	categoriaUsuario integer NOT NULL,
 	precio decimal NOT NULL,
 	fecha timestamp DEFAULT CURRENT_TIMESTAMP,
 
@@ -32,13 +33,45 @@ CREATE TABLE productos (
 	descripcion varchar(500) NOT NULL,
 	precio decimal NOT NULL,
 	imagen varchar(100),
+	tipo varchar(10),
 
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE cd (
+	idProducto integer,
+	autor varchar(50) NOT NULL,
+	pais varchar(20),
+
+	PRIMARY KEY (idProducto),
+	FOREIGN KEY (idProducto) REFERENCES productos(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
 CREATE TABLE inventario (
 	idProducto integer,
-	stock integer NOT NULL DEFAULT 0
+	stock integer NOT NULL DEFAULT 0,
+
+	PRIMARY KEY (idProducto),
+	FOREIGN KEY (idProducto) REFERENCES productos(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
+
+CREATE TABLE valoraciones (
+	idProducto integer,
+	idUsuario integer,
+	nota integer NOT NULL DEFAULT -1,
+	comentario varchar(500),
+
+	PRIMARY KEY (idProducto, idUsuario),
+	FOREIGN KEY (idProducto) REFERENCES productos(id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	FOREIGN KEY (idUsuario) REFERENCES usuarios(id)
+		ON DELETE NO ACTION
+		ON UPDATE CASCADE
 );
 
 CREATE TABLE lineaspedido (
@@ -54,5 +87,7 @@ CREATE TABLE lineaspedido (
 		ON DELETE NO ACTION
 		ON UPDATE CASCADE
 );
+
+
 
 
