@@ -3,6 +3,7 @@ package modelo.pckUsuarios;
 import java.util.ArrayList;
 import modelo.Carrito;
 import modelo.Carrito;
+import modelo.VOUsuario;    //TODO          REEMPLAZAR CON RUTA REAL!!!!
 
 public class Usuario {
 
@@ -12,6 +13,8 @@ public class Usuario {
     private Carrito carrito;
     private Integer categoria;  // categoria 0 indica que es normal, 1 indica VIP
     private boolean isAdmin; // isAdmin 0 indica que es un usuario comun, 1 indica que es administrador
+    private String alias;
+    private String direccion;
 
     public Usuario(String nombre, String contrasena, String correoElectronico, Integer categoria, boolean isAdmin) {
         this.nombre = nombre;
@@ -22,19 +25,37 @@ public class Usuario {
         this.isAdmin = isAdmin;
     }
 
-    public Usuario(String nombre, String contrasena, String correoElectronico) {
+    public Usuario(String nombre, String contrasena, String correoElectronico, String alias, String direccion) {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.correoElectronico = correoElectronico;
         this.carrito = new Carrito();
         this.categoria = 0;
         this.isAdmin = false;
+        this.alias = alias;
+        this.direccion = direccion;
     }
-
+    
     public Usuario() {//Crea el usuario con un carrito vacio, categoria normal (=0) y de tipo normal (no admin)
         this.carrito = new Carrito();
         categoria = 0;
         isAdmin = false;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public String getNombre() {
@@ -102,6 +123,14 @@ public class Usuario {
             }
         }
 
+    }
+
+    public VOUsuario RegistrarUsuario() {
+        VOUsuario user = null;
+
+        //TODO
+        // Llamada a DAO para insertar dicho usuario en la BD y, en caso de no devolver NULL por error, devolver dicho VO
+        return user;
     }
 
 }

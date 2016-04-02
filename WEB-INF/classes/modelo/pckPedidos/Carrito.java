@@ -1,4 +1,4 @@
-package modelo;
+package modelo.pckProductos;
 
 import java.util.ArrayList;
 
@@ -52,14 +52,26 @@ public class Carrito {
      al día, sobre todo el precio, que se recalculará a nivel de linea
      y tambien a nivel de carrito una vez que tengamos todas las
      líneas actualizadas*/
-    public boolean actualizar(Tienda tienda) {
-
+    public String actualizar(Tienda tienda) {
+        
+        String mensaje="";
+        
         for (LineaCarrito lc : lineasCarrito) {
-            lc.actualizar(tienda);
+            int unidadesAnteriores= lc.getCantidad();
+            int res=lc.actualizar(tienda);
+            
+            if(res==-2){
+            mensaje+="Para el producto "+lc.getProducto().getNombre()+" se ha actualizado"
+                    + "la cantidad a la máxima disponible ["+lc.getCantidad()+"] pues no había la cantidad solicitada ["+unidadesAnteriores+"]\n\n";
+            }else if(res==-1){
+                this.eliminarLineaById(lc.getProducto().getID());
+                mensaje+="El producto "+lc.getProducto().getNombre()+" no está disponible, se ha eliminado del carrito\n\n";
+            }
+            
         }
         this.actualizarPrecioTotal();
 
-        return true;
+        return mensaje;
     }
 
     public boolean eliminarLineaById(int id) {
@@ -67,10 +79,10 @@ public class Carrito {
         for (LineaCarrito lc : lineasCarrito) {
             if (lc.getProducto().getID() == id) {
                 this.eliminarLineaByObj(lc);
+                this.actualizarPrecioTotal();
                 return true;
             }
         }
-        this.actualizarPrecioTotal();
         return false;
     }
 

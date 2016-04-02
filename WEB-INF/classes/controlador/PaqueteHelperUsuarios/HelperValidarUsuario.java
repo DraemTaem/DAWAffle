@@ -1,7 +1,9 @@
 package controlador.PaqueteHelperUsuarios;
 
-public class HelperValidarUsuario implements controlador.Helper{
-    
+import modelo.pckUsuarios.GestorUsuarios;
+
+public class HelperValidarUsuario implements controlador.Helper {
+
     private String alias;
     private String contrasena;
 
@@ -9,12 +11,12 @@ public class HelperValidarUsuario implements controlador.Helper{
         this.alias = alias;
         this.contrasena = contrasena;
     }
-    
+
     @Override
-    public void ejecutar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean ejecutar() {
+
+        return GestorUsuarios.validarUserPass(alias, contrasena) == null;
+
     }
-    
-    
-    
+
 }

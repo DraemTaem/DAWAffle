@@ -1,0 +1,31 @@
+div{
+	padding: 10px;
+	margin: 10px;
+}
+
+article{
+	margin-bottom: 20px;
+}
+
+#comentarios{
+	background-color: #F0F8FF;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+#productos{
+	padding: 20px;
+}
+
+#imagen{
+	margin-bottom: 20px;
+	margin-top: 20px; 
+}
+
+#textarea{
+	width: 460px;
+}
+
+table{
+	margin-top: 60px;
+}
