@@ -21,7 +21,7 @@ public class HelperAnadirCD implements controlador.Helper {
     }
     
     @Override
-    public void ejecutar() {
+    public boolean ejecutar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
