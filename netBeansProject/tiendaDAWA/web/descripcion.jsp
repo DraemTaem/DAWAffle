@@ -1,9 +1,11 @@
+<%-- 
+    Document   : descripcion
+    Created on : 03-abr-2016, 18:18:02
+    Author     : Rapnika
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
      	<title>Musica</title>
@@ -11,8 +13,8 @@ and open the template in the editor.
 		<meta content="DreamTeam" name="author">
 		<meta content="página de venta de cds" name="description">
 		<meta content="musica, cds, venta, tienda" name="keywords">
-		<link rel="stylesheet" type="text/css" href="estilo.css">
-		<link rel="stylesheet" type="text/css" href="estiloDescripcion.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/estiloDescripcion.css">
     </head>
     <body>
     	<center>
@@ -28,7 +30,7 @@ and open the template in the editor.
     	</header>
 
     	<figure id="guitarra">
-    		<img src="guitarra.jpg" width="1080" height="200">
+    		<img src="resources/imagenes/guitarra.jpg" width="1080" height="200">
     	</figure>
 
     	<section id="contenido">
@@ -84,3 +86,4 @@ and open the template in the editor.
 	  </center>
     </body>
 </html>
+
