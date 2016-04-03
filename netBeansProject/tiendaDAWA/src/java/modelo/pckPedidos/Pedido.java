@@ -87,7 +87,7 @@ public class Pedido {
 
         for (LineaPedido lp : lineasPedido) {
 
-            String contenidoAux = "<l1>ID: [" + lp.getProducto().getID() + "] ----- Nombre del producto: [" + lp.getProducto().getNombre() + "] ----- Cantidad: [" + lp.getCantidad() + "] ----- Precio unitario: [" + lp.getProducto().getPrecio() + "] ----- Precio: [" + lp.getPrecioLinea() + "]</li>";
+            String contenidoAux = "<l1>ID: [" + lp.getProducto().getId() + "] ----- Nombre del producto: [" + lp.getProducto().getNombre() + "] ----- Cantidad: [" + lp.getCantidad() + "] ----- Precio unitario: [" + lp.getProducto().getPrecio() + "] ----- Precio: [" + lp.getPrecioLinea() + "]</li>";
 
             contenidoAux += "<br>";
 

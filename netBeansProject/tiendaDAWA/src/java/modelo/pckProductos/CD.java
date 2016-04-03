@@ -1,18 +1,18 @@
 package modelo.pckProductos;
 
-import java.util.StringTokenizer;
+import modelo.pckAccesoADatos.pckDAOInterfaz.DAOProducto;
+import modelo.pckAccesoADatos.pckDAOInterfaz.FactoriaDAO;
 
 public class CD extends Producto {
 
     private String autor;
     private String pais;
 
-    public CD(int ID, String nombre, float precio, int stock, String autor, String pais) {
-        super(ID, nombre, precio, stock);
+    public CD(String autor, String pais, int id, String nombre, String descripcion, float precio, String imagen, String tipo, int stock) {
+        super(id, nombre, descripcion, precio, imagen, tipo, stock);
         this.autor = autor;
         this.pais = pais;
     }
-
 
     public String getAutor() {
         return autor;
@@ -29,5 +29,6 @@ public class CD extends Producto {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
 
 }
