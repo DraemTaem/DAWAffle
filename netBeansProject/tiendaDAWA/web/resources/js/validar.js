@@ -1,6 +1,6 @@
 
 function validar(){
-	if(confirm("¿Estás seguro de querer eliminarlo?"));
+	if(confirm("¿Estás seguro de querer realizar esos cambios?"));
 	else{
 		return false;
 	}

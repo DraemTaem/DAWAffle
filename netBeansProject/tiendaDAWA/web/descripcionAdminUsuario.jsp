@@ -24,7 +24,7 @@
 	    	<article id="productos">
 		    	<table>
 		    		<c:set var="u" value="${sessionScope.usuario}"></c:set>
-			    		<form method="post" action="">
+                                <form method="post" action="Controlador" onsubmit="return validar()">
 			    			<h1>
 			    				<input type="text" value="${u.getNombre()}" pattern="[A-Za-z]"{3,}>
 			    				<input type="text" value="${u.getAlias()}" pattern="[A-Za-z]"{3,}>

@@ -52,8 +52,8 @@
 		  		<h1 class="nombre">Comentarios</h1>
 
 		  		<table>
-			  		<form method="post" action="Controlador">
-				  		<c:forEach var="c" value="${sessionScope.comentarios}">
+			  		<form method="post" action="Controlador" onsubmit="return validar()">
+				  		<c:set var="c" value="${sessionScope.comentarios}">
 				  			<tr><th>
 					  			<input type="text" value="${c.getAutor()}" pattern="[A-Za-z]{3,}"> 
 					  			<input type="number" value="${c.getValoracion}" min="1">
@@ -67,7 +67,7 @@
 				  					<input type="submit" value="Eliminar" name="eliminarComentario" class="eliminar">
 				  				</td>
 				  			</tr>
-				  		</c:forEach>
+				  		</c:set>
 			  		</form>
 		  		</table>
 		  	</article>
