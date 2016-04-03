@@ -15,25 +15,25 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MySQLConnector {
 
-    public static String HOST = "localhost";
-    public static String DATABASE = "dbtienda";
-    public static String USERNAME = "root";
-    public static String PASSWORD = "root";
 
     public Connection getConnection() {
         String url = "";
         try {
-            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.xml");
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            
+            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("conf/config.xml");
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(input));
             XPath xpath = XPathFactory.newInstance().newXPath();
             url = (String) xpath.compile("//config//jdbc//url").evaluate(document, XPathConstants.STRING);
             String driver = (String) xpath.compile("//config//jdbc//driver").evaluate(document, XPathConstants.STRING);
             String username = (String) xpath.compile("//config//jdbc//username").evaluate(document, XPathConstants.STRING);
             String password = (String) xpath.compile("//config//jdbc//password").evaluate(document, XPathConstants.STRING);
-            Connection con = DriverManager.getConnection(url , username, password);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbtienda" , "daw", "etse");
             return con;
         } catch (SQLException e) {
             System.out.println("Conexion NO establecida con " + url);
@@ -46,6 +46,12 @@ public class MySQLConnector {
             e.printStackTrace();
         } catch (SAXException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MySQLConnector.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(MySQLConnector.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(MySQLConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

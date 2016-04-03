@@ -3,10 +3,7 @@ package modelo.pckAccesoADatos.pckDAOMySQL;
 import modelo.pckAccesoADatos.pckDAOInterfaz.DAOProducto;
 import modelo.pckAccesoADatos.pckVO.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,7 +24,8 @@ public class MySQLDAOProducto implements DAOProducto {
 
             String sqlCD
                     = "SELECT * FROM cd "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;"; //TODO incluir
+
             pstmt2 = con.prepareStatement(sqlCD);
 
             ResultSet res = pstmt.executeQuery();
@@ -44,7 +42,7 @@ public class MySQLDAOProducto implements DAOProducto {
                         pstmt2.setInt(1, res.getInt("id"));
                         ResultSet res2 = pstmt2.executeQuery();
                         if (res2.next()) {
-                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res2.getString("autor"), res2.getString("pais"), res.getString("tipo"));
+                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
                             coleccion.add(prod);
                         }
                         break;
@@ -72,7 +70,7 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt, pstmt2, pstmt3, pstmt4, pstmt5;
 
             String sqlSelect
-                    = "SELECT * FROM productos"
+                    = "SELECT * FROM productos "
                     + "WHERE id = ?;";
 
             pstmt = con.prepareStatement(sqlSelect);
@@ -81,12 +79,12 @@ public class MySQLDAOProducto implements DAOProducto {
 
             String sqlCD
                     = "SELECT * FROM cd "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;";
             pstmt2 = con.prepareStatement(sqlCD);
 
             String sqlStock
                     = "SELECT stock FROM inventario "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;";
 
             pstmt3 = con.prepareStatement(sqlStock);
 
@@ -113,6 +111,7 @@ public class MySQLDAOProducto implements DAOProducto {
                 switch (tipo) {
                     case "cd":
                         pstmt2.setInt(1, res.getInt("id"));
+                        pstmt3.setInt(1, res.getInt("id"));
                         pstmt4.setInt(1, res.getInt("id"));
                         ResultSet res2 = pstmt2.executeQuery();
                         ResultSet res3 = pstmt3.executeQuery();
@@ -122,7 +121,7 @@ public class MySQLDAOProducto implements DAOProducto {
                             VOValoracion val;
                             VOUsuario user;
                             ArrayList<VOValoracion> valoraciones = new ArrayList<>();
-                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"), res2.getString("autor"), res2.getString("pais"));
+                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
                             while (res4.next()) {
                                 pstmt5.setInt(1, res4.getInt("idUsuario"));
                                 res5 = pstmt5.executeQuery();
@@ -176,7 +175,7 @@ public class MySQLDAOProducto implements DAOProducto {
         VOColeccionProductos byPrecio = getProductosByPrecioMaximo(precioMaximo);
         VOColeccionProductos byNombre = getProductosByNombre(nombre);
         VOColeccionProductos byAutor = getProductosByAutor(autor);
-        //VOColeccionProductos byAno = getProductosByAno(ano);
+        VOColeccionProductos byAno = getProductosByAno(ano);
 
         HashMap<Integer, VOProducto> resultado = new HashMap<>();
 
@@ -189,9 +188,9 @@ public class MySQLDAOProducto implements DAOProducto {
         for (VOProducto producto : byAutor.getProductos()) {
             resultado.put(producto.getId(), producto);
         }
-        /*for (VOProducto producto : byAno.getProductos()){
-         resultado.put(producto.getId(), producto);
-         }*/
+        for (VOProducto producto : byAno.getProductos()) {
+            resultado.put(producto.getId(), producto);
+        }
 
         Iterator<Integer> i = resultado.keySet().iterator();
         ArrayList<VOProducto> coleccion = new ArrayList<>();
@@ -237,7 +236,7 @@ public class MySQLDAOProducto implements DAOProducto {
                         pstmt2.setInt(1, res.getInt("id"));
                         ResultSet res2 = pstmt2.executeQuery();
                         if (res2.next()) {
-                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res2.getString("autor"), res2.getString("pais"), res.getString("tipo"));
+                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
                             coleccion.add(prod);
                         }
                         break;
@@ -290,7 +289,7 @@ public class MySQLDAOProducto implements DAOProducto {
                         pstmt2.setInt(1, res.getInt("id"));
                         ResultSet res2 = pstmt2.executeQuery();
                         if (res2.next()) {
-                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res2.getString("autor"), res2.getString("pais"), res.getString("tipo"));
+                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
                             coleccion.add(prod);
                         }
                         break;
@@ -339,7 +338,7 @@ public class MySQLDAOProducto implements DAOProducto {
                 pstmt.setInt(1, res.getInt("id"));
                 ResultSet res2 = pstmt.executeQuery();
                 if (res2.next()) {
-                    prod = new VOCd(res2.getInt("id"), res2.getString("nombre"), res2.getString("descripcion"), res2.getFloat("precio"), res2.getString("imagen"), res.getString("autor"), res.getString("pais"), res2.getString("tipo"));
+                    prod = new VOCd(res2.getInt("id"), res2.getString("nombre"), res2.getString("descripcion"), res2.getFloat("precio"), res2.getString("imagen"), res2.getString("tipo"), res.getString("autor"), res.getString("pais"), res.getInt("ano"));
                     coleccion.add(prod);
                 }
 
@@ -355,7 +354,45 @@ public class MySQLDAOProducto implements DAOProducto {
 
     @Override
     public VOColeccionProductos getProductosByAno(int ano) {
-        //TODO
+        try {
+            MySQLConnector connector = new MySQLConnector();
+            Connection con = connector.getConnection();
+            PreparedStatement pstmt, pstmt2;
+
+            String sqlSelect
+                    = "SELECT * FROM cd "
+                    + "WHERE ano = ?;";
+
+            pstmt = con.prepareStatement(sqlSelect);
+            pstmt.setFloat(1, ano);
+
+            String sqlCD
+                    = "SELECT * FROM productos "
+                    + "WHERE id = ?;";
+            pstmt2 = con.prepareStatement(sqlCD);
+
+            ResultSet res = pstmt.executeQuery();
+
+            ArrayList<VOProducto> coleccion = new ArrayList<>();
+            String tipo = "";
+            VOProducto prod;
+
+            while (res.next()) {
+
+                pstmt2.setInt(1, res.getInt("idProducto"));
+                ResultSet res2 = pstmt2.executeQuery();
+                if (res2.next()) {
+                    prod = new VOCd(res2.getInt("id"), res2.getString("nombre"), res2.getString("descripcion"), res2.getFloat("precio"), res2.getString("imagen"), res2.getString("tipo"), res.getString("autor"), res.getString("pais"), res.getInt("ano"));
+                    coleccion.add(prod);
+                }
+
+            }
+
+            return new VOColeccionProductos(coleccion);
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta");
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -368,7 +405,7 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt;
 
             String sqlInsert
-                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo) "
                     + "VALUES ( ?, ?, ?, ?, ?);";
 
             pstmt = con.prepareStatement(sqlInsert);
@@ -418,7 +455,7 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt, pstmt2;
 
             String sqlInsert
-                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo) "
                     + "VALUES ( ?, ?, ?, ?, ?);";
 
             pstmt = con.prepareStatement(sqlInsert);
@@ -441,14 +478,14 @@ public class MySQLDAOProducto implements DAOProducto {
             pstmt2 = con.prepareStatement(sqlInsert2);
 
             ResultSet generatedKeys = pstmt.getGeneratedKeys();
-            
+
             if (generatedKeys.next()) {
                 pstmt2.setInt(1, generatedKeys.getInt("id"));
             } else {
                 con.rollback();
                 return false;
             }
-            
+
             pstmt2.executeUpdate();
             con.commit();
             return true;
@@ -483,10 +520,10 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt, pstmt2, pstmt3, pstmt4;
 
             String sqlInsert
-                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo) "
                     + "VALUES ( ?, ?, ?, ?, ?);";
 
-            pstmt = con.prepareStatement(sqlInsert);
+            pstmt = con.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, producto.getNombre());
             pstmt.setString(2, producto.getDescripcion());
             pstmt.setFloat(3, producto.getPrecio());
@@ -501,21 +538,21 @@ public class MySQLDAOProducto implements DAOProducto {
             pstmt.executeUpdate();
             //select max(id) from productos;
             String sqlInsert2
-                    = "INSERT INTO cd (idProducto, autor, pais)"
+                    = "INSERT INTO cd (idProducto, autor, pais) "
                     + "VALUES ( ?, ?, ?);";
 
             pstmt3 = con.prepareStatement(sqlInsert2);
 
             String sqlInsert3
-                    = "INSERT INTO inventario (idProducto, cantidad) "
+                    = "INSERT INTO inventario (idProducto, stock) "
                     + "VALUES (?, 0);";
 
             pstmt4 = con.prepareStatement(sqlInsert3);
 
             ResultSet generatedKeys = pstmt.getGeneratedKeys();
             if (generatedKeys.next()) {
-                pstmt3.setInt(1, generatedKeys.getInt("id"));
-                pstmt4.setInt(1, generatedKeys.getInt("id"));
+                pstmt3.setInt(1, generatedKeys.getInt(1));
+                pstmt4.setInt(1, generatedKeys.getInt(1));
             } else {
                 con.rollback();
                 return false;

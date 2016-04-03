@@ -10,7 +10,7 @@ PEDIDOS (id, precio, idUsuario, fecha)
 PRODUCTOS (id, nombre, descripcion, precio, imagen, tipo)
 	PRIMARY KEY id
 
-CD (idProducto, autor, pais)
+CD (idProducto, autor, pais, ano)
 	PRIMARY KEY idProducto
 	FOREIGN KEY idProducto REFERENCES PRODUCTOS (id)
 

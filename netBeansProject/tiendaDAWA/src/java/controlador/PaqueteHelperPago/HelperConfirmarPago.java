@@ -19,9 +19,14 @@ public class HelperConfirmarPago implements controlador.Helper {
         Pedido pedido = (Pedido) sesion.getAttribute("pedido");
 
         if (pedido.registrarPedido() == false) {
+            sesion.removeAttribute("pedido");
             return false;
-        } //TODO registrar pedido
-        
+        }
+
+        if (pedido.getUsuario().checkCategoria() == false) {
+            return false;
+        }
+
         pedido.enviarCorreoUsuario();
 
         sesion.setAttribute("mensaje", "Se envia el correo a: " + pedido.getUsuario().getCorreoElectronico());

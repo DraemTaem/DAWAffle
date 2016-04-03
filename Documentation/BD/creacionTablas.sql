@@ -42,6 +42,8 @@ CREATE TABLE cd (
 	idProducto integer,
 	autor varchar(50) NOT NULL,
 	pais varchar(20),
+	ano integer,
+	CHECK(ano>1399),
 
 	PRIMARY KEY (idProducto),
 	FOREIGN KEY (idProducto) REFERENCES productos(id)

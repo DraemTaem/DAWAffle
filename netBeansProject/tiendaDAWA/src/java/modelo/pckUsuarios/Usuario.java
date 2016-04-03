@@ -28,7 +28,6 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    
     public Usuario(String nombre, String contrasena, String correoElectronico, Integer categoria, boolean isAdmin) {
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -119,22 +118,28 @@ public class Usuario {
         this.isAdmin = isAdmin;
     }
 
-    public void checkCategoria() {    // Metodo que sirve para comprobar si el usuario debe actualizar su categoria en funcion de sus pedidos realizados
-        float importe = 0.0f;
+    public boolean checkCategoria() {
 
-        //TODO
-        ArrayList ColeccionPedidos = null;  //Llamada a DAO para traer los pedidos del usuario y comprobar que tiene pedidos
-
-        if (ColeccionPedidos != null) {
-
-            /*for (VOPedido in ColeccionPedidos) {
-             importe = importe + VOPedido.getPrecioTotal;
-             }*/
-            if (importe >= 100) {
-                this.categoria = 1;
-                // Llamada a DAO para actualizar categoria en BD del usuario
-            }
+        if (this.getCategoria() == 1) {
+            return true;
         }
+
+        FactoriaDAO factoria = FactoriaDAO.newFactoria();
+
+        DAOUsuario daoUsuario = factoria.crearDAOUsuario();
+
+        VOUsuario vou = daoUsuario.getUsuarioByAlias(this.alias);
+
+        int res = daoUsuario.checkCategoria(vou);
+
+        if (res == -1) {
+            return false;
+        } else if (res == 0 || res == 1) {
+            this.setCategoria(res);
+            return true;
+        }
+
+        return false;
 
     }
 
@@ -146,9 +151,9 @@ public class Usuario {
         FactoriaDAO factoria = FactoriaDAO.newFactoria();
 
         DAOUsuario daoUsuario = factoria.crearDAOUsuario();
-        
+
         return daoUsuario.registrarUsuario(user);
-        
+
     }
 
 }

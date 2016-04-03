@@ -1,9 +1,11 @@
+<%-- 
+    Document   : descripcion
+    Created on : 03-abr-2016, 18:18:02
+    Author     : Rapnika
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
      	<title>Musica</title>
@@ -11,35 +13,22 @@ and open the template in the editor.
 		<meta content="DreamTeam" name="author">
 		<meta content="página de venta de cds" name="description">
 		<meta content="musica, cds, venta, tienda" name="keywords">
-		<link rel="stylesheet" type="text/css" href="estilo.css">
-		<link rel="stylesheet" type="text/css" href="estiloDescripcion.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/estiloDescripcion.css">
     </head>
     <body>
     	<center>
-    	<header>
-    		<h1> Música </h1>
-    		<nav>
-    			<ul id="menu">
-    				<li><a href="Controlador?pagina=inicio">Inicio</a></li>
-    				<li><a href="Controlador?pagina=carrito">Ver carrito</a></li>
-	    			<li><a href="Controlador?pagina=usuarios">Inicio sesión/Registrarse</a></li>
-    			</ul>
-    		</nav>
-    	</header>
-
-    	<figure id="guitarra">
-    		<img src="guitarra.jpg" width="1080" height="200">
-    	</figure>
+    	<%@include file="cabecera.jsp" %>
 
     	<section id="contenido">
 	    	<article id="productos">
 	    	<table>
-	    		<c:set var="p" value="${sessionScope.producto}"></c:set>
-	    		<h1 class="nombre">${p.getNombre()}</h1>
-	    		<td><figure id="imagen">${p.getImagen()}</figure></td>
-	    		<td><p>${p.getDescripcion()}</p>
-	    		<p>Unidades: ${p.getUnidades()}</p>
-	    		<p>Precio: ${p.getPrecio()}</p>
+	    		<c:set var="p" value="${requestScope.producto}"></c:set>
+	    		<h1 class="nombre">${p.nombre}</h1>
+                        <td><figure id="imagen"><img src="${p.imagen}" width="300" height="300"></figure></td>
+	    		<td><p>${p.descripcion}</p>
+	    		<p>Unidades: ${p.stock}</p>
+	    		<p>Precio: ${p.precio}</p>
 	    		<form method="post" id="seleccionar" action="carrito.html">
 				  	<input type="number" id="cantidad" placeholder="Cantidad" name="cantidad" min="1" required>
 				  	<input type="submit" id="anadir" name="seleccionar" value="Seleccionar">
@@ -74,9 +63,9 @@ and open the template in the editor.
 		  		</form>
 
 		  		<table>
-		  		<c:forEach var="c" value="${sessionScope.comentarios}">
-		  			<tr><th>${c.getAutor()} ${c.getValoracion}</th></tr>
-		  			<tr><td>${c.getComentario()}</td></tr>
+		  		<c:forEach var="c" items="${p.valoraciones.valoraciones}">
+		  			<tr><th>${c.usuario.alias} ${c.nota}</th></tr>
+		  			<tr><td>${c.comentario}</td></tr>
 		  		</c:forEach>
 		  		</table>
 		  	</article>
@@ -84,3 +73,4 @@ and open the template in the editor.
 	  </center>
     </body>
 </html>
+
