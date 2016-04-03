@@ -1,5 +1,7 @@
 package controlador.PaqueteHelperProductos;
 
+import modelo.pckProductos.Tienda;
+
 public class HelperAnadirCD implements controlador.Helper {
 
     private String nombre;
@@ -19,10 +21,14 @@ public class HelperAnadirCD implements controlador.Helper {
         this.precio = precio;
         this.url = url;
     }
-    
+
     @Override
     public boolean ejecutar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Tienda tienda = new Tienda();
+
+        return tienda.anadirCD(nombre, descripcion, precio, url, "cd", stock, autor, pais);
+
     }
-    
+
 }

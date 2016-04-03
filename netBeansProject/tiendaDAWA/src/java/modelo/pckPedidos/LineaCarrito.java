@@ -17,7 +17,7 @@ public class LineaCarrito {
 
     public int actualizar(Tienda tienda) {
 
-        Producto p = tienda.getProductoById(this.producto.getID());
+        Producto p = tienda.getProductoById(this.producto.getId());
         if (p == null) {
             return -1;
         }

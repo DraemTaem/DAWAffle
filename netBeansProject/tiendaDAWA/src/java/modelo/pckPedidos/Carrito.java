@@ -16,7 +16,7 @@ public class Carrito {
     public boolean insertarLinea(LineaCarrito lc) {
 
         for (LineaCarrito lcaux : lineasCarrito) {
-            if (lcaux.getProducto().getID() == lc.getProducto().getID()) {
+            if (lcaux.getProducto().getId() == lc.getProducto().getId()) {
                 lcaux.setCantidad((lcaux.getCantidad() + lc.getCantidad()));
                 this.actualizarPrecioTotal();
                 return true;
@@ -66,7 +66,7 @@ public class Carrito {
             mensaje+="Para el producto "+lc.getProducto().getNombre()+" se ha actualizado"
                     + "la cantidad a la máxima disponible ["+lc.getCantidad()+"] pues no había la cantidad solicitada ["+unidadesAnteriores+"]\n\n";
             }else if(res==-1){
-                this.eliminarLineaById(lc.getProducto().getID());
+                this.eliminarLineaById(lc.getProducto().getId());
                 mensaje+="El producto "+lc.getProducto().getNombre()+" no está disponible, se ha eliminado del carrito\n\n";
             }
             
@@ -79,7 +79,7 @@ public class Carrito {
     public boolean eliminarLineaById(int id) {
 
         for (LineaCarrito lc : lineasCarrito) {
-            if (lc.getProducto().getID() == id) {
+            if (lc.getProducto().getId() == id) {
                 this.eliminarLineaByObj(lc);
                 this.actualizarPrecioTotal();
                 return true;
