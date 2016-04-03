@@ -26,7 +26,6 @@ public class MySQLConnector {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             
-            
             InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("conf/config.xml");
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(input));
             XPath xpath = XPathFactory.newInstance().newXPath();

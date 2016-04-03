@@ -87,14 +87,18 @@ public class Producto {
 
     public boolean leerValoraciones() {
 
-        FactoriaDAO factoria = FactoriaDAO.newFactoria();
+        if (this.valoraciones == null) {
 
-        DAOProducto daoProducto = factoria.crearDAOProducto();
+            FactoriaDAO factoria = FactoriaDAO.newFactoria();
 
-        VOProducto aux = daoProducto.getDetallesProducto(this.getId());
+            DAOProducto daoProducto = factoria.crearDAOProducto();
 
-        this.valoraciones = aux.getValoraciones();
+            VOProducto aux = daoProducto.getDetallesProducto(this.getId());
 
+            this.valoraciones = aux.getValoraciones();
+            this.stock = aux.getStock();
+
+        }
         return true;
 
     }

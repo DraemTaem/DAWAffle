@@ -21,6 +21,9 @@
         <section id="contenido">
         <article id="productos">
         <h1 class="nombre">Lista de artículos</h1>
+        
+        <p>${requestScope.mensajeError}</p>
+        
         <table align="center">
             <tr>
                 <th>Descripcion del cd</th>
@@ -28,21 +31,21 @@
                 <th>Importe</th>
             </tr>
             <form method="post" action="Controlador">
-            <c:forEach var="p" items="${sessionScope.productos}">
+            <c:forEach var="lc" items="${sessionScope.usuario.carrito.lineasCarrito}">
             <tr>
-                <td><p>${p.getTitulo()}, ${p.getAutor()}, ${p.getPais()}</p>
-                <p>${p.getPrecio()}</p></td>
-                <td>${p.getCantidad()}</td>
-                <td>${p.precio()}</td>
+                <td><p>${lc.producto.nombre}, ${lc.producto.autor}, ${lc.producto.pais}</p>
+                <p>${lc.producto.precio}</p></td>
+                <td>${lc.cantidad}</td>
+                <td>${lc.precioLinea}</td>
                 <td>
-                    <input type="radio" id="seleccionar" name="botonEliminar" value="${p.getCodigo()}">
+                    <input type="radio" id="seleccionar" name="botonEliminar" value="${lc.producto.id}">
                 </td>
             </tr>
             </c:forEach>
             <tr>
                 <td></td>
                 <td class="nombre">IMPORTE TOTAL</td>
-            <c:set var="precio" value="${sessionScope.productos.precioTotal()}"></c:set>
+            <c:set var="precio" value="${sessionScope.usuario.carrito.precioTotal}"></c:set>
                 <td>${precio}</td>
                 <td>
                     <input type="submit" id="actualizar" name="eliminar" value="Eliminar">

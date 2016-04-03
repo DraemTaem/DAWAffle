@@ -23,9 +23,9 @@
         <nav>
             <ul id="menu">
                 <li><a href="Controlador?action=irAPrincipal">Inicio</a></li>
-                <li><a href="Controlador?action=productos">Añadir productos</a></li>
-                <li><a href="Controlador?action=usuarios">Gestionar usuarios</a></li>
-                <li><a href="Controlador?action=cerrar">Cerrar sesión</a></li>
+                <li><a href="Controlador?action=productos">Añadir productos TODO</a></li>
+                <li><a href="Controlador?action=usuarios">Gestionar usuarios TODO</a></li>
+                <li><a href="Controlador?action=cerrarSesion">Cerrar sesión</a></li>
             </ul>
         </nav>
         </c:when>
@@ -33,8 +33,8 @@
             <nav>
             <ul id="menu">
                 <li><a href="Controlador?action=irAPrincipal">Inicio</a></li>
-                <li><a href="Controlador?action=productos">Ver carrito</a></li>
-                <li><a href="Controlador?action=cerrar">Cerrar sesión</a></li>
+                <li><a href="Controlador?action=irAlCarrito">Ver carrito</a></li>
+                <li><a href="Controlador?action=cerrarSesion">Cerrar sesión</a></li>
             </ul>
         </nav>
         </c:when>

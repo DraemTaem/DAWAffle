@@ -121,6 +121,7 @@ public class MySQLDAOProducto implements DAOProducto {
                             VOValoracion val;
                             VOUsuario user;
                             ArrayList<VOValoracion> valoraciones = new ArrayList<>();
+                            
                             prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
                             while (res4.next()) {
                                 pstmt5.setInt(1, res4.getInt("idUsuario"));

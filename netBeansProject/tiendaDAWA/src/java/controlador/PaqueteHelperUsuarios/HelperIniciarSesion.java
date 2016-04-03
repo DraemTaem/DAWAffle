@@ -21,6 +21,9 @@ public class HelperIniciarSesion implements controlador.Helper {
     public boolean ejecutar() {
         VOUsuario user = GestorUsuarios.validarUserPass(alias, contrasena);
 
+        System.out.println(alias);
+        System.out.println(contrasena);
+        
         if (user != null) {
             Usuario u = new Usuario(user.getNombre(), user.getContrasena(), user.getEmail(), user.getCategoria(), user.isAdministrador(),user.getAlias() , user.getDireccion());
             sesion.setAttribute("usuario", u);   // Lo incrusta en sesión si se insertó con éxito

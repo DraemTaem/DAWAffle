@@ -13,8 +13,9 @@ public class HelperAnadirCD implements controlador.Helper {
     private Float precio;
     private String url;
     private HttpSession session;
+    private String ano;
 
-    public HelperAnadirCD(String nombre, String descripcion, String autor, String pais, Integer stock, Float precio, String url, HttpSession session) {
+    public HelperAnadirCD(String nombre, String descripcion, String autor, String pais, Integer stock, Float precio, String url, HttpSession session, String ano) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.autor = autor;
@@ -23,7 +24,10 @@ public class HelperAnadirCD implements controlador.Helper {
         this.precio = precio;
         this.url = url;
         this.session = session;
+        this.ano = ano;
     }
+
+    
 
     @Override
     public boolean ejecutar() {
@@ -31,7 +35,7 @@ public class HelperAnadirCD implements controlador.Helper {
         Tienda tienda = new Tienda();
         session.setAttribute("tienda", tienda);
 
-        return tienda.anadirCD(nombre, descripcion, precio, url, "cd", stock, autor, pais);
+        return tienda.anadirCD(nombre, descripcion, precio, url, "cd", stock, autor, pais,Integer.parseInt(ano));
 
     }
 
