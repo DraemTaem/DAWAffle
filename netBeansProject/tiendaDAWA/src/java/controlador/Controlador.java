@@ -58,6 +58,8 @@ public class Controlador extends HttpServlet {
 
                 case ("irAlCarrito"):
 
+                    
+                    
                     helper = new HelperMostrarCarrito((Usuario) sesion.getAttribute("usuario"));
                     helper.ejecutar();
                     goToPage("/carrito.jsp", request, response);

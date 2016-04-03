@@ -13,7 +13,7 @@
 		<meta content="DreamTeam" name="author">
 		<meta content="página de venta de cds" name="description">
 		<meta content="musica, cds, venta, tienda" name="keywords">
-		<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+                <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
     </head>
     <body>
     	<center>
@@ -21,8 +21,8 @@
     		<h1> Música </h1>
     		<nav>
     			<ul id="menu">
-    				<li><a href="Controlador?pagina=inicio">Inicio</a></li>
-    				<li><a href="Controlador?pagina=carrito">Ver carrito</a></li>
+    				<li><a href="Controlador?action=irAPrincipal">Inicio</a></li>
+    				<li><a href="Controlador?action=irAlCarrito">Ver carrito</a></li>
 	    			<li><a href="Controlador?pagina=usuarios">Inicio sesión/Registrarse</a></li>
     			</ul>
     		</nav>
