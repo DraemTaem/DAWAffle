@@ -59,10 +59,10 @@ public class Controlador extends HttpServlet {
                         goToPage("/usuarios.jsp", request, response);
                     }
 
-                    helper = new HelperAnadirLineaCarrito(sesion, (Usuario) sesion.getAttribute("usuario"), Integer.parseInt(request.getParameter("producto")), Integer.parseInt(request.getParameter("cantidad")));
+                    helper = new HelperAnadirLineaCarrito(sesion, (Usuario) sesion.getAttribute("usuario"), Integer.parseInt(request.getParameter("idProducto")), Integer.parseInt(request.getParameter("cantidad")));
                     if (!helper.ejecutar()) {
-                        request.setAttribute("mensajeError", "Error al agregar linea al carrito.");
-                        goToPage("/error.jsp", request, response);
+                        request.setAttribute("mensajeError", "La cantidad solicitada no está disponible");
+                        goToPage("/carrito.jsp", request, response);
                     }
                     goToPage("/carrito.jsp", request, response);
                     break;

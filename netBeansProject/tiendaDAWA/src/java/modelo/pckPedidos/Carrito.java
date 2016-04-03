@@ -17,9 +17,15 @@ public class Carrito {
 
         for (LineaCarrito lcaux : lineasCarrito) {
             if (lcaux.getProducto().getId() == lc.getProducto().getId()) {
+
+                if (lcaux.getProducto().getStock() < lcaux.getCantidad() + lc.getCantidad()) {
+                    return false;
+                }
+
                 lcaux.setCantidad((lcaux.getCantidad() + lc.getCantidad()));
                 this.actualizarPrecioTotal();
                 return true;
+
             }
         }
         this.lineasCarrito.add(lc);
@@ -55,21 +61,21 @@ public class Carrito {
      y tambien a nivel de carrito una vez que tengamos todas las
      líneas actualizadas*/
     public String actualizar(Tienda tienda) {
-        
-        String mensaje="";
-        
+
+        String mensaje = "";
+
         for (LineaCarrito lc : lineasCarrito) {
-            int unidadesAnteriores= lc.getCantidad();
-            int res=lc.actualizar(tienda);
-            
-            if(res==-2){
-            mensaje+="Para el producto "+lc.getProducto().getNombre()+" se ha actualizado"
-                    + "la cantidad a la máxima disponible ["+lc.getCantidad()+"] pues no había la cantidad solicitada ["+unidadesAnteriores+"]\n\n";
-            }else if(res==-1){
+            int unidadesAnteriores = lc.getCantidad();
+            int res = lc.actualizar(tienda);
+
+            if (res == -2) {
+                mensaje += "Para el producto " + lc.getProducto().getNombre() + " se ha actualizado"
+                        + "la cantidad a la máxima disponible [" + lc.getCantidad() + "] pues no había la cantidad solicitada [" + unidadesAnteriores + "]\n\n";
+            } else if (res == -1) {
                 this.eliminarLineaById(lc.getProducto().getId());
-                mensaje+="El producto "+lc.getProducto().getNombre()+" no está disponible, se ha eliminado del carrito\n\n";
+                mensaje += "El producto " + lc.getProducto().getNombre() + " no está disponible, se ha eliminado del carrito\n\n";
             }
-            
+
         }
         this.actualizarPrecioTotal();
 

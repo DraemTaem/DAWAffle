@@ -29,10 +29,12 @@
 	    		<td><p>${p.descripcion}</p>
 	    		<p>Unidades: ${p.stock}</p>
 	    		<p>Precio: ${p.precio}</p>
-	    		<form method="post" id="seleccionar" action="carrito.html">
-				  	<input type="number" id="cantidad" placeholder="Cantidad" name="cantidad" min="1" required>
-				  	<input type="submit" id="anadir" name="seleccionar" value="Seleccionar">
-				</form>
+	    		<form method="post" id="seleccionar" action="Controlador">
+                            <input type="hidden" name="action" value="anadirItem">
+                            <input type="hidden" name="idProducto" value="${p.id}">
+                            <td><input type="number" id="cantidad" placeholder="Cantidad" name="cantidad" min="1" required></td>
+                            <td><input type="submit" id="anadir" name="seleccionar" value="Seleccionar"></td>
+                        </form>
 				</td>
 			</table>
 		  	</article>
