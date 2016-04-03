@@ -15,7 +15,7 @@ public class MySQLDAOProducto implements DAOProducto {
         try {
             MySQLConnector connector = new MySQLConnector();
             Connection con = connector.getConnection();
-            PreparedStatement pstmt, pstmt2;
+            PreparedStatement pstmt, pstmt2, pstmt3;
 
             String sqlSelect
                     = "SELECT * FROM productos;";
@@ -24,9 +24,15 @@ public class MySQLDAOProducto implements DAOProducto {
 
             String sqlCD
                     = "SELECT * FROM cd "
-                    + "WHERE idProducto = ?;"; //TODO incluir
+                    + "WHERE idProducto = ?;";
 
             pstmt2 = con.prepareStatement(sqlCD);
+
+            String sqlStock
+                    = "SELECT stock FROM inventario "
+                    + "WHERE idProducto = ?;";
+
+            pstmt3 = con.prepareStatement(sqlStock);
 
             ResultSet res = pstmt.executeQuery();
 
@@ -36,19 +42,24 @@ public class MySQLDAOProducto implements DAOProducto {
 
             while (res.next()) {
                 tipo = res.getString("tipo");
-
+                pstmt3.setInt(1, res.getInt("id"));
+                ResultSet res3 = pstmt3.executeQuery();
                 switch (tipo) {
                     case "cd":
                         pstmt2.setInt(1, res.getInt("id"));
+
                         ResultSet res2 = pstmt2.executeQuery();
-                        if (res2.next()) {
-                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
+                        
+                        if (res2.next() && res3.next()) {
+                            prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
                             coleccion.add(prod);
                         }
                         break;
 
                     default:
-                        prod = new VOProducto(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"));
+                        pstmt3.setInt(1, res.getInt("id"));
+
+                        prod = new VOProducto(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"));
                         coleccion.add(prod);
                         break;
                 }
@@ -121,7 +132,7 @@ public class MySQLDAOProducto implements DAOProducto {
                             VOValoracion val;
                             VOUsuario user;
                             ArrayList<VOValoracion> valoraciones = new ArrayList<>();
-                            
+
                             prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"), res2.getString("autor"), res2.getString("pais"), res2.getInt("ano"));
                             while (res4.next()) {
                                 pstmt5.setInt(1, res4.getInt("idUsuario"));

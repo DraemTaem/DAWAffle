@@ -10,15 +10,13 @@ public class HelperRegistrarUsuario implements controlador.Helper {
     private String contrasena;
     private String email;
     private String direccion;
-    private HttpServletRequest peticion;
 
-    public HelperRegistrarUsuario(String nombre, String alias, String contrasena, String email, String direccion, HttpServletRequest peticion) {
+    public HelperRegistrarUsuario(String nombre, String alias, String contrasena, String email, String direccion) {
         this.nombre = nombre;
         this.alias = alias;
         this.contrasena = contrasena;
         this.email = email;
         this.direccion = direccion;
-        this.peticion = peticion;
     }
 
     @Override
@@ -26,12 +24,7 @@ public class HelperRegistrarUsuario implements controlador.Helper {
         Usuario u = new Usuario(nombre, contrasena, email, alias, direccion);
         boolean exito = u.RegistrarUsuario();
 
-        if (exito) {
-            peticion.setAttribute("usuario", u);   // Lo incrusta en sesión si se insertó con éxito
-            return true;
-        } else {
-            return false;
-        }
+        return exito;
 
     }
 

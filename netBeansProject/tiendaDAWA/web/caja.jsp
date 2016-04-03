@@ -21,11 +21,12 @@
         <section id="contenido">
         <article id="productos">
             <h1 class="nombre">TOTAL A PAGAR:</h1>
-                <c:set var="precio" value="${sessionScope.productos.precioTotal()}"></c:set>
+                <c:set var="precio" value="${sessionScope.pedido.precioTotal}"></c:set>
             <p>${precio}</p>
 
             <p>¿Deseas finalizar la compra?</p>
             <form action="Controlador" method="post">
+                <input type="hidden" name="action" value="confirmarPago">
                 <input type="submit" name="confirmar" id="comprar" value="Comprar">
             </form>
         </article>

@@ -68,6 +68,7 @@ public class Tienda {
 
         VOColeccionProductos coleccion = daoProducto.getProductos();
 
+        
         for (VOProducto voP : coleccion.getProductos()) {
 
             if (voP instanceof VOCd) {

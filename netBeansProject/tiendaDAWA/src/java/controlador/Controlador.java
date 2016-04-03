@@ -13,6 +13,7 @@ import controlador.PaqueteHelperPrincipal.*;
 import controlador.PaqueteHelperProductos.HelperMostrarTienda;
 import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
+import controlador.PaqueteHelperUsuarios.HelperRegistrarUsuario;
 import java.io.InputStream;
 import javax.servlet.http.HttpSession;
 import modelo.pckPedidos.Pedido;
@@ -127,10 +128,10 @@ public class Controlador extends HttpServlet {
                             request.setAttribute("mensajeError", "Error al mostrar ventana de pago.");
                             goToPage("/error.jsp", request, response);
                         }
-                        goToPage("/pagando.jsp", request, response);
+                        goToPage("/ventanaPago.jsp", request, response);
                     } else {
                         request.setAttribute("mensajeError", "No tienes items en el carrito para comprar.");
-                        goToPage("/error.jsp", request, response);
+                        goToPage("/carrito.jsp", request, response);
                     }
                     break;
 
@@ -144,12 +145,12 @@ public class Controlador extends HttpServlet {
                     Usuario usuarioDatos = (Usuario) sesion.getAttribute("usuario");
 
                     if (usuarioDatos.getCarrito().getLineasCarrito().size() > 0) {
-                        helper = new HelperRealizarPago(request.getSession(), (Usuario) sesion.getAttribute("usuario"), request.getParameter("nombreDeUsuario"), request.getParameter("email"));
+                        helper = new HelperRealizarPago((Usuario) sesion.getAttribute("usuario"),request.getSession());
                         if (!helper.ejecutar()) {
                             request.setAttribute("mensajeError", "Error al insertar datos de pedido.");
                             goToPage("/error.jsp", request, response);
                         }
-                        goToPage("/confirmarPago.jsp", request, response);
+                        goToPage("/caja.jsp", request, response);
                     } else {
                         request.setAttribute("mensajeError", "No tienes items en el carrito para completar el pedido.");
                         goToPage("/error.jsp", request, response);
@@ -175,7 +176,7 @@ public class Controlador extends HttpServlet {
                         request.setAttribute("mensajeError", "Error al confirmar pago.");
                         goToPage("/error.jsp", request, response);
                     }
-                    goToPage("/exitoEnElPago.jsp", request, response);
+                    goToPage("/confirmacion.jsp", request, response);
                     break;
 
                 case ("irAIniciarSesion"):
@@ -213,6 +214,16 @@ public class Controlador extends HttpServlet {
                     
                     sesion.removeAttribute("usuario");
                     
+                    goToPage("/index.jsp", request, response);
+
+                    break;
+                    
+                case ("registrarUsuario"):
+                    helper = new HelperRegistrarUsuario(request.getParameter("nombre"), request.getParameter("alias"), request.getParameter("contrasena"),request.getParameter("email"),request.getParameter("direccion"));
+                    if (!helper.ejecutar()) {
+                        request.setAttribute("mensajeError", "Error al registrar usuario (Datos duplicados).");
+                        goToPage("/error.jsp", request, response);
+                    }
                     goToPage("/index.jsp", request, response);
 
                     break;

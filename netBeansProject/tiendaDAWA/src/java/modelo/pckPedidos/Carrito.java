@@ -17,17 +17,20 @@ public class Carrito {
 
         for (LineaCarrito lcaux : lineasCarrito) {
             if (lcaux.getProducto().getId() == lc.getProducto().getId()) {
-
                 if (lcaux.getProducto().getStock() < lcaux.getCantidad() + lc.getCantidad()) {
                     return false;
                 }
-
                 lcaux.setCantidad((lcaux.getCantidad() + lc.getCantidad()));
                 this.actualizarPrecioTotal();
                 return true;
 
             }
         }
+
+        if (lc.getProducto().getStock() < lc.getCantidad()) {
+            return false;
+        }
+
         this.lineasCarrito.add(lc);
         this.actualizarPrecioTotal();
         return true;

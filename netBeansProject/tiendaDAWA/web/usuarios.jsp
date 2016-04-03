@@ -49,7 +49,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <form method="post" action="index.html">
+                                        <form method="post" action="Controlador">
+                                            <input type="hidden" name="action" value="registrarUsuario">
                                             <div>*<input type="text" name="nombre" placeholder="Nombre y apellidos" pattern="[A-Za-z]{2,}" required></div>
                                             <div>*<input type="text" name="alias" placeholder="Alias" pattern="[A-Za-z]{2,}" required></div>
                                             <div>*<input type="email" name="email" placeholder="Correo electrónico" required></div>

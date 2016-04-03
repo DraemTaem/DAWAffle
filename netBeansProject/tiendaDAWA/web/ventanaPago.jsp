@@ -30,17 +30,13 @@
                         <th>Cantidad</th>
                         <th>Importe</th>
                     </tr>
-                    <form method="post" action="Controlador">
-                        <input type="hidden" name="action" value="eliminarLinea">
+                   
                         <c:forEach var="lc" items="${sessionScope.usuario.carrito.lineasCarrito}">
                             <tr>
                                 <td><p>${lc.producto.nombre}, ${lc.producto.autor}, ${lc.producto.pais}</p>
                                     <p>${lc.producto.precio}</p></td>
                                 <td>${lc.cantidad}</td>
                                 <td>${lc.precioLinea}</td>
-                                <td>
-                                    <input type="radio" id="seleccionar" name="idEliminar" value="${lc.producto.id}">
-                                </td>
                             </tr>
                         </c:forEach>
                         <tr>
@@ -48,22 +44,19 @@
                             <td class="nombre">IMPORTE TOTAL</td>
                             <c:set var="precio" value="${sessionScope.usuario.carrito.precioTotal}"></c:set>
                             <td>${precio}</td>
-                            <td>
-                                <input type="submit" id="actualizar" name="eliminar" value="Eliminar">
-                            </td>
+                            
                         </tr>
-                    </form>
+                   
 
                     <tr>
                     <form action="Controlador" method="post">
-                        <input type="hidden" name="action" value="irAPrincipal">
                         <td><input type="submit" id="comprar" name="seguirComprando" value="Seguir comprando"></td>
                     </form>
                     <form action="Controlador" method="post">
-                        <input type="hidden" name="action" value="mostrarVentanaDePago">
+                        <input type="hidden" name="action" value="insertarDatosPedido">
                         <td></td>
                         <td></td>
-                        <td><input type="submit" id="comprar" name="pagar" value="Continuar"></td>
+                        <td><input type="submit" id="comprar" name="pagar" value="Continuar con la compra"></td>
                     </form>
 
                     </tr>

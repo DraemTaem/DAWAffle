@@ -8,16 +8,14 @@ import modelo.pckUsuarios.Usuario;
 public class HelperRealizarPago implements controlador.Helper {
 
     private Usuario usuario;
-    private String nombre;
-    private String email;
     private HttpSession sesion;
 
-    public HelperRealizarPago(HttpSession sesion, Usuario usuario, String nombre, String email) {
+    public HelperRealizarPago(Usuario usuario, HttpSession sesion) {
         this.usuario = usuario;
-        this.nombre = nombre;
-        this.email = email;
         this.sesion = sesion;
     }
+
+    
 
     @Override
     public boolean ejecutar() {

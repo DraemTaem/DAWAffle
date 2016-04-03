@@ -38,6 +38,8 @@ public class HelperAnadirLineaCarrito implements controlador.Helper {
         
         Producto producto = tienda.getProductoById(idProducto);
 
+        System.out.println(producto.getStock());
+        
         boolean resultado=false;
         
         if (producto != null) {

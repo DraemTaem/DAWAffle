@@ -143,3 +143,8 @@ hr:after {
 	font-size: 14px;
 	color: aquamarine;
 }
+
+#mensajeError{
+    color: red;
+    
+}

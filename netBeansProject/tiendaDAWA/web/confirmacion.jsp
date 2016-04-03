@@ -21,8 +21,8 @@
         <section id="contenido">
         <article id="productos">
             <c:set var="usuario" value="${sessionScope.usuario}"></c:set>
-            <p>Hola ${usuario.getNombre()}, su compra se ha realizado correctamente,</p>
-            <p>le enviaremos a ${usuario.getEmail()} un correo con el detalle de la</p>
+            <p>Hola ${usuario.nombre}, su compra se ha realizado correctamente,</p>
+            <p>le enviaremos a ${usuario.correoElectronico} un correo con el detalle de la</p>
             <p>factura.</p>
             <p>Muchas gracias por elegirnos.</p>
             <form action="Controlador" method="post">
