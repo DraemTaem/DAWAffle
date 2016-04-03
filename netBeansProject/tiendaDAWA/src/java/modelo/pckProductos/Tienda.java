@@ -18,6 +18,8 @@ public class Tienda {
 
         this.productosDisponibles = new ArrayList<>();
 
+        System.out.println("NANANAN");
+        
         FactoriaDAO factoria = FactoriaDAO.newFactoria();
 
         DAOProducto daoProducto = factoria.crearDAOProducto();

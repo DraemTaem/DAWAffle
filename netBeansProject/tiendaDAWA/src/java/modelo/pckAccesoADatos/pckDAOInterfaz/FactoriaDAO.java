@@ -20,13 +20,16 @@ public abstract class FactoriaDAO {
 
     public static FactoriaDAO newFactoria() {
         try {
-            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.xml");
+            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("conf/config.xml");
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(input));
             XPath xpath = XPathFactory.newInstance().newXPath();
             String url = (String) xpath.compile("//config//jdbc//url").evaluate(document, XPathConstants.STRING);
             String[] cut = url.split(":");
+            
+            
             switch (cut[1]) {
                 case "mysql":
+                    System.out.println("Creando factoria mysql");
                     return new MySQLFactoriaDAO();
             }
 

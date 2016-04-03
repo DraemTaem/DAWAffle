@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <jdbc>
+        <url>jdbc:mysql://localhost:3306/dbtienda</url>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <username>daw</username>
+        <password>etse</password>
+    </jdbc>
+    <mail>
+        <login>pedidostiendadawa</login>
+        <host>smtp.gmail.com</host>
+        <password>reversal</password>
+    </mail>
+</config>

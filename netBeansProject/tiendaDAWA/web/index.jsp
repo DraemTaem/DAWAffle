@@ -30,7 +30,7 @@
 	    		<input type="text" class="caja" name="autor" placeholder="Autor" pattern="[A-Za-z]{2,}">
 
 	    		<!--<label for="ano">Año:</label>-->
-	    		<input type="number" class="caja" placeholder="Año" name="ano" min="1900" max="2016">
+                        <input type="number" class="caja" placeholder="Año" name="ano" min="1399" max="${sessionScope.anoActual}">
     		</div>
 
     		<div id="segundos">
@@ -56,12 +56,12 @@
 	  <table>
 
 	  		<!--Donde se pillarían los elementos de la BD-->
-		  <c:forEach var="p" items="${sessionScope.productos.lista}">
+		  <c:forEach var="p" items="${sessionScope.tienda.productosDisponibles}">
 			  <tr>
 			  	<div id="datosCD">
-			  		<td>${p.getImagen()}</td>
-				  	<td><a href="Controlador?id=${p.getCodigo()}"><p class=""nombre>${p.getTitulo()}, ${p.getAutor()}</p></a>
-				  	<p>Precio: ${p.getPrecio()}€, código: ${p.getCodigo()}</p></td>
+			  		<td>${p.imagen}</td>
+				  	<td><a href="Controlador?id=${p.id}"><p class=""nombre>${p.nombre}, ${p.autor}</p></a>
+				  	<p>Precio: ${p.precio}€, código: ${p.id}</p></td>
 			  	</div>
 			  	<form method="post" id="seleccionar">
 				  	<td><input type="number" id="cantidad" placeholder="Cantidad" name="cantidad" min="1" required></td>

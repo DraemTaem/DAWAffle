@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import controlador.PaqueteHelperCarrito.*;
 import controlador.PaqueteHelperPago.*;
 import controlador.PaqueteHelperPrincipal.*;
+import controlador.PaqueteHelperProductos.HelperMostrarTienda;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
+import java.io.InputStream;
 import javax.servlet.http.HttpSession;
 import modelo.pckPedidos.Pedido;
 import modelo.pckUsuarios.Usuario;
@@ -32,8 +34,19 @@ public class Controlador extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null) {
 
-            helper = new HelperMostrarPrincipal();
-            helper.ejecutar();
+            
+            helper = new HelperMostrarPrincipal(sesion);
+            if (!helper.ejecutar()) {
+                request.setAttribute("mensajeError", "Error al ir a la página principal.");
+                goToPage("/error.jsp", request, response);
+            }
+
+            helper = new HelperMostrarTienda(sesion);
+            if (!helper.ejecutar()) {
+                request.setAttribute("mensajeError", "Error al acceder a los datos de la tienda");
+                goToPage("/error.jsp", request, response);
+            }
+
             goToPage("/index.jsp", request, response);
 
         } else {
@@ -85,11 +98,18 @@ public class Controlador extends HttpServlet {
 
                 case ("irAPrincipal"):
 
-                    helper = new HelperMostrarPrincipal();
+                    helper = new HelperMostrarPrincipal(sesion);
                     if (!helper.ejecutar()) {
                         request.setAttribute("mensajeError", "Error al ir a la página principal.");
                         goToPage("/error.jsp", request, response);
                     }
+
+                    helper = new HelperMostrarTienda(sesion);
+                    if (!helper.ejecutar()) {
+                        request.setAttribute("mensajeError", "Error al acceder a los datos de la tienda");
+                        goToPage("/error.jsp", request, response);
+                    }
+
                     goToPage("/index.jsp", request, response);
                     break;
 
@@ -158,26 +178,31 @@ public class Controlador extends HttpServlet {
                     goToPage("/exitoEnElPago.jsp", request, response);
                     break;
 
-                case("irAIniciarSesion"):
-                    
+                case ("irAIniciarSesion"):
+
                     goToPage("/usuarios.jsp", request, response);
                     break;
-                    
-                case("iniciarSesion"):
-                    
-                    helper = new HelperIniciarSesion((String)request.getAttribute("alias"),(String) request.getAttribute("contrasena"), sesion);
+
+                case ("iniciarSesion"):
+
+                    helper = new HelperIniciarSesion((String) request.getAttribute("alias"), (String) request.getAttribute("contrasena"), sesion);
                     if (!helper.ejecutar()) {
                         request.setAttribute("mensajeError", "Error al iniciar sesion (Usuario/Contrasena incorrectos).");
                         goToPage("/error.jsp", request, response);
                     }
                     goToPage("/index.jsp", request, response);
-                    
+
                     break;
-                    
+
                 default:
-                    helper = new HelperMostrarPrincipal();
+                    helper = new HelperMostrarPrincipal(sesion);
                     if (!helper.ejecutar()) {
                         request.setAttribute("mensajeError", "Error al acceder a la página principal");
+                        goToPage("/error.jsp", request, response);
+                    }
+                    helper = new HelperMostrarTienda(sesion);
+                    if (!helper.ejecutar()) {
+                        request.setAttribute("mensajeError", "Error al acceder a los datos de la tienda");
                         goToPage("/error.jsp", request, response);
                     }
                     goToPage("/index.jsp", request, response);

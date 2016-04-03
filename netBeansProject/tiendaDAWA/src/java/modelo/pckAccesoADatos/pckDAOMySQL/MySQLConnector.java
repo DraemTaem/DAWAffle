@@ -22,14 +22,15 @@ public class MySQLConnector {
     public Connection getConnection() {
         String url = "";
         try {
-            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.xml");
+            
+            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("conf/config.xml");
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(input));
             XPath xpath = XPathFactory.newInstance().newXPath();
             url = (String) xpath.compile("//config//jdbc//url").evaluate(document, XPathConstants.STRING);
             String driver = (String) xpath.compile("//config//jdbc//driver").evaluate(document, XPathConstants.STRING);
             String username = (String) xpath.compile("//config//jdbc//username").evaluate(document, XPathConstants.STRING);
             String password = (String) xpath.compile("//config//jdbc//password").evaluate(document, XPathConstants.STRING);
-            Connection con = DriverManager.getConnection(url , username, password);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbtienda" , "daw", "etse");
             return con;
         } catch (SQLException e) {
             System.out.println("Conexion NO establecida con " + url);
