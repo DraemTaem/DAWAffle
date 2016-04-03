@@ -18,21 +18,7 @@
     </head>
     <body>
     	<center>
-    	<header>
-    		<h1> Música </h1>
-    		<nav>
-    			<ul id="menu">
-    				<li><a href="Controlador?pagina=inicio">Inicio</a></li>
-    				<li><a href="Controlador?pagina=productos">Añadir productos</a></li>
-	    			<li><a href="Controlador?pagina=usuarios">Gestionar usuarios</a></li>
-	    			<li><a href="Controlador?pagina=cerrar">Cerrar sesión</a></li>
-    			</ul>
-    		</nav>
-    	</header>
-
-    	<figure id="guitarra">
-    		<img src="resources/imagenes/guitarra.jpg" width="1080" height="200">
-    	</figure>
+    	<%@include file="cabecera.jsp" %>
 
     	<section id="contenido">
 	    	<article id="productos">
