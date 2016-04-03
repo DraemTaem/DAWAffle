@@ -22,14 +22,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
+      <file leaf-file-name="VOUsuario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Modelo/VOUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="71" selection-start-line="26" selection-start-column="71" selection-end-line="26" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,29 +52,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DAOUsuario.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AccesoDatos/DAOUsuario.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MySQLDAOUsuario.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MySQLDAOUsuario.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="234" column="44" selection-start-line="234" selection-start-column="44" selection-end-line="234" selection-end-column="44" />
+            <state vertical-scroll-proportion="1.015177">
+              <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getUsuarioByID#0;class#MySQLDAOUsuario#0" expanded="false" />
                 <element signature="method#getUsuarioByNombre#0;class#MySQLDAOUsuario#0" expanded="false" />
                 <element signature="method#getUsuarioByEmail#0;class#MySQLDAOUsuario#0" expanded="false" />
                 <element signature="method#getUsuarioByAlias#0;class#MySQLDAOUsuario#0" expanded="false" />
+                <element signature="method#getUsuarios#0;class#MySQLDAOUsuario#0" expanded="false" />
                 <element signature="method#validarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
                 <element signature="method#registrarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+                <element signature="method#registrarUsuario#1;class#MySQLDAOUsuario#0" expanded="false" />
+                <element signature="method#checkCategoria#0;class#MySQLDAOUsuario#0" expanded="false" />
+                <element signature="method#updateUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
                 <element signature="method#bloquearUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
                 <element signature="method#eliminarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
               </folding>
@@ -88,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/AccesoDatos/DAOProducto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+              <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,25 +88,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MySQLDAOProducto.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOProducto.java">
+      <file leaf-file-name="DAOUsuario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AccesoDatos/DAOUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81112987">
-              <caret line="650" column="61" selection-start-line="650" selection-start-column="61" selection-end-line="650" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#getDetallesProducto#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#getProductos#1;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#getProductosByPrecioMaximo#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#getProductosByNombre#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#getProductosByAutor#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#getProductosByAno#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#registrarProducto#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#registrarProducto#1;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#registrarCD#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#getStockByID#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#anadirUnidades#0;class#MySQLDAOProducto#0" expanded="false" />
-                <element signature="method#anadirValoracion#0;class#MySQLDAOProducto#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VOColeccionUsuarios.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Modelo/VOColeccionUsuarios.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+              <folding>
+                <element signature="e#187#188#0" expanded="true" />
+                <element signature="e#227#228#0" expanded="true" />
+                <element signature="e#307#308#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,38 +119,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
-              <folding>
-                <element signature="e#664#665#0" expanded="true" />
-                <element signature="e#697#698#0" expanded="true" />
-                <element signature="e#746#747#0" expanded="true" />
-                <element signature="e#790#791#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
-                <element signature="e#857#858#0" expanded="true" />
-                <element signature="e#906#907#0" expanded="true" />
-                <element signature="e#944#945#0" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
-                <element signature="e#1014#1015#0" expanded="true" />
-                <element signature="e#1066#1067#0" expanded="true" />
-                <element signature="e#1110#1111#0" expanded="true" />
-                <element signature="e#1138#1139#0" expanded="true" />
-                <element signature="e#1165#1166#0" expanded="true" />
-                <element signature="e#1202#1203#0" expanded="true" />
-                <element signature="e#1234#1235#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VOColeccionValoraciones.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Modelo/VOColeccionValoraciones.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-              <folding>
-                <element signature="e#210#211#0" expanded="true" />
-                <element signature="e#258#259#0" expanded="true" />
-                <element signature="e#349#350#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -203,8 +166,6 @@
         <option value="$PROJECT_DIR$/src/Modelo/VOPedido.java" />
         <option value="$PROJECT_DIR$/src/Modelo/VOUsuario.java" />
         <option value="$PROJECT_DIR$/src/Main/Main.java" />
-        <option value="$PROJECT_DIR$/src/AccesoDatos/DAOUsuario.java" />
-        <option value="$PROJECT_DIR$/src/MySQL/MySQLDAOUsuario.java" />
         <option value="$PROJECT_DIR$/src/AccesoDatos/FactoriaDAO.java" />
         <option value="$PROJECT_DIR$/src/MySQL/MySQLFactoriaDAO.java" />
         <option value="$PROJECT_DIR$/src/Modelo/VOColeccionProductos.java" />
@@ -214,6 +175,9 @@
         <option value="$PROJECT_DIR$/src/Modelo/VOProducto.java" />
         <option value="$PROJECT_DIR$/src/AccesoDatos/DAOProducto.java" />
         <option value="$PROJECT_DIR$/src/MySQL/MySQLDAOProducto.java" />
+        <option value="$PROJECT_DIR$/src/Modelo/VOColeccionUsuarios.java" />
+        <option value="$PROJECT_DIR$/src/AccesoDatos/DAOUsuario.java" />
+        <option value="$PROJECT_DIR$/src/MySQL/MySQLDAOUsuario.java" />
       </list>
     </option>
   </component>
@@ -227,7 +191,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
+    <option name="width" value="1382" />
     <option name="height" value="754" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -274,8 +238,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -372,7 +337,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -700,7 +664,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="754" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -711,8 +675,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21623673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -724,6 +687,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -753,10 +717,125 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOCd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="140" selection-start-line="20" selection-start-column="140" selection-end-line="20" selection-end-column="140" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOProducto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="52" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="234" column="44" selection-start-line="234" selection-start-column="44" selection-end-line="234" selection-end-column="44" />
           <folding>
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#357#358#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#getUsuarioByID#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarioByNombre#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarioByEmail#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarioByAlias#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarios#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#validarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#1;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#checkCategoria#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#updateUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#bloquearUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#eliminarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AccesoDatos/DAOProducto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="53" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOLineaPedido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOProducto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="650" column="61" selection-start-line="650" selection-start-column="61" selection-end-line="650" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getDetallesProducto#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductos#1;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByPrecioMaximo#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByNombre#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByAutor#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByAno#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#registrarProducto#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#registrarProducto#1;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#registrarCD#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getStockByID#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#anadirUnidades#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#anadirValoracion#0;class#MySQLDAOProducto#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOValoracion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOColeccionValoraciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+          <folding>
+            <element signature="e#210#211#0" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOColeccionProductos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
+          <folding>
+            <element signature="e#228#229#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#311#312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -774,7 +853,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -792,11 +873,18 @@
           <caret line="371" column="31" selection-start-line="371" selection-start-column="31" selection-end-line="371" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#getUsuarioByID#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByNombre#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByEmail#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByAlias#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarios#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#validarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#1;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#checkCategoria#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#updateUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#bloquearUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#eliminarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,7 +941,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -873,11 +963,18 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#getUsuarioByID#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByNombre#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByEmail#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByAlias#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarios#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#validarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#1;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#checkCategoria#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#updateUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#bloquearUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#eliminarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -896,7 +993,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -913,11 +1012,18 @@
           <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#getUsuarioByID#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByNombre#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByEmail#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#getUsuarioByAlias#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarios#0;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#validarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#1;class#MySQLDAOUsuario#0" expanded="false" />
             <element signature="method#checkCategoria#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#updateUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#bloquearUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#eliminarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -926,10 +1032,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="102" column="5" selection-start-line="5" selection-start-column="3" selection-end-line="102" selection-end-column="5" />
-          <folding>
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#357#358#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -962,25 +1065,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modelo/VOLineaPedido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modelo/VOUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-          <folding>
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#357#358#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1018,22 +1102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modelo/VOCd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="140" selection-start-line="20" selection-start-column="140" selection-end-line="20" selection-end-column="140" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AccesoDatos/DAOUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AccesoDatos/FactoriaDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28791773">
@@ -1042,21 +1110,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOUsuario.java">
+    <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOProducto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="234" column="44" selection-start-line="234" selection-start-column="44" selection-end-line="234" selection-end-column="44" />
+          <caret line="650" column="61" selection-start-line="650" selection-start-column="61" selection-end-line="650" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getUsuarioByID#0;class#MySQLDAOUsuario#0" expanded="false" />
-            <element signature="method#getUsuarioByNombre#0;class#MySQLDAOUsuario#0" expanded="false" />
-            <element signature="method#getUsuarioByEmail#0;class#MySQLDAOUsuario#0" expanded="false" />
-            <element signature="method#getUsuarioByAlias#0;class#MySQLDAOUsuario#0" expanded="false" />
-            <element signature="method#validarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
-            <element signature="method#registrarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
-            <element signature="method#bloquearUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
-            <element signature="method#eliminarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getDetallesProducto#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductos#1;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByPrecioMaximo#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByNombre#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByAutor#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getProductosByAno#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#registrarProducto#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#registrarProducto#1;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#registrarCD#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#getStockByID#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#anadirUnidades#0;class#MySQLDAOProducto#0" expanded="false" />
+            <element signature="method#anadirValoracion#0;class#MySQLDAOProducto#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOCd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="140" selection-start-line="20" selection-start-column="140" selection-end-line="20" selection-end-column="140" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1084,28 +1164,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modelo/VOValoracion.java">
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOLineaPedido.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
-          <folding>
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
-            <element signature="e#790#791#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
-            <element signature="e#857#858#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#944#945#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1014#1015#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#1110#1111#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
-          </folding>
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,34 +1180,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOValoracion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modelo/VOColeccionUsuarios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+          <folding>
+            <element signature="e#187#188#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#307#308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AccesoDatos/DAOProducto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOProducto.java">
+    <entry file="file://$PROJECT_DIR$/src/AccesoDatos/DAOUsuario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81112987">
-          <caret line="650" column="61" selection-start-line="650" selection-start-column="61" selection-end-line="650" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getDetallesProducto#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#getProductos#1;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#getProductosByPrecioMaximo#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#getProductosByNombre#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#getProductosByAutor#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#getProductosByAno#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#registrarProducto#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#registrarProducto#1;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#registrarCD#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#getStockByID#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#anadirUnidades#0;class#MySQLDAOProducto#0" expanded="false" />
-            <element signature="method#anadirValoracion#0;class#MySQLDAOProducto#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLDAOUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.015177">
+          <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getUsuarioByID#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarioByNombre#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarioByEmail#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarioByAlias#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#getUsuarios#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#validarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#registrarUsuario#1;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#checkCategoria#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#updateUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#bloquearUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
+            <element signature="method#eliminarUsuario#0;class#MySQLDAOUsuario#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -1,8 +1,8 @@
-package MySQL;
+package modelo.pckAccesoADatos.pckDAOMySQL;
 
-import AccesoDatos.DAOUsuario;
-import Modelo.VOColeccionUsuarios;
-import Modelo.VOUsuario;
+import modelo.pckAccesoADatos.pckDAOInterfaz.DAOUsuario;
+import modelo.pckAccesoADatos.pckVO.VOColeccionUsuarios;
+import modelo.pckAccesoADatos.pckVO.VOUsuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +24,6 @@ public class MySQLDAOUsuario implements DAOUsuario {
             String sqlSelect =
                     "SELECT * FROM usuarios "
                             + " WHERE id = ?;";
-
 
             pstmt = con.prepareStatement(sqlSelect);
             //pstmt.setString(1, "id");
@@ -367,6 +366,7 @@ public class MySQLDAOUsuario implements DAOUsuario {
             }
 
             con.commit();
+            return 1;
 
         } catch (SQLException e) {
             try {
