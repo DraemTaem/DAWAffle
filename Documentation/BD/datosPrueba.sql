@@ -4,9 +4,6 @@ INSERT INTO usuarios (nombre, email, direccion, administrador, alias, contrasena
 		('Ruben Osorio', 'rubenosorio@hotmail.com', 'Calle falsa 132', 0, 'rosorio', 'qwerty', 1);
 
 
-UPDATE usuarios 
-	SET nombre = 'Pablo Tomico', email = 'tomicopablo@hotmail.com', direccion = 'Calle aun mas falsa 123', alias = 'ptomico', contrasena = 'qwertee'
-	WHERE id = 1;
 
 
 INSERT INTO pedidos (idUsuario, categoriaUsuario, precio, fecha)
@@ -16,11 +13,16 @@ INSERT INTO pedidos (idUsuario, categoriaUsuario, precio, fecha)
 INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)
 	VALUES ('prod1', 'este es el producto 1', 10, 'url1', 'cd');
 
-INSERT INTO cd (idProducto, autor, pais)
-	VALUES (1, 'autor 1', 'pais 1');
+INSERT INTO cd (idProducto, autor, pais, cd)
+	VALUES (1, 'autor 1', 'pais 1', 1900);
 
 INSERT INTO lineaspedido (idPedido, idProducto, cantidad)
 	VALUES (1, 1, 10);
 
-INSET INTO inventario (idProducto, stock)
+INSERT INTO inventario (idProducto, stock)
 	VALUES (1, 10);
+
+
+UPDATE usuarios 
+	SET nombre = 'Pablo Tomico', email = 'tomicopablo@hotmail.com', direccion = 'Calle aun mas falsa 123', alias = 'ptomico', contrasena = 'qwertee'
+	WHERE id = 1;
