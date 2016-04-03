@@ -1,6 +1,8 @@
-package modelo.pckProductos;
+package modelo.pckPedidos;
 
 import java.util.ArrayList;
+import modelo.pckProductos.Tienda;
+import modelo.pckProductos.Producto;
 
 public class Carrito {
 

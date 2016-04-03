@@ -1,8 +1,5 @@
-package modelo;
+package modelo.pckProductos;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 public class Tienda {
@@ -12,13 +9,10 @@ public class Tienda {
     
     public Tienda(){
     
-        //TODO
+       //TODO con el DAO
         
         this.productosDisponibles= new ArrayList<>();
         
-        Producto producto = new Producto(1, "Cacota", 10.3f);
-        
-        this.productosDisponibles.add(producto);
         
     }
     

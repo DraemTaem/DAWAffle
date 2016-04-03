@@ -3,7 +3,7 @@ package modelo.pckUsuarios;
 import java.util.ArrayList;
 import modelo.pckAccesoADatos.pckDAOInterfaz.DAOUsuario;
 import modelo.pckAccesoADatos.pckDAOInterfaz.FactoriaDAO;
-import modelo.pckProductos.Carrito;
+import modelo.pckPedidos.Carrito;
 import modelo.pckAccesoADatos.pckVO.VOUsuario;
 
 public class Usuario {

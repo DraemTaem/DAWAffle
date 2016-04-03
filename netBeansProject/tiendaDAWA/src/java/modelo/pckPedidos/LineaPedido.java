@@ -1,4 +1,6 @@
-package modelo.pckProductos;
+package modelo.pckPedidos;
+
+import modelo.pckProductos.Producto;
 
 public class LineaPedido {
 

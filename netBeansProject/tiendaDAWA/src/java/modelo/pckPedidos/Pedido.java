@@ -1,10 +1,8 @@
-package modelo.pckProductos;
+package modelo.pckPedidos;
 
 import java.util.ArrayList;
 import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
+import modelo.pckProductos.Tienda;
 import modelo.pckUsuarios.Usuario;
 
 public class Pedido {
@@ -100,7 +98,7 @@ public class Pedido {
         contenido += "</ul>";
         contenido += "<h3>Precio Total: [" + this.precioTotal + "]</h3>";
 
-        Modelo.GestorCorreos gc = new Modelo.GestorCorreos();
+        GestorCorreos gc = new GestorCorreos();
 
         gc.enviarCorreoGmail(to, subject, contenido);
 

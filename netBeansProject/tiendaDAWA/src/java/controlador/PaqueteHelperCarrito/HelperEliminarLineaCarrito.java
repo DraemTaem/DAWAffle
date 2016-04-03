@@ -1,6 +1,6 @@
 package controlador.PaqueteHelperCarrito;
 
-import modelo.Carrito;
+import modelo.pckPedidos.Carrito;
 import modelo.pckUsuarios.Usuario;
 
 public class HelperEliminarLineaCarrito implements controlador.Helper {

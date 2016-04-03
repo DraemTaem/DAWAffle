@@ -1,10 +1,10 @@
 package controlador.PaqueteHelperCarrito;
 
 import javax.servlet.http.HttpSession;
-import modelo.Carrito;
-import modelo.LineaCarrito;
-import modelo.Producto;
-import modelo.Tienda;
+import modelo.pckPedidos.Carrito;
+import modelo.pckPedidos.LineaCarrito;
+import modelo.pckProductos.Producto;
+import modelo.pckProductos.Tienda;
 import modelo.pckUsuarios.Usuario;
 
 

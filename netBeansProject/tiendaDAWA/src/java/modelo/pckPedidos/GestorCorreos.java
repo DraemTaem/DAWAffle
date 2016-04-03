@@ -1,4 +1,4 @@
-package Modelo;
+package modelo.pckPedidos;
 
 import java.util.Properties;
 import javax.mail.Message;
