@@ -23,7 +23,7 @@
     	
             <div id="productos">
                 
-                <p>Se ha producido un error</p>
+                <p>${requestScope.mensajeError}</p>
             </div>
 	 </section>
     </center>

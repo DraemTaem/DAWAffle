@@ -163,6 +163,17 @@ public class Controlador extends HttpServlet {
                     goToPage("/usuarios.jsp", request, response);
                     break;
                     
+                case("iniciarSesion"):
+                    
+                    helper = new HelperIniciarSesion((String)request.getAttribute("alias"),(String) request.getAttribute("contrasena"), sesion);
+                    if (!helper.ejecutar()) {
+                        request.setAttribute("mensajeError", "Error al iniciar sesion (Usuario/Contrasena incorrectos).");
+                        goToPage("/error.jsp", request, response);
+                    }
+                    goToPage("/index.jsp", request, response);
+                    
+                    break;
+                    
                 default:
                     helper = new HelperMostrarPrincipal();
                     if (!helper.ejecutar()) {
