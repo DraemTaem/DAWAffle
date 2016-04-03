@@ -15,6 +15,8 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MySQLConnector {
 
@@ -26,6 +28,8 @@ public class MySQLConnector {
     public Connection getConnection() {
         String url = "";
         try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            
             
             InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("conf/config.xml");
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(input));
@@ -47,6 +51,12 @@ public class MySQLConnector {
             e.printStackTrace();
         } catch (SAXException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MySQLConnector.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(MySQLConnector.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(MySQLConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
