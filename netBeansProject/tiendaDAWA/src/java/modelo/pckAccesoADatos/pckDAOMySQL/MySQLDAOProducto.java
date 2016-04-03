@@ -3,10 +3,7 @@ package modelo.pckAccesoADatos.pckDAOMySQL;
 import modelo.pckAccesoADatos.pckDAOInterfaz.DAOProducto;
 import modelo.pckAccesoADatos.pckVO.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,7 +24,8 @@ public class MySQLDAOProducto implements DAOProducto {
 
             String sqlCD
                     = "SELECT * FROM cd "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;"; //TODO incluir
+
             pstmt2 = con.prepareStatement(sqlCD);
 
             ResultSet res = pstmt.executeQuery();
@@ -72,7 +70,7 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt, pstmt2, pstmt3, pstmt4, pstmt5;
 
             String sqlSelect
-                    = "SELECT * FROM productos"
+                    = "SELECT * FROM productos "
                     + "WHERE id = ?;";
 
             pstmt = con.prepareStatement(sqlSelect);
@@ -81,12 +79,12 @@ public class MySQLDAOProducto implements DAOProducto {
 
             String sqlCD
                     = "SELECT * FROM cd "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;";
             pstmt2 = con.prepareStatement(sqlCD);
 
             String sqlStock
                     = "SELECT stock FROM inventario "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;";
 
             pstmt3 = con.prepareStatement(sqlStock);
 
@@ -113,6 +111,7 @@ public class MySQLDAOProducto implements DAOProducto {
                 switch (tipo) {
                     case "cd":
                         pstmt2.setInt(1, res.getInt("id"));
+                        pstmt3.setInt(1, res.getInt("id"));
                         pstmt4.setInt(1, res.getInt("id"));
                         ResultSet res2 = pstmt2.executeQuery();
                         ResultSet res3 = pstmt3.executeQuery();
@@ -368,7 +367,7 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt;
 
             String sqlInsert
-                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo) "
                     + "VALUES ( ?, ?, ?, ?, ?);";
 
             pstmt = con.prepareStatement(sqlInsert);
@@ -418,7 +417,7 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt, pstmt2;
 
             String sqlInsert
-                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo) "
                     + "VALUES ( ?, ?, ?, ?, ?);";
 
             pstmt = con.prepareStatement(sqlInsert);
@@ -483,10 +482,10 @@ public class MySQLDAOProducto implements DAOProducto {
             PreparedStatement pstmt, pstmt2, pstmt3, pstmt4;
 
             String sqlInsert
-                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo) "
                     + "VALUES ( ?, ?, ?, ?, ?);";
 
-            pstmt = con.prepareStatement(sqlInsert);
+            pstmt = con.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, producto.getNombre());
             pstmt.setString(2, producto.getDescripcion());
             pstmt.setFloat(3, producto.getPrecio());
@@ -501,21 +500,21 @@ public class MySQLDAOProducto implements DAOProducto {
             pstmt.executeUpdate();
             //select max(id) from productos;
             String sqlInsert2
-                    = "INSERT INTO cd (idProducto, autor, pais)"
+                    = "INSERT INTO cd (idProducto, autor, pais) "
                     + "VALUES ( ?, ?, ?);";
 
             pstmt3 = con.prepareStatement(sqlInsert2);
 
             String sqlInsert3
-                    = "INSERT INTO inventario (idProducto, cantidad) "
+                    = "INSERT INTO inventario (idProducto, stock) "
                     + "VALUES (?, 0);";
 
             pstmt4 = con.prepareStatement(sqlInsert3);
 
             ResultSet generatedKeys = pstmt.getGeneratedKeys();
             if (generatedKeys.next()) {
-                pstmt3.setInt(1, generatedKeys.getInt("id"));
-                pstmt4.setInt(1, generatedKeys.getInt("id"));
+                pstmt3.setInt(1, generatedKeys.getInt(1));
+                pstmt4.setInt(1, generatedKeys.getInt(1));
             } else {
                 con.rollback();
                 return false;
