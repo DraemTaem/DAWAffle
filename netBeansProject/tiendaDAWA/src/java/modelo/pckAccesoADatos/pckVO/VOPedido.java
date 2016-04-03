@@ -1,5 +1,6 @@
 package modelo.pckAccesoADatos.pckVO;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -9,17 +10,18 @@ public class VOPedido {
     private int categoriaUsuario;
     private float precio;
     private Date fecha; 
+    private ArrayList<VOLineaPedido> lineas;
 
     public VOPedido(int id) {
         this.id = id;
     }
     
-    public VOPedido(int id, int idUsuario, int categoriaUsuario, float precio, Date fecha) {
+    
+    public VOPedido(int id, int idUsuario, int categoriaUsuario, float precio) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.categoriaUsuario = categoriaUsuario;
         this.precio = precio;
-        this.fecha = fecha;
     }
     
     public int getId() {
@@ -62,6 +64,12 @@ public class VOPedido {
         this.fecha = fecha;
     }
 
-    
+    public ArrayList<VOLineaPedido> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(ArrayList<VOLineaPedido> lineas) {
+        this.lineas = lineas;
+    }
 
 }
