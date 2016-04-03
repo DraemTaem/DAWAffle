@@ -19,6 +19,7 @@ public class HelperConfirmarPago implements controlador.Helper {
         Pedido pedido = (Pedido) sesion.getAttribute("pedido");
 
         if (pedido.registrarPedido() == false) {
+            sesion.removeAttribute("pedido");
             return false;
         }
 
