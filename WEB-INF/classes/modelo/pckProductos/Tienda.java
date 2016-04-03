@@ -40,7 +40,7 @@ public class Tienda {
         return this.productosDisponibles.get(index);
     }
 
-    public final boolean leerProductos(ArrayList<Producto> lista, String path) {
+    public final boolean leerProductos() {
 
         //TODO
         return true;

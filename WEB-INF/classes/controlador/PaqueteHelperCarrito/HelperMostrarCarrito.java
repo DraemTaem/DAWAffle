@@ -1,7 +1,6 @@
 package controlador.PaqueteHelperCarrito;
 
 import modelo.Carrito;
-import modelo.TiendaAuxiliarArchivo;
 import modelo.pckUsuarios.Usuario;
 
 
@@ -13,10 +12,11 @@ public class HelperMostrarCarrito implements controlador.Helper {
         this.usuario = usuario;
     }
 
-    public void ejecutar() {
-
+    public boolean ejecutar() {
+        //Poderíamos actualizar carrito desde a base de datos antes de mostralo se quixeramos
+        
         Carrito carrito = usuario.getCarrito();
-        carrito.actualizar(new TiendaAuxiliarArchivo());
+        return carrito.actualizarPrecioTotal();
         
     }
 
