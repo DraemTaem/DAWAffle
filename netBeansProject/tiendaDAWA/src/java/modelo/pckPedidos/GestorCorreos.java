@@ -65,7 +65,7 @@ public class GestorCorreos {
         try {
             
             
-            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.xml");
+            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("conf/config.xml");
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(input));
             XPath xpath = XPathFactory.newInstance().newXPath();
             String login_aux = (String) xpath.compile("//config//mail//login").evaluate(document, XPathConstants.STRING);
