@@ -49,8 +49,6 @@ public class GestorCorreos {
     
     public void enviarCorreoGmail(String to, String subject ,String content){
     
-        //TODO leer desde archivo host from past
-        
         this.setFrom("pedidostiendadawa");
         
         this.setHost("smtp.gmail.com");

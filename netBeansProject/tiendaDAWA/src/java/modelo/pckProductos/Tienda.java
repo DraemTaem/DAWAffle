@@ -116,5 +116,17 @@ public class Tienda {
         return voc;
 
     }
+    
+    public VOColeccionProductos getProductosActualizados() {
+
+        FactoriaDAO factoria = FactoriaDAO.newFactoria();
+
+        DAOProducto daoProducto = factoria.crearDAOProducto();
+
+        VOColeccionProductos voc = daoProducto.getProductos();
+
+        return voc;
+
+    }
 
 }
