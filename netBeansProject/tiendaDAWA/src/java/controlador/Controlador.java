@@ -50,8 +50,8 @@ public class Controlador extends HttpServlet {
             switch (action) {
                 case ("anadirItem"):
 
-                    helper = new HelperAnadirLineaCarrito((Usuario) sesion.getAttribute("usuario"), Integer.parseInt(request.getParameter("producto")), Integer.parseInt(request.getParameter("cantidad")));
-                    helper.ejecutar();
+                    //helper = new HelperAnadirLineaCarrito((Usuario) sesion.getAttribute("usuario"), Integer.parseInt(request.getParameter("producto")), Integer.parseInt(request.getParameter("cantidad")));
+                    //helper.ejecutar();
                     goToPage("/carrito.jsp", request, response);
                     break;
 
@@ -79,8 +79,8 @@ public class Controlador extends HttpServlet {
                 case ("mostrarVentanaDePago"):
                     Usuario usuario = (Usuario) sesion.getAttribute("usuario");
                     if (usuario.getCarrito().getLineasCarrito().size() > 0) {
-                        helper = new HelperMostrarVentanaDePago((Usuario) sesion.getAttribute("usuario"));
-                        helper.ejecutar();
+                        //helper = new HelperMostrarVentanaDePago((Usuario) sesion.getAttribute("usuario"));
+                        //helper.ejecutar();
                         goToPage("/pagando.jsp", request, response);
                     } else {
                         helper = new HelperMostrarPrincipal();

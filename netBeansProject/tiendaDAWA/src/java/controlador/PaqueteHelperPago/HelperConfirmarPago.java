@@ -20,8 +20,12 @@ public class HelperConfirmarPago implements controlador.Helper {
 
         if (pedido.registrarPedido() == false) {
             return false;
-        } //TODO registrar pedido
-        
+        }
+
+        if (pedido.getUsuario().checkCategoria() == false) {
+            return false;
+        }
+
         pedido.enviarCorreoUsuario();
 
         sesion.setAttribute("mensaje", "Se envia el correo a: " + pedido.getUsuario().getCorreoElectronico());
