@@ -1,3 +1,10 @@
+<%-- 
+    Document   : carrito
+    Created on : 03-abr-2016, 18:15:40
+    Author     : Rapnika
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +13,7 @@
         <meta content="DreamTeam" name="author">
         <meta content="página de venta de cds" name="description">
         <meta content="musica, cds, venta, tienda" name="keywords">
-        <link rel="stylesheet" type="text/css" href="estilo.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
     </head>
     <body>
         <center>
@@ -22,7 +29,7 @@
         </header>
 
         <figure id="guitarra">
-            <img src="guitarra.jpg" width="1080" height="200">
+            <img src="resources/imagenes/guitarra.jpg" width="1080" height="200">
         </figure>
 
         <section id="contenido">
