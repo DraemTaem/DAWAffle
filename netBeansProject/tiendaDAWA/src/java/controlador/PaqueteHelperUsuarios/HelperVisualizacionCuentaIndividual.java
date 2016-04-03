@@ -1,7 +1,7 @@
 package controlador.PaqueteHelperUsuarios;
 
 import javax.servlet.http.HttpServletRequest;   //TODO CAMBIAR RUTA!
-import modelo.VOUsuario;
+import modelo.pckAccesoADatos.pckVO.VOUsuario;
 import modelo.pckUsuarios.GestorUsuarios;
 
 public class HelperVisualizacionCuentaIndividual implements controlador.Helper {

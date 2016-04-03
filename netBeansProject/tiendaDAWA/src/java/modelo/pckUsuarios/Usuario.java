@@ -1,9 +1,10 @@
 package modelo.pckUsuarios;
 
-
 import java.util.ArrayList;
+import modelo.pckAccesoADatos.pckDAOInterfaz.DAOUsuario;
+import modelo.pckAccesoADatos.pckDAOInterfaz.FactoriaDAO;
 import modelo.pckProductos.Carrito;
-import Modelo.VOUsuario;
+import modelo.pckAccesoADatos.pckVO.VOUsuario;
 
 public class Usuario {
 
@@ -16,6 +17,18 @@ public class Usuario {
     private String alias;
     private String direccion;
 
+    public Usuario(String nombre, String contrasena, String correoElectronico, Integer categoria, boolean isAdmin, String alias, String direccion) {
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+        this.correoElectronico = correoElectronico;
+        this.carrito = new Carrito();
+        this.categoria = categoria;
+        this.isAdmin = isAdmin;
+        this.alias = alias;
+        this.direccion = direccion;
+    }
+
+    
     public Usuario(String nombre, String contrasena, String correoElectronico, Integer categoria, boolean isAdmin) {
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -35,7 +48,7 @@ public class Usuario {
         this.alias = alias;
         this.direccion = direccion;
     }
-    
+
     public Usuario() {//Crea el usuario con un carrito vacio, categoria normal (=0) y de tipo normal (no admin)
         this.carrito = new Carrito();
         categoria = 0;
@@ -125,12 +138,17 @@ public class Usuario {
 
     }
 
-    public VOUsuario RegistrarUsuario() {
+    public boolean RegistrarUsuario() {
         VOUsuario user = null;
 
-        //TODO
-        // Llamada a DAO para insertar dicho usuario en la BD y, en caso de no devolver NULL por error, devolver dicho VO
-        return user;
+        user = new VOUsuario(nombre, correoElectronico, direccion, alias, contrasena);
+
+        FactoriaDAO factoria = FactoriaDAO.newFactoria();
+
+        DAOUsuario daoUsuario = factoria.crearDAOUsuario();
+        
+        return daoUsuario.registrarUsuario(user);
+        
     }
 
 }

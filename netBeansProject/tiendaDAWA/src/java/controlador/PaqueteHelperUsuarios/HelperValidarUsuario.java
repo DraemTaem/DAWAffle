@@ -14,9 +14,7 @@ public class HelperValidarUsuario implements controlador.Helper {
 
     @Override
     public boolean ejecutar() {
-
         return GestorUsuarios.validarUserPass(alias, contrasena) == null;
-
     }
 
 }

@@ -1,28 +1,31 @@
 package controlador.PaqueteHelperUsuarios;
 
-import modelo.VOUsuario;    //TODO CAMBIAR RUTA!
+import javax.servlet.http.HttpServletRequest;
+import modelo.pckAccesoADatos.pckVO.VOUsuario;
 import modelo.pckUsuarios.GestorUsuarios;
 
 public class HelperModificarContrasena implements controlador.Helper {
 
     private Integer id;
     private String nuevaContrasena;
+    private HttpServletRequest request;
 
-    public HelperModificarContrasena(Integer id, String nuevaContrasena) {
+    public HelperModificarContrasena(HttpServletRequest request, Integer id, String nuevaContrasena) {
         this.id = id;
         this.nuevaContrasena = nuevaContrasena;
+        this.request = request;
     }
 
     @Override
     public boolean ejecutar() {
-        //TODO 
+       
         VOUsuario user = GestorUsuarios.modificarContrasena(id, nuevaContrasena);
         if (user == null) {
-
             return false;
         }    // Devuelve NULL si la contraseña no se ha podido cambiar, si no devuelve un VO
 
-        // Si es necesario, podemos meter el VO en request o sesión
+        this.request.setAttribute("usuarioModificado", user);
+        
         return true;
     }
 

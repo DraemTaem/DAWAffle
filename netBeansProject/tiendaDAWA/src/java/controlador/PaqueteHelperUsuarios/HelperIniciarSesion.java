@@ -1,7 +1,7 @@
 package controlador.PaqueteHelperUsuarios;
 
 import javax.servlet.http.HttpSession;
-import modelo.VOUsuario;    //TODO CAMBIAR RUTA!
+import modelo.pckAccesoADatos.pckVO.VOUsuario;    //TODO CAMBIAR RUTA!
 import modelo.pckUsuarios.GestorUsuarios;
 import modelo.pckUsuarios.Usuario;
 
@@ -22,7 +22,7 @@ public class HelperIniciarSesion implements controlador.Helper {
         VOUsuario user = GestorUsuarios.validarUserPass(alias, contrasena);
 
         if (user != null) {
-            Usuario u = new Usuario();  //TODO rellenar con los datos del VO
+            Usuario u = new Usuario(user.getNombre(), user.getContrasena(), user.getEmail(), user.getCategoria(), user.isAdministrador(),user.getAlias() , user.getDireccion());
             sesion.setAttribute("usuario", u);   // Lo incrusta en sesión si se insertó con éxito
             return true;
         } else {

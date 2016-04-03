@@ -1,8 +1,7 @@
 package controlador.PaqueteHelperUsuarios;
 
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
-import modelo.VOUsuario;    //TODO CAMBIAR RUTA!
+import modelo.pckAccesoADatos.pckVO.VOColeccionUsuarios;
 import modelo.pckUsuarios.GestorUsuarios;
 
 public class HelperVisualizacionDeListaCuentas implements controlador.Helper {
@@ -15,7 +14,8 @@ public class HelperVisualizacionDeListaCuentas implements controlador.Helper {
 
     @Override
     public boolean ejecutar() {
-        ArrayList<VOUsuario> coleccion = null;
+
+        VOColeccionUsuarios coleccion;
         coleccion = GestorUsuarios.visualizacionDeListaCuentas();
 
         if (coleccion == null) {

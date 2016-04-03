@@ -12,14 +12,8 @@ public class HelperBorrarUsuario implements controlador.Helper {
 
     @Override
     public boolean ejecutar() {
-        //TODO
-        if (GestorUsuarios.borrarUsuario(id)) {
-            // Se ha borrado correctamente el usuario
-            return true;
-        } else {
-            // No se ha logrado borrar el usuario
-            return false;
-        }
+        
+        return GestorUsuarios.borrarUsuario(id); 
 
     }
 

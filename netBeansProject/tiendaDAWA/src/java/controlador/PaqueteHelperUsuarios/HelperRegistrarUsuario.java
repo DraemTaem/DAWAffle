@@ -1,7 +1,6 @@
 package controlador.PaqueteHelperUsuarios;
 
 import javax.servlet.http.HttpServletRequest;
-import modelo.VOUsuario;    //TODO cambiar RUTA!
 import modelo.pckUsuarios.Usuario;
 
 public class HelperRegistrarUsuario implements controlador.Helper {
@@ -25,9 +24,9 @@ public class HelperRegistrarUsuario implements controlador.Helper {
     @Override
     public boolean ejecutar() {
         Usuario u = new Usuario(nombre, contrasena, email, alias, direccion);
-        VOUsuario user = u.RegistrarUsuario();
-       
-        if (user != null) {
+        boolean exito = u.RegistrarUsuario();
+
+        if (exito) {
             peticion.setAttribute("usuario", u);   // Lo incrusta en sesión si se insertó con éxito
             return true;
         } else {
