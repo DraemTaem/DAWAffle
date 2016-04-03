@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import controlador.PaqueteHelperCarrito.*;
 import controlador.PaqueteHelperPago.*;
 import controlador.PaqueteHelperPrincipal.*;
+import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
 import javax.servlet.http.HttpSession;
 import modelo.pckPedidos.Pedido;
 import modelo.pckUsuarios.Usuario;
@@ -157,6 +158,11 @@ public class Controlador extends HttpServlet {
                     goToPage("/exitoEnElPago.jsp", request, response);
                     break;
 
+                case("irAIniciarSesion"):
+                    
+                    goToPage("/usuarios.jsp", request, response);
+                    break;
+                    
                 default:
                     helper = new HelperMostrarPrincipal();
                     if (!helper.ejecutar()) {

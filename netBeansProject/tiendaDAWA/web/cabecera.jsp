@@ -13,28 +13,28 @@
         <c:when test="${sessionScope.usuario == null}">
         <nav>
             <ul id="menu">
-                <li><a href="Controlador?pagina=inicio">Inicio</a></li>
-                <li><a href="Controlador?pagina=carrito">Ver mi carrito</a></li>
-                <li><a href="Controlador?pagina=usuarios">Inicio sesión/Registrarse</a></li>
+                <li><a href="Controlador?action=irAPrincipal">Inicio</a></li>
+                <li><a href="Controlador?action=irAlCarrito">Ver mi carrito</a></li>
+                <li><a href="Controlador?action=irAIniciarSesion">Inicio sesión/Registrarse</a></li>
             </ul>
         </nav>
         </c:when>
         <c:when test="${sessionScope.usuario.isAdmin}">
         <nav>
             <ul id="menu">
-                <li><a href="Controlador?pagina=inicio">Inicio</a></li>
-                <li><a href="Controlador?pagina=productos">Añadir productos</a></li>
-                <li><a href="Controlador?pagina=usuarios">Gestionar usuarios</a></li>
-                <li><a href="Controlador?pagina=cerrar">Cerrar sesión</a></li>
+                <li><a href="Controlador?action=irAPrincipal">Inicio</a></li>
+                <li><a href="Controlador?action=productos">Añadir productos</a></li>
+                <li><a href="Controlador?action=usuarios">Gestionar usuarios</a></li>
+                <li><a href="Controlador?action=cerrar">Cerrar sesión</a></li>
             </ul>
         </nav>
         </c:when>
         <c:when test="${sessionScope.usuario != null}">
             <nav>
             <ul id="menu">
-                <li><a href="Controlador?pagina=inicio">Inicio</a></li>
-                <li><a href="Controlador?pagina=productos">Ver carrito</a></li>
-                <li><a href="Controlador?pagina=cerrar">Cerrar sesión</a></li>
+                <li><a href="Controlador?action=irAPrincipal">Inicio</a></li>
+                <li><a href="Controlador?action=productos">Ver carrito</a></li>
+                <li><a href="Controlador?action=cerrar">Cerrar sesión</a></li>
             </ul>
         </nav>
         </c:when>
