@@ -1,3 +1,8 @@
+DROP DATABASE dbtienda;
+
+CREATE DATABASE dbtienda;
+
+USE dbtienda;
 -- CREACION DE TABLAS
 
 CREATE TABLE usuarios (

@@ -19,15 +19,14 @@ public class Tienda {
         this.productosDisponibles = new ArrayList<>();
 
         System.out.println("NANANAN");
-        
+
         FactoriaDAO factoria = FactoriaDAO.newFactoria();
 
         DAOProducto daoProducto = factoria.crearDAOProducto();
 
         VOColeccionProductos coleccion = daoProducto.getProductos();
 
-        System.out.println(coleccion.getProductos().size());
-        
+
         for (VOProducto voP : coleccion.getProductos()) {
 
             if (voP instanceof VOCd) {
@@ -91,13 +90,13 @@ public class Tienda {
         return productosDisponibles;
     }
 
-    public boolean anadirCD(String nombre, String descripcion, float precio, String imagen, String tipo, Integer stock, String autor, String pais) {
+    public boolean anadirCD(String nombre, String descripcion, float precio, String imagen, String tipo, Integer stock, String autor, String pais, Integer ano) {
 
         FactoriaDAO factoria = FactoriaDAO.newFactoria();
 
         DAOProducto daoProducto = factoria.crearDAOProducto();
 
-        VOCd voc = new VOCd(-1, nombre, descripcion, precio, imagen, tipo, stock, autor, pais);
+        VOCd voc = new VOCd(-1, nombre, descripcion, precio, imagen, tipo, stock, autor, pais, ano);
 
         return daoProducto.registrarCD(voc);
 
@@ -120,7 +119,7 @@ public class Tienda {
         return voc;
 
     }
-    
+
     public VOColeccionProductos getProductosActualizados() {
 
         FactoriaDAO factoria = FactoriaDAO.newFactoria();
