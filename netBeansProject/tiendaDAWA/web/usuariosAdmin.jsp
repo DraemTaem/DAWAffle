@@ -32,7 +32,7 @@
 						  	<td><a href="descripcionAdminUsuario.html"><p class=""nombre>${u.getNombre()}</p></a>
 						  	<p>Correo electrónico: ${u.getEmail()}, dirección: ${u.getdirección()}</p></td>
 					  	</div>
-					  	<form method="post" action="Controlador">
+					  	<form method="post" action="Controlador" onsubmit="return validar()">
                                                     <input type="hidden" value="${u.getId()}"
                                                     <td><input type="submit" class="eliminar" name="eliminarUsuario" value="Eliminar"></td>
 					  	</form>

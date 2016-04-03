@@ -64,7 +64,7 @@
 				  	<td><a href="descripcionAdminProducto.html"><p class=""nombre>${p.getTitulo()}, ${p.getAutor()}</p></a>
 				  	<p>Precio: ${p.getPrecio()}€, código: ${p.getCodigo()}</p></td>
 			  	</div>
-			  	<form method="post" id="seleccionar">
+			  	<form method="post" id="seleccionar" onsubmit="return validar()">
                                     <input type="hidden" value="${p.getCodigo()}">
                                     <td><input type="submit" class="eliminar" name="eliminarProducto" value="Eliminar"></td>
 			  	</form>
