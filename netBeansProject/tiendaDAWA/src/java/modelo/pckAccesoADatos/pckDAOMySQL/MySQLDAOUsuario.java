@@ -25,7 +25,6 @@ public class MySQLDAOUsuario implements DAOUsuario {
                     "SELECT * FROM usuarios "
                             + " WHERE id = ?;";
 
-
             pstmt = con.prepareStatement(sqlSelect);
             //pstmt.setString(1, "id");
             pstmt.setInt(1, id);
@@ -367,6 +366,7 @@ public class MySQLDAOUsuario implements DAOUsuario {
             }
 
             con.commit();
+            return 1;
 
         } catch (SQLException e) {
             try {

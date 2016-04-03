@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-
 public class MySQLDAOProducto implements DAOProducto {
+
     @Override
     public VOColeccionProductos getProductos() {
         try {
@@ -20,16 +20,14 @@ public class MySQLDAOProducto implements DAOProducto {
             Connection con = connector.getConnection();
             PreparedStatement pstmt, pstmt2;
 
-            String sqlSelect =
-                    "SELECT * FROM productos;";
-
+            String sqlSelect
+                    = "SELECT * FROM productos;";
 
             pstmt = con.prepareStatement(sqlSelect);
 
-
-            String sqlCD =
-                    "SELECT * FROM cd " +
-                            "WHERE id = ?;";
+            String sqlCD
+                    = "SELECT * FROM cd "
+                    + "WHERE id = ?;";
             pstmt2 = con.prepareStatement(sqlCD);
 
             ResultSet res = pstmt.executeQuery();
@@ -73,43 +71,38 @@ public class MySQLDAOProducto implements DAOProducto {
             Connection con = connector.getConnection();
             PreparedStatement pstmt, pstmt2, pstmt3, pstmt4, pstmt5;
 
-            String sqlSelect =
-                    "SELECT * FROM productos" +
-                            "WHERE id = ?;";
-
+            String sqlSelect
+                    = "SELECT * FROM productos"
+                    + "WHERE id = ?;";
 
             pstmt = con.prepareStatement(sqlSelect);
 
             pstmt.setInt(1, id);
 
-            String sqlCD =
-                    "SELECT * FROM cd " +
-                            "WHERE id = ?;";
+            String sqlCD
+                    = "SELECT * FROM cd "
+                    + "WHERE id = ?;";
             pstmt2 = con.prepareStatement(sqlCD);
 
-            String sqlStock =
-                    "SELECT stock FROM inventario " +
-                            "WHERE id = ?;";
+            String sqlStock
+                    = "SELECT stock FROM inventario "
+                    + "WHERE id = ?;";
 
             pstmt3 = con.prepareStatement(sqlStock);
 
-
-            String sqlValoraciones =
-                    "SELECT * FROM valoraciones " +
-                            "WHERE idProducto = ?;";
+            String sqlValoraciones
+                    = "SELECT * FROM valoraciones "
+                    + "WHERE idProducto = ?;";
 
             pstmt4 = con.prepareStatement(sqlValoraciones);
 
-
-            String sqlUsuario =
-                    "SELECT * FROM usuarios " +
-                            "WHERE id = ?;";
+            String sqlUsuario
+                    = "SELECT * FROM usuarios "
+                    + "WHERE id = ?;";
 
             pstmt5 = con.prepareStatement(sqlValoraciones);
 
-
             ResultSet res = pstmt.executeQuery();
-
 
             String tipo = "";
             VOProducto prod;
@@ -130,7 +123,7 @@ public class MySQLDAOProducto implements DAOProducto {
                             VOUsuario user;
                             ArrayList<VOValoracion> valoraciones = new ArrayList<>();
                             prod = new VOCd(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"), res2.getString("autor"), res2.getString("pais"));
-                            while(res4.next()){
+                            while (res4.next()) {
                                 pstmt5.setInt(1, res4.getInt("idUsuario"));
                                 res5 = pstmt5.executeQuery();
                                 user = new VOUsuario(res4.getInt("idUsuario"));
@@ -153,7 +146,7 @@ public class MySQLDAOProducto implements DAOProducto {
                             VOUsuario user;
                             ArrayList<VOValoracion> valoraciones = new ArrayList<>();
                             prod = new VOProducto(res.getInt("id"), res.getString("nombre"), res.getString("descripcion"), res.getFloat("precio"), res.getString("imagen"), res.getString("tipo"), res3.getInt("stock"));
-                            while(res4.next()){
+                            while (res4.next()) {
                                 pstmt5.setInt(1, res4.getInt("idUsuario"));
                                 res5 = pstmt5.executeQuery();
                                 user = new VOUsuario(res4.getInt("idUsuario"));
@@ -168,10 +161,8 @@ public class MySQLDAOProducto implements DAOProducto {
                         }
                         return null;
 
-
                 }
             }
-
 
         } catch (SQLException e) {
             System.out.println("Error en la consulta");
@@ -189,18 +180,18 @@ public class MySQLDAOProducto implements DAOProducto {
 
         HashMap<Integer, VOProducto> resultado = new HashMap<>();
 
-        for (VOProducto producto : byPrecio.getProductos()){
+        for (VOProducto producto : byPrecio.getProductos()) {
             resultado.put(producto.getId(), producto);
         }
-        for (VOProducto producto : byNombre.getProductos()){
+        for (VOProducto producto : byNombre.getProductos()) {
             resultado.put(producto.getId(), producto);
         }
-        for (VOProducto producto : byAutor.getProductos()){
+        for (VOProducto producto : byAutor.getProductos()) {
             resultado.put(producto.getId(), producto);
         }
         /*for (VOProducto producto : byAno.getProductos()){
-            resultado.put(producto.getId(), producto);
-        }*/
+         resultado.put(producto.getId(), producto);
+         }*/
 
         Iterator<Integer> i = resultado.keySet().iterator();
         ArrayList<VOProducto> coleccion = new ArrayList<>();
@@ -220,17 +211,16 @@ public class MySQLDAOProducto implements DAOProducto {
             Connection con = connector.getConnection();
             PreparedStatement pstmt, pstmt2;
 
-            String sqlSelect =
-                    "SELECT * FROM productos " +
-                            "WHERE precio < ?;";
-
+            String sqlSelect
+                    = "SELECT * FROM productos "
+                    + "WHERE precio < ?;";
 
             pstmt = con.prepareStatement(sqlSelect);
             pstmt.setFloat(1, precioMaximo);
 
-            String sqlCD =
-                    "SELECT * FROM cd " +
-                            "WHERE id = ?;";
+            String sqlCD
+                    = "SELECT * FROM cd "
+                    + "WHERE id = ?;";
             pstmt2 = con.prepareStatement(sqlCD);
 
             ResultSet res = pstmt.executeQuery();
@@ -274,17 +264,16 @@ public class MySQLDAOProducto implements DAOProducto {
             Connection con = connector.getConnection();
             PreparedStatement pstmt, pstmt2;
 
-            String sqlSelect =
-                    "SELECT * FROM productos " +
-                            "WHERE nombre = ?;";
-
+            String sqlSelect
+                    = "SELECT * FROM productos "
+                    + "WHERE nombre = ?;";
 
             pstmt = con.prepareStatement(sqlSelect);
             pstmt.setString(1, nombre);
 
-            String sqlCD =
-                    "SELECT * FROM cd " +
-                            "WHERE id = ?;";
+            String sqlCD
+                    = "SELECT * FROM cd "
+                    + "WHERE id = ?;";
             pstmt2 = con.prepareStatement(sqlCD);
 
             ResultSet res = pstmt.executeQuery();
@@ -328,17 +317,15 @@ public class MySQLDAOProducto implements DAOProducto {
             Connection con = connector.getConnection();
             PreparedStatement pstmt, pstmt2;
 
-            String sqlSelect =
-                    "SELECT * FROM productos " +
-                            "WHERE id = ?;";
-
+            String sqlSelect
+                    = "SELECT * FROM productos "
+                    + "WHERE id = ?;";
 
             pstmt = con.prepareStatement(sqlSelect);
 
-
-            String sqlCD =
-                    "SELECT * FROM cd " +
-                            "WHERE autor = ?;";
+            String sqlCD
+                    = "SELECT * FROM cd "
+                    + "WHERE autor = ?;";
             pstmt2 = con.prepareStatement(sqlCD);
             pstmt2.setString(1, autor);
 
@@ -349,14 +336,12 @@ public class MySQLDAOProducto implements DAOProducto {
 
             while (res.next()) {
 
-
                 pstmt.setInt(1, res.getInt("id"));
                 ResultSet res2 = pstmt.executeQuery();
                 if (res2.next()) {
                     prod = new VOCd(res2.getInt("id"), res2.getString("nombre"), res2.getString("descripcion"), res2.getFloat("precio"), res2.getString("imagen"), res.getString("autor"), res.getString("pais"), res2.getString("tipo"));
                     coleccion.add(prod);
                 }
-
 
             }
 
@@ -382,19 +367,20 @@ public class MySQLDAOProducto implements DAOProducto {
 
             PreparedStatement pstmt;
 
-            String sqlInsert =
-                    "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)" +
-                            "VALUES ( ?, ?, ?, ?, ?);";
+            String sqlInsert
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    + "VALUES ( ?, ?, ?, ?, ?);";
 
             pstmt = con.prepareStatement(sqlInsert);
             pstmt.setString(1, producto.getNombre());
             pstmt.setString(2, producto.getDescripcion());
             pstmt.setFloat(3, producto.getPrecio());
             pstmt.setString(4, producto.getImagen());
-            if (producto.getTipo() != null)
+            if (producto.getTipo() != null) {
                 pstmt.setString(5, producto.getTipo());
-            else
+            } else {
                 pstmt.setString(5, "");
+            }
 
             con.setAutoCommit(false);
             pstmt.executeUpdate();
@@ -429,25 +415,41 @@ public class MySQLDAOProducto implements DAOProducto {
         Connection con = connector.getConnection();
         try {
 
-            PreparedStatement pstmt;
+            PreparedStatement pstmt, pstmt2;
 
-            String sqlInsert =
-                    "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)" +
-                            "VALUES ( ?, ?, ?, ?, ?);";
+            String sqlInsert
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    + "VALUES ( ?, ?, ?, ?, ?);";
 
             pstmt = con.prepareStatement(sqlInsert);
             pstmt.setString(1, nombre);
             pstmt.setString(2, descripcion);
             pstmt.setFloat(3, precio);
             pstmt.setString(4, imagen);
-            if (tipo != null)
+            if (tipo != null) {
                 pstmt.setString(5, tipo);
-            else
+            } else {
                 pstmt.setString(5, "");
+            }
 
             con.setAutoCommit(false);
             pstmt.executeUpdate();
+            String sqlInsert2
+                    = "INSERT INTO inventario (idProducto, cantidad) "
+                    + "VALUES (?, 0);";
 
+            pstmt2 = con.prepareStatement(sqlInsert2);
+
+            ResultSet generatedKeys = pstmt.getGeneratedKeys();
+            
+            if (generatedKeys.next()) {
+                pstmt2.setInt(1, generatedKeys.getInt("id"));
+            } else {
+                con.rollback();
+                return false;
+            }
+            
+            pstmt2.executeUpdate();
             con.commit();
             return true;
 
@@ -478,58 +480,55 @@ public class MySQLDAOProducto implements DAOProducto {
         Connection con = connector.getConnection();
         try {
 
-            PreparedStatement pstmt, pstmt2, pstmt3;
+            PreparedStatement pstmt, pstmt2, pstmt3, pstmt4;
 
-            String sqlInsert =
-                    "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)" +
-                            "VALUES ( ?, ?, ?, ?, ?);";
+            String sqlInsert
+                    = "INSERT INTO productos (nombre, descripcion, precio, imagen, tipo)"
+                    + "VALUES ( ?, ?, ?, ?, ?);";
 
             pstmt = con.prepareStatement(sqlInsert);
             pstmt.setString(1, producto.getNombre());
             pstmt.setString(2, producto.getDescripcion());
             pstmt.setFloat(3, producto.getPrecio());
             pstmt.setString(4, producto.getImagen());
-            if (producto.getTipo() != null)
+            if (producto.getTipo() != null) {
                 pstmt.setString(5, producto.getTipo());
-            else
+            } else {
                 pstmt.setString(5, "");
+            }
 
             con.setAutoCommit(false);
             pstmt.executeUpdate();
             //select max(id) from productos;
-            String sqlSelect =
-                    "SELECT id FROM productos " +
-                            "WHERE nombre = ? " +
-                            "AND descripcion = ? " +
-                            "AND precio = ? " +
-                            "AND imagen = ?;";
+            String sqlInsert2
+                    = "INSERT INTO cd (idProducto, autor, pais)"
+                    + "VALUES ( ?, ?, ?);";
 
-            pstmt2 = con.prepareStatement(sqlSelect);
-            pstmt2.setString(1, producto.getNombre());
-            pstmt2.setString(2, producto.getDescripcion());
-            pstmt2.setFloat(3, producto.getPrecio());
-            pstmt2.setString(4, producto.getImagen());
+            pstmt3 = con.prepareStatement(sqlInsert2);
 
-            ResultSet res = pstmt2.executeQuery();
-            if (res.next()) {
-                String sqlInsert2 =
-                        "INSERT INTO cd (idProducto, autor, pais)" +
-                                "VALUES ( ?, ?, ?);";
+            String sqlInsert3
+                    = "INSERT INTO inventario (idProducto, cantidad) "
+                    + "VALUES (?, 0);";
 
-                pstmt3 = con.prepareStatement(sqlInsert2);
-                pstmt3.setInt(1, res.getInt("id"));
-                pstmt3.setString(2, producto.getAutor());
-                pstmt3.setString(3, producto.getPais());
+            pstmt4 = con.prepareStatement(sqlInsert3);
 
-                pstmt3.executeUpdate();
-
-                con.commit();
-                return true;
-
-            }else{
+            ResultSet generatedKeys = pstmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                pstmt3.setInt(1, generatedKeys.getInt("id"));
+                pstmt4.setInt(1, generatedKeys.getInt("id"));
+            } else {
                 con.rollback();
                 return false;
             }
+
+            pstmt3.setString(2, producto.getAutor());
+            pstmt3.setString(3, producto.getPais());
+
+            pstmt3.executeUpdate();
+            pstmt4.executeUpdate();
+
+            con.commit();
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Error en la consulta");
@@ -559,24 +558,20 @@ public class MySQLDAOProducto implements DAOProducto {
             Connection con = connector.getConnection();
             PreparedStatement pstmt;
 
-
-
-            String sqlStock =
-                    "SELECT stock FROM inventario " +
-                            "WHERE id = ?;";
+            String sqlStock
+                    = "SELECT stock FROM inventario "
+                    + "WHERE id = ?;";
 
             pstmt = con.prepareStatement(sqlStock);
             pstmt.setInt(1, producto.getId());
 
             ResultSet res = pstmt.executeQuery();
 
-            if(res.next()){
+            if (res.next()) {
                 return res.getInt("stock");
-            } else{
+            } else {
                 return -1;
             }
-
-
 
         } catch (SQLException e) {
             System.out.println("Error en la consulta");
@@ -594,32 +589,30 @@ public class MySQLDAOProducto implements DAOProducto {
 
             PreparedStatement pstmt, pstmt2;
 
-
-
-            String sqlStock =
-                    "SELECT stock FROM inventario " +
-                            "WHERE id = ?;";
+            String sqlStock
+                    = "SELECT stock FROM inventario "
+                    + "WHERE id = ?;";
 
             pstmt = con.prepareStatement(sqlStock);
             pstmt.setInt(1, producto.getId());
 
-            String sqlUpdate =
-                    "UPDATE inventario " +
-                            "SET stock = ? " +
-                            "WHERE id = ?;";
+            String sqlUpdate
+                    = "UPDATE inventario "
+                    + "SET stock = ? "
+                    + "WHERE id = ?;";
 
             pstmt2 = con.prepareStatement(sqlUpdate);
 
             con.setAutoCommit(false);
             ResultSet res = pstmt.executeQuery();
 
-            if(res.next()){
+            if (res.next()) {
                 int stock = res.getInt("stock");
                 stock += unidades;
 
-                if(stock >= 0) {
+                if (stock >= 0) {
                     pstmt2.setInt(1, stock);
-                }else{
+                } else {
                     pstmt2.setInt(1, 0);
                 }
                 pstmt2.setInt(2, producto.getId());
@@ -629,7 +622,7 @@ public class MySQLDAOProducto implements DAOProducto {
                 con.commit();
                 return true;
 
-            } else{
+            } else {
                 con.rollback();
                 return false;
             }
@@ -653,24 +646,24 @@ public class MySQLDAOProducto implements DAOProducto {
 
             PreparedStatement pstmt, pstmt2;
 
-            String sqlStock =
-                    "SELECT * FROM productos " +
-                            "WHERE id = ?;";
+            String sqlStock
+                    = "SELECT * FROM productos "
+                    + "WHERE id = ?;";
 
             pstmt = con.prepareStatement(sqlStock);
             pstmt.setInt(1, valoracion.getIdProducto());
 
-            String sqlInsert =
-                    "INSERT INTO valoraciones " +
-                            "( idProducto, idUsuario, comentario, nota) " +
-                            "VALUES ( ?, ?, ?, ?);";
+            String sqlInsert
+                    = "INSERT INTO valoraciones "
+                    + "( idProducto, idUsuario, comentario, nota) "
+                    + "VALUES ( ?, ?, ?, ?);";
 
             pstmt2 = con.prepareStatement(sqlInsert);
 
             con.setAutoCommit(false);
             ResultSet res = pstmt.executeQuery();
 
-            if(res.next()){
+            if (res.next()) {
                 pstmt2.setInt(1, valoracion.getIdProducto());
                 pstmt2.setInt(2, valoracion.getUsuario().getId());
                 pstmt2.setString(3, valoracion.getComentario());
@@ -681,7 +674,7 @@ public class MySQLDAOProducto implements DAOProducto {
                 con.commit();
                 return true;
 
-            } else{
+            } else {
                 con.rollback();
                 return false;
             }
@@ -696,7 +689,7 @@ public class MySQLDAOProducto implements DAOProducto {
             return false;
         }
     }
-    
+
     @Override
     public boolean checkCompra(VOUsuario usuario, VOProducto producto) {
         try {
@@ -704,26 +697,26 @@ public class MySQLDAOProducto implements DAOProducto {
             Connection con = connector.getConnection();
             PreparedStatement pstmt, pstmt2;
 
-            String sqlPedidos =
-                    "SELECT * FROM pedidos " +
-                            "WHERE idUsuario = ?;";
+            String sqlPedidos
+                    = "SELECT * FROM pedidos "
+                    + "WHERE idUsuario = ?;";
 
             pstmt = con.prepareStatement(sqlPedidos);
             pstmt.setInt(1, usuario.getId());
 
-            String sqlLineasPedido =
-                    "SELECT * FROM lineaspedido " +
-                            "WHERE idPedido = ?;";
+            String sqlLineasPedido
+                    = "SELECT * FROM lineaspedido "
+                    + "WHERE idPedido = ?;";
 
             pstmt2 = con.prepareStatement(sqlPedidos);
 
             ResultSet res = pstmt.executeQuery();
 
-            while(res.next()){
+            while (res.next()) {
                 pstmt2.setInt(1, res.getInt("id"));
                 ResultSet res2 = pstmt2.executeQuery();
-                while(res2.next()){
-                    if(res2.getInt("idProducto") == producto.getId()){
+                while (res2.next()) {
+                    if (res2.getInt("idProducto") == producto.getId()) {
                         return true;
                     }
                 }
@@ -736,5 +729,5 @@ public class MySQLDAOProducto implements DAOProducto {
             return false;
         }
     }
-    
+
 }
