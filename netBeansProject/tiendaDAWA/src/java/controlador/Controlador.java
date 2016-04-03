@@ -17,13 +17,12 @@ public class Controlador extends HttpServlet {
 
     private Helper helper;
 
-    public static String path;
+   
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //Ruta del archivo de los datos para que sea accesible desde cualquier sitio
-        path = request.getServletContext().getRealPath("/WEB-INF/classes/resources/productos.txt");
+        
         
         /*Miramos si tanto la sesión como nuestro usuario están creados
          Ya que en esta aplicación suponemos que el usuario ya está registrado
@@ -33,11 +32,6 @@ public class Controlador extends HttpServlet {
             sesion = request.getSession(true);
         }
 
-        if (sesion.getAttribute("usuario") == null) {
-            request.getSession().setAttribute("usuario", new Usuario());
-        }
-
-        /*Por lo tanto esta parte de arriba es susceptible a cambios*/
         String action = request.getParameter("action");
         if (action == null) {
 
