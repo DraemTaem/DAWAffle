@@ -23,12 +23,12 @@
     	<section id="contenido">
 	    	<article id="productos">
 	    	<table>
-	    		<c:set var="p" value="${sessionScope.producto}"></c:set>
-	    		<h1 class="nombre">${p.getNombre()}</h1>
-	    		<td><figure id="imagen">${p.getImagen()}</figure></td>
-	    		<td><p>${p.getDescripcion()}</p>
-	    		<p>Unidades: ${p.getUnidades()}</p>
-	    		<p>Precio: ${p.getPrecio()}</p>
+	    		<c:set var="p" value="${requestScope.producto}"></c:set>
+	    		<h1 class="nombre">${p.nombre}</h1>
+                        <td><figure id="imagen"><img src="${p.imagen}" width="300" height="300"></figure></td>
+	    		<td><p>${p.descripcion}</p>
+	    		<p>Unidades: ${p.stock}</p>
+	    		<p>Precio: ${p.precio}</p>
 	    		<form method="post" id="seleccionar" action="carrito.html">
 				  	<input type="number" id="cantidad" placeholder="Cantidad" name="cantidad" min="1" required>
 				  	<input type="submit" id="anadir" name="seleccionar" value="Seleccionar">
@@ -63,9 +63,9 @@
 		  		</form>
 
 		  		<table>
-		  		<c:forEach var="c" value="${sessionScope.comentarios}">
-		  			<tr><th>${c.getAutor()} ${c.getValoracion}</th></tr>
-		  			<tr><td>${c.getComentario()}</td></tr>
+		  		<c:forEach var="c" items="${p.valoraciones.valoraciones}">
+		  			<tr><th>${c.usuario.alias} ${c.nota}</th></tr>
+		  			<tr><td>${c.comentario}</td></tr>
 		  		</c:forEach>
 		  		</table>
 		  	</article>

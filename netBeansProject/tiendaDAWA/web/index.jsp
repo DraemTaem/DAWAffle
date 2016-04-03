@@ -59,8 +59,8 @@
 		  <c:forEach var="p" items="${sessionScope.tienda.productosDisponibles}">
 			  <tr>
 			  	<div id="datosCD">
-			  		<td>${p.imagen}</td>
-				  	<td><a href="Controlador?id=${p.id}"><p class=""nombre>${p.nombre}, ${p.autor}</p></a>
+                                    <td><img src="${p.imagen}" width="200" height="200"></td>
+				  	<td><a href="Controlador?action=mostrarProducto&id=${p.id}"><p class=""nombre>${p.nombre}, ${p.autor}</p></a>
 				  	<p>Precio: ${p.precio}€, código: ${p.id}</p></td>
 			  	</div>
 			  	<form method="post" id="seleccionar">

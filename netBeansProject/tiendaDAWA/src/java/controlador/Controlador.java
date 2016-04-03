@@ -11,6 +11,7 @@ import controlador.PaqueteHelperCarrito.*;
 import controlador.PaqueteHelperPago.*;
 import controlador.PaqueteHelperPrincipal.*;
 import controlador.PaqueteHelperProductos.HelperMostrarTienda;
+import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
 import java.io.InputStream;
 import javax.servlet.http.HttpSession;
@@ -34,7 +35,6 @@ public class Controlador extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null) {
 
-            
             helper = new HelperMostrarPrincipal(sesion);
             if (!helper.ejecutar()) {
                 request.setAttribute("mensajeError", "Error al ir a la página principal.");
@@ -185,11 +185,34 @@ public class Controlador extends HttpServlet {
 
                 case ("iniciarSesion"):
 
-                    helper = new HelperIniciarSesion((String) request.getAttribute("alias"), (String) request.getAttribute("contrasena"), sesion);
+                    helper = new HelperIniciarSesion(request.getParameter("alias"), request.getParameter("contrasena"), sesion);
                     if (!helper.ejecutar()) {
                         request.setAttribute("mensajeError", "Error al iniciar sesion (Usuario/Contrasena incorrectos).");
                         goToPage("/error.jsp", request, response);
                     }
+                    goToPage("/index.jsp", request, response);
+
+                    break;
+
+                case ("mostrarProducto"):
+
+                    helper = new HelperVisualizarProducto(Integer.parseInt(request.getParameter("id")), sesion, request);
+                    if (!helper.ejecutar()) {
+                        request.setAttribute("mensajeError", "Error al acceder a la página principal");
+                        goToPage("/error.jsp", request, response);
+                    }
+                    goToPage("/descripcion.jsp", request, response);
+                    break;
+
+                case ("cerrarSesion"):
+
+                    if (sesion.getAttribute("usuario") == null) {
+                        request.setAttribute("mensajeError", "Necesitas estar logueado para cerrar sesión.");
+                        goToPage("/error.jsp", request, response);
+                    }
+                    
+                    sesion.removeAttribute("usuario");
+                    
                     goToPage("/index.jsp", request, response);
 
                     break;
