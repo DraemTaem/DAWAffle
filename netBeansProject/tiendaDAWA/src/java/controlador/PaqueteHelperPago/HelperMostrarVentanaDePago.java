@@ -1,8 +1,8 @@
 package controlador.PaqueteHelperPago;
 
 import javax.servlet.http.HttpServletRequest;
-import modelo.Carrito;
-import modelo.Tienda;
+import modelo.pckPedidos.Carrito;
+import modelo.pckProductos.Tienda;
 import modelo.pckUsuarios.Usuario;
 
 public class HelperMostrarVentanaDePago implements controlador.Helper {
@@ -16,6 +16,7 @@ public class HelperMostrarVentanaDePago implements controlador.Helper {
     }
 
 
+    @Override
     public boolean ejecutar() {
 
         Carrito carrito = usuario.getCarrito();

@@ -1,7 +1,5 @@
 package controlador.PaqueteHelperPrincipal;
 
-import javax.servlet.http.HttpServletRequest;
-import modelo.Tienda;
 
 public class HelperMostrarPrincipal implements controlador.Helper {
 
@@ -10,8 +8,6 @@ public class HelperMostrarPrincipal implements controlador.Helper {
 
     @Override
     public boolean ejecutar() {
-
-        
         return true;
     }
 

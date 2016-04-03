@@ -1,8 +1,8 @@
 package controlador.PaqueteHelperPago;
 
 import javax.servlet.http.HttpSession;
-import modelo.Pedido;
-import modelo.Tienda;
+import modelo.pckPedidos.Pedido;
+import modelo.pckProductos.Tienda;
 import modelo.pckUsuarios.Usuario;
 
 public class HelperRealizarPago implements controlador.Helper {
@@ -19,13 +19,14 @@ public class HelperRealizarPago implements controlador.Helper {
         this.sesion = sesion;
     }
 
+    @Override
     public boolean ejecutar() {
 
         if (this.usuario.getCarrito().getLineasCarrito().size() <= 0) {
             return false;
         }
 
-        //Anhadir datos de usuario a this.usuario si é necesario.
+        //Anadir datos de usuario a this.usuario si é necesario.
         //Aqui sí necesitamos coller os datos da tienda actualizados para facer o pedido
         Tienda tienda;
         Tienda tiendaDesdeSesion = (Tienda) sesion.getAttribute("tienda");
