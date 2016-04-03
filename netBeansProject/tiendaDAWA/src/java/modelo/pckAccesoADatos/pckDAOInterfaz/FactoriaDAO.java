@@ -12,6 +12,7 @@ public abstract class FactoriaDAO {
 
     public abstract DAOUsuario crearDAOUsuario();
     public abstract DAOProducto crearDAOProducto();
+    public abstract DAOPedido crearDAOPedido();
 
 
 
