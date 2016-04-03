@@ -15,9 +15,9 @@ public class MySQLDAOUsuario implements DAOUsuario {
 
     @Override
     public VOUsuario getUsuarioByID(int id) {
-
         try {
             MySQLConnector connector = new MySQLConnector();
+
             Connection con = connector.getConnection();
             PreparedStatement pstmt = null;
 
@@ -209,8 +209,8 @@ public class MySQLDAOUsuario implements DAOUsuario {
 
 
             String sqlInsert =
-                    "INSERT INTO usuarios" +
-                            "(nombre, email, direccion, administrador, alias, contrasena, registrado)" +
+                    "INSERT INTO usuarios " +
+                            "(nombre, email, direccion, administrador, alias, contrasena, registrado) " +
                             " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
             pstmt2 = con.prepareStatement(sqlInsert);
@@ -277,8 +277,8 @@ public class MySQLDAOUsuario implements DAOUsuario {
 
 
             String sqlInsert =
-                    "INSERT INTO usuarios" +
-                            "(nombre, email, direccion, administrador, alias, contrasena, registrado)" +
+                    "INSERT INTO usuarios " +
+                            "(nombre, email, direccion, administrador, alias, contrasena, registrado) " +
                             " VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
             pstmt2 = con.prepareStatement(sqlInsert);
@@ -346,11 +346,12 @@ public class MySQLDAOUsuario implements DAOUsuario {
             pstmt.setInt(1, usuario.getId());
 
             String sqlUpdate =
-                    "UPDATE usuarios" +
-                            "SET categoria = 1" +
-                            "WHERE id = ?";
+                    "UPDATE usuarios " +
+                            "SET categoria = ? " +
+                            "WHERE id = ?;";
             pstmt2 = con.prepareStatement(sqlUpdate);
-            pstmt2.setInt(1, usuario.getId());
+            pstmt2.setInt(1, 1);
+            pstmt2.setInt(2, usuario.getId());
 
 
             con.setAutoCommit(false);

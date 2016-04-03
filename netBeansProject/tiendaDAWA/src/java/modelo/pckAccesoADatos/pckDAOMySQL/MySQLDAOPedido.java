@@ -1,9 +1,6 @@
 package modelo.pckAccesoADatos.pckDAOMySQL;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import modelo.pckAccesoADatos.pckDAOInterfaz.DAOPedido;
 import modelo.pckAccesoADatos.pckVO.VOColeccionPedidos;
@@ -19,7 +16,7 @@ public class MySQLDAOPedido implements DAOPedido {
         Connection con = connector.getConnection();
         try {
 
-            PreparedStatement pstmt, pstmt2, pstmt3;
+            PreparedStatement pstmt, pstmt2, pstmt3, pstmt4, pstmt5;
 
             String sqlSelectCategoria
                     = "SELECT categoria FROM usuarios "
@@ -33,8 +30,8 @@ public class MySQLDAOPedido implements DAOPedido {
                     + "(idUsuario, categoriaUsuario, precio) "
                     + "VALUES (?, ?, ?);";
 
-            pstmt2 = con.prepareStatement(sqlInsertPedido);
-            pstmt2.setInt(1, pedido.getId());
+            pstmt2 = con.prepareStatement(sqlInsertPedido, Statement.RETURN_GENERATED_KEYS);
+            pstmt2.setInt(1, pedido.getIdUsuario());
             pstmt2.setFloat(3, pedido.getPrecio());
 
             String sqlInsertLineaPedido
@@ -44,6 +41,19 @@ public class MySQLDAOPedido implements DAOPedido {
 
             pstmt3 = con.prepareStatement(sqlInsertLineaPedido);
 
+            String sqlSelectStock
+                    = "SELECT stock FROM inventario "
+                    + "WHERE idProducto = ?;";
+
+            pstmt4 = con.prepareStatement(sqlSelectStock);
+
+            String sqlUpdateStock
+                    = "UPDATE inventario "
+                    + "SET stock = ? "
+                    + "WHERE idProducto = ?;";
+
+            pstmt5 = con.prepareStatement(sqlUpdateStock);
+
             con.setAutoCommit(false);
             ResultSet res = pstmt.executeQuery();
 
@@ -52,15 +62,37 @@ public class MySQLDAOPedido implements DAOPedido {
                 pstmt2.executeUpdate();
                 ResultSet generatedKeys = pstmt2.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    pstmt3.setInt(1, generatedKeys.getInt("id"));
+                    pstmt3.setInt(1, generatedKeys.getInt(1));
                 } else {
+                    con.rollback();
                     return false;
                 }
 
                 for (VOLineaPedido linea : pedido.getLineas()) {
-                    pstmt2.setInt(2, linea.getIdProducto());
-                    pstmt2.setInt(3, linea.getCantidad());
-                    pstmt2.executeUpdate();
+                    pstmt3.setInt(2, linea.getIdProducto());
+                    pstmt3.setInt(3, linea.getCantidad());
+
+                    pstmt4.setInt(1, linea.getIdProducto());
+                    pstmt5.setInt(2, linea.getIdProducto());
+                    ResultSet res4 = pstmt4.executeQuery();
+
+                    if (res4.next()){
+                        int stock = res4.getInt("stock");
+                        stock -= linea.getCantidad();
+                        if(stock >= 0){
+                            pstmt5.setInt(1, stock);
+                            pstmt5.executeUpdate();
+                        }else{
+                            con.rollback();
+                            return false;
+                        }
+
+                    }else{
+                        con.rollback();
+                        return false;
+                    }
+
+                    pstmt3.executeUpdate();
                 }
                 con.commit();
                 return true;

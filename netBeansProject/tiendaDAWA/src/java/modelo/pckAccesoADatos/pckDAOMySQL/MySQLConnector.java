@@ -18,10 +18,6 @@ import java.sql.SQLException;
 
 public class MySQLConnector {
 
-    public static String HOST = "localhost";
-    public static String DATABASE = "dbtienda";
-    public static String USERNAME = "root";
-    public static String PASSWORD = "root";
 
     public Connection getConnection() {
         String url = "";
