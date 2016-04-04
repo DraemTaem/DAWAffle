@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import controlador.PaqueteHelperCarrito.*;
 import controlador.PaqueteHelperPago.*;
 import controlador.PaqueteHelperPrincipal.*;
+import controlador.PaqueteHelperProductos.HelperBusquedaCD;
 import controlador.PaqueteHelperProductos.HelperMostrarTienda;
 import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
@@ -34,7 +35,13 @@ public class Controlador extends HttpServlet {
         }
 
         String action = request.getParameter("action");
+
         if (action == null) {
+
+            Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+            if (usuario != null && usuario.isIsAdmin()) {
+                goToPage("/inicioAdmin.jsp", request, response);
+            }
 
             helper = new HelperMostrarPrincipal(sesion);
             if (!helper.ejecutar()) {
@@ -52,7 +59,68 @@ public class Controlador extends HttpServlet {
 
         } else {
 
+            if (sesion.getAttribute("usuario") != null) {
+                Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+                if (usuario.isIsAdmin()) {
+                    /*----------------------------------------------------------------------------------------------*/
+                    /*-------------------------------SECCIÓN DEL ADMINISTRADOR--------------------------------------*/
+                    /*----------------------------------------------------------------------------------------------*/
+
+                    switch (action) {
+
+                        case ("cerrarSesion"):
+
+                            if (sesion.getAttribute("usuario") == null) {
+                                request.setAttribute("mensajeError", "Necesitas estar logueado para cerrar sesión.");
+                                goToPage("/error.jsp", request, response);
+                            }
+
+                            sesion.removeAttribute("usuario");
+
+                            goToPage("/index.jsp", request, response);
+
+                            break;
+
+                        default:
+
+                            helper = new HelperMostrarPrincipal(sesion);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al ir a la página principal.");
+                                goToPage("/error.jsp", request, response);
+                            }
+
+                            helper = new HelperMostrarTienda(sesion);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al acceder a los datos de la tienda");
+                                goToPage("/error.jsp", request, response);
+                            }
+                            break;
+
+                    }
+
+                }
+            }
+
+            /*----------------------------------------------------------------------------------------------*/
+            /*-------------------------------SECCIÓN DEL USUARIO NORMAL-------------------------------------*/
+            /*----------------------------------------------------------------------------------------------*/
             switch (action) {
+                case ("buscarItems"):
+                    float preciof;
+                    if (request.getParameter("precio") != null) {
+                        preciof = Float.parseFloat(request.getParameter("precio"));
+                    } else {
+                        preciof = -1;
+                    }
+
+                    helper = new HelperBusquedaCD(sesion, request, preciof, request.getParameter("titulo"), request.getParameter("autor"), request.getParameter("ano"));
+                    if (!helper.ejecutar()) {
+                        request.setAttribute("mensajeError", "Error en la busqueda de items");
+                        goToPage("/error.jsp", request, response);
+                    }
+                    goToPage("/index.jsp", request, response);
+                    break;
+
                 case ("anadirItem"):
 
                     if (sesion.getAttribute("usuario") == null) {
@@ -69,11 +137,6 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case ("eliminarLinea"):
-
-                    if (sesion.getAttribute("usuario") == null) {
-                        request.setAttribute("mensajeError", "Necesitas estar logueado para acceder a esta sección .");
-                        goToPage("/usuarios.jsp", request, response);
-                    }
 
                     helper = new HelperEliminarLineaCarrito((Usuario) sesion.getAttribute("usuario"), Integer.parseInt(request.getParameter("idEliminar")));
                     if (!helper.ejecutar()) {
@@ -145,7 +208,7 @@ public class Controlador extends HttpServlet {
                     Usuario usuarioDatos = (Usuario) sesion.getAttribute("usuario");
 
                     if (usuarioDatos.getCarrito().getLineasCarrito().size() > 0) {
-                        helper = new HelperRealizarPago((Usuario) sesion.getAttribute("usuario"),request.getSession());
+                        helper = new HelperRealizarPago((Usuario) sesion.getAttribute("usuario"), request.getSession());
                         if (!helper.ejecutar()) {
                             request.setAttribute("mensajeError", "Error al insertar datos de pedido.");
                             goToPage("/error.jsp", request, response);
@@ -211,15 +274,15 @@ public class Controlador extends HttpServlet {
                         request.setAttribute("mensajeError", "Necesitas estar logueado para cerrar sesión.");
                         goToPage("/error.jsp", request, response);
                     }
-                    
+
                     sesion.removeAttribute("usuario");
-                    
+
                     goToPage("/index.jsp", request, response);
 
                     break;
-                    
+
                 case ("registrarUsuario"):
-                    helper = new HelperRegistrarUsuario(request.getParameter("nombre"), request.getParameter("alias"), request.getParameter("contrasena"),request.getParameter("email"),request.getParameter("direccion"));
+                    helper = new HelperRegistrarUsuario(request.getParameter("nombre"), request.getParameter("alias"), request.getParameter("contrasena"), request.getParameter("email"), request.getParameter("direccion"));
                     if (!helper.ejecutar()) {
                         request.setAttribute("mensajeError", "Error al registrar usuario (Datos duplicados).");
                         goToPage("/error.jsp", request, response);
@@ -241,6 +304,7 @@ public class Controlador extends HttpServlet {
                     }
                     goToPage("/index.jsp", request, response);
             }
+
         }
 
     }

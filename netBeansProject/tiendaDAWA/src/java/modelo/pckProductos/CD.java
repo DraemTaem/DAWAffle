@@ -7,13 +7,24 @@ public class CD extends Producto {
 
     private String autor;
     private String pais;
+    private Integer ano;
 
-    public CD(String autor, String pais, int id, String nombre, String descripcion, float precio, String imagen, String tipo, int stock) {
+    public CD(String autor, String pais, Integer ano, int id, String nombre, String descripcion, float precio, String imagen, String tipo, int stock) {
         super(id, nombre, descripcion, precio, imagen, tipo, stock);
         this.autor = autor;
         this.pais = pais;
+        this.ano = ano;
     }
 
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
+
+    
     public String getAutor() {
         return autor;
     }

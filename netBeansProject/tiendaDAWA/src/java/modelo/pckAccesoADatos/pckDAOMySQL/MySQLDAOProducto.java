@@ -41,6 +41,7 @@ public class MySQLDAOProducto implements DAOProducto {
             VOProducto prod;
 
             while (res.next()) {
+                
                 tipo = res.getString("tipo");
                 pstmt3.setInt(1, res.getInt("id"));
                 ResultSet res3 = pstmt3.executeQuery();
@@ -64,8 +65,10 @@ public class MySQLDAOProducto implements DAOProducto {
                         break;
                 }
             }
-
+            
+            System.out.println(coleccion.size());
             return new VOColeccionProductos(coleccion);
+            
         } catch (SQLException e) {
             System.out.println("Error en la consulta");
             e.printStackTrace();
@@ -213,6 +216,7 @@ public class MySQLDAOProducto implements DAOProducto {
             coleccion.add(resultado.get(e));
         }
         return new VOColeccionProductos(coleccion);
+        
     }
 
     @Override

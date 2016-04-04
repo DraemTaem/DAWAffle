@@ -21,8 +21,19 @@
         <section id="contenido">
         <article id="productos">
             <h1 class="nombre">TOTAL A PAGAR:</h1>
-                <c:set var="precio" value="${sessionScope.pedido.precioTotal}"></c:set>
+            <c:set var="p" value="${sessionScope.pedido}"></c:set>
+                <c:set var="precio" value="${p.precioTotal}"></c:set>
             <p>${precio}</p>
+            
+            <c:choose>
+                <c:when test="${p.usuario.categoria == 1}">
+                    <p>Usted es vip, por lo que se le ha descontado un 20% en la factura</p>
+                </c:when>
+                <c:when test="${p.usuario.categoria == 0}">
+                    <p>Usted es un usuario básico, por lo que no aplica ningún tipo de descuento en la factura</p>
+                </c:when>
+            </c:choose>
+            
 
             <p>¿Deseas finalizar la compra?</p>
             <form action="Controlador" method="post">

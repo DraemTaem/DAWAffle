@@ -33,8 +33,8 @@
                                     <td>
                                         <form method="post" action="Controlador">
                                             <input type="hidden" name="action" value="iniciarSesion">
-                                            <div>*<input type="text" name="alias" placeholder="Alias" pattern="[A-Za-z]{2,}" required></div>
-                                            <div>*<input type="password" name="contrasena" placeholder="Contraseña" required></div>
+                                            <div>*<input type="text" name="alias" placeholder="Alias" pattern="[A-Za-z0-9]{2,}" required></div>
+                                            <div>*<input type="password" name="contrasena" placeholder="Contraseña" pattern="[A-Za-z0-9\-\.\,\_]{6,}" required></div>
                                             <div><input type="submit" id="comprar" name="entrar" value="Entrar"></div> 
                                         </form>
                                     </td>
@@ -51,11 +51,11 @@
                                     <td>
                                         <form method="post" action="Controlador">
                                             <input type="hidden" name="action" value="registrarUsuario">
-                                            <div>*<input type="text" name="nombre" placeholder="Nombre y apellidos" pattern="[A-Za-z]{2,}" required></div>
-                                            <div>*<input type="text" name="alias" placeholder="Alias" pattern="[A-Za-z]{2,}" required></div>
-                                            <div>*<input type="email" name="email" placeholder="Correo electrónico" required></div>
+                                            <div>*<input type="text" name="nombre" placeholder="Nombre y apellidos" pattern="[A-Za-z báéíóúÁÉÍÓÚ]{2,}" required></div>
+                                            <div>*<input type="text" name="alias" placeholder="Alias" pattern="[A-Za-z0-9]{2,}" required></div>
+                                            <div>*<input type="email" name="email" placeholder="Correo electrónico"  pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required></div>
                                             <div><input type="text" name="direccion" placeholder="Dirección"></div>
-                                            <div>*<input type="password" name="contrasena" placeholder="Contraseña" pattern="[A-Za-z0-9\-\.\,\_]{8,}" required></div>
+                                            <div>*<input type="password" name="contrasena" placeholder="Contraseña" pattern="[A-Za-z0-9\-\.\,\_]{6,}" required></div>
                                             <div><input type="submit" id="comprar" name="registro" value="Registrarse"></div> 
 
                                         </form>

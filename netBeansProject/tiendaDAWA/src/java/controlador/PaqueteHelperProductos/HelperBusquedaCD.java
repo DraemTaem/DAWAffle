@@ -1,9 +1,11 @@
 package controlador.PaqueteHelperProductos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import modelo.pckAccesoADatos.pckVO.VOColeccionProductos;
+import modelo.pckProductos.CD;
 import modelo.pckProductos.Tienda;
 
 public class HelperBusquedaCD implements controlador.Helper {
@@ -38,10 +40,18 @@ public class HelperBusquedaCD implements controlador.Helper {
             tienda = tiendaDesdeSesion;
         }
 
-        VOColeccionProductos voc = tienda.busquedaCDs(precioMaximo, titulo, autor, Integer.parseInt(ano));
+        int anoi;
 
-        if (voc != null) {
-            request.setAttribute("resultadoBusqueda", voc);
+        if (ano != null) {
+            anoi = Integer.parseInt(ano);
+        } else {
+            anoi = -1;
+        }
+
+        ArrayList<CD> alc = tienda.busquedaLocal(precioMaximo, titulo, autor, anoi);
+
+        if (alc != null) {
+            request.setAttribute("resultadoBusqueda", alc);
             return true;
         } else {
             return false;

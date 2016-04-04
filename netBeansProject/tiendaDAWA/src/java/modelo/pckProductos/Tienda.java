@@ -24,12 +24,10 @@ public class Tienda {
 
         VOColeccionProductos coleccion = daoProducto.getProductos();
 
-        
         for (VOProducto voP : coleccion.getProductos()) {
-
             if (voP instanceof VOCd) {
                 VOCd aux = (VOCd) voP;
-                CD cd = new CD(aux.getAutor(), aux.getPais(), aux.getId(), aux.getNombre(), aux.getDescripcion(), aux.getPrecio(), aux.getImagen(), aux.getTipo(), aux.getStock());
+                CD cd = new CD(aux.getAutor(), aux.getPais(), aux.getAno(), aux.getId(), aux.getNombre(), aux.getDescripcion(), aux.getPrecio(), aux.getImagen(), aux.getTipo(), aux.getStock());
                 this.productosDisponibles.add(cd);
             } else {
                 Producto producto = new Producto(voP.getId(), voP.getNombre(), voP.getDescripcion(), voP.getPrecio(), voP.getImagen(), voP.getTipo(), voP.getStock());
@@ -68,12 +66,11 @@ public class Tienda {
 
         VOColeccionProductos coleccion = daoProducto.getProductos();
 
-        
         for (VOProducto voP : coleccion.getProductos()) {
 
             if (voP instanceof VOCd) {
                 VOCd aux = (VOCd) voP;
-                CD cd = new CD(aux.getAutor(), aux.getPais(), aux.getId(), aux.getNombre(), aux.getDescripcion(), aux.getPrecio(), aux.getImagen(), aux.getTipo(), aux.getStock());
+                CD cd = new CD(aux.getAutor(), aux.getPais(), aux.getAno(), aux.getId(), aux.getNombre(), aux.getDescripcion(), aux.getPrecio(), aux.getImagen(), aux.getTipo(), aux.getStock());
                 this.productosDisponibles.add(cd);
             } else {
                 Producto producto = new Producto(voP.getId(), voP.getNombre(), voP.getDescripcion(), voP.getPrecio(), voP.getImagen(), voP.getTipo(), voP.getStock());
@@ -116,6 +113,46 @@ public class Tienda {
         VOColeccionProductos voc = daoProducto.getProductos(precioMaximo, titulo, autor, ano);
 
         return voc;
+
+    }
+
+    public ArrayList<CD> busquedaLocal(Float precioMaximo, String titulo, String autor, Integer ano) {
+
+        ArrayList<CD> alvop = (ArrayList<CD>) this.productosDisponibles.clone();
+
+        if (precioMaximo != -1) {
+            for (CD p : alvop) {
+                if (p.getPrecio() > precioMaximo) {
+                    alvop.remove(p);
+                }
+            }
+        }
+
+        if (titulo != null && !titulo.equals("")) {
+            for (CD p : alvop) {
+                if (!p.getNombre().contains(titulo)) {
+                    alvop.remove(p);
+                }
+            }
+        }
+
+        if (autor != null && !autor.equals("")) {
+            for (CD p : alvop) {
+                if (!p.getAutor().contains(autor)) {
+                    alvop.remove(p);
+                }
+            }
+        }
+
+        if (precioMaximo != -1) {
+            for (CD p : alvop) {
+                if (p.getAno() != ano) {
+                    alvop.remove(p);
+                }
+            }
+        }
+        
+        return alvop;
 
     }
 

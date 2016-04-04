@@ -1,6 +1,8 @@
 package modelo.pckUsuarios;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.pckAccesoADatos.pckDAOInterfaz.DAOUsuario;
 import modelo.pckAccesoADatos.pckDAOInterfaz.FactoriaDAO;
 import modelo.pckPedidos.Carrito;
@@ -143,6 +145,7 @@ public class Usuario {
 
     }
 
+    
     public boolean RegistrarUsuario() {
         VOUsuario user = null;
 
