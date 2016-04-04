@@ -196,12 +196,8 @@ public class Controlador extends HttpServlet {
 
                         case ("cerrarSesion"):
 
-                            if (sesion.getAttribute("usuario") == null) {
-                                request.setAttribute("mensajeError", "Necesitas estar logueado para cerrar sesión.");
-                                goToPage("/error.jsp", request, response);
-                            }
+                        	sesion.removeAttribute("usuario");
 
-                            sesion.removeAttribute("usuario");
 
                             goToPage("/index.jsp", request, response);
 
@@ -232,6 +228,7 @@ public class Controlador extends HttpServlet {
                             break;
 
                     }
+                    return;
 
                 }
             }
