@@ -16,8 +16,10 @@ import controlador.PaqueteHelperProductos.HelperBusquedaCD;
 import controlador.PaqueteHelperProductos.HelperMostrarTienda;
 import controlador.PaqueteHelperProductos.HelperVisualizarCDsAdmin;
 import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
+import controlador.PaqueteHelperUsuarios.HelperBorrarUsuario;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
 import controlador.PaqueteHelperUsuarios.HelperRegistrarUsuario;
+import controlador.PaqueteHelperUsuarios.HelperVisualizacionDeListaCuentas;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,6 +74,32 @@ public class Controlador extends HttpServlet {
                     /*----------------------------------------------------------------------------------------------*/
                     System.out.println("ADMIN MODE");
                     switch (action) {
+                        
+                        case("eliminarUsuario"):
+                            this.validarRequest("idUsuario", request, response);
+                            
+                            helper = new HelperBorrarUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al eliminar usuario[ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+
+                            goToPage("/inicioAdmin.jsp", request, response);
+                            
+                            break;
+
+                        case ("irAGestionarUsuario"):
+                            
+                            helper = new HelperVisualizacionDeListaCuentas(request);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al leer lista de cuentas[ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+
+                            goToPage("/usuariosAdmin.jsp", request, response);
+                            
+                            break;
+
                         case ("irAAnadirCD"):
                             goToPage("/nuevoProducto.jsp", request, response);
                             break;
@@ -92,13 +120,13 @@ public class Controlador extends HttpServlet {
                                 request.setAttribute("mensajeError", "Error al anadir stock a un producto [ADMIN]");
                                 goToPage("/error.jsp", request, response);
                             }
-                            
-                            helper= new HelperVisualizarCDsAdmin(request, sesion);
+
+                            helper = new HelperVisualizarCDsAdmin(request, sesion);
                             if (!helper.ejecutar()) {
                                 request.setAttribute("mensajeError", "Error al actualizar cds [ADMIN]");
                                 goToPage("/error.jsp", request, response);
                             }
-                            
+
                             goToPage("/inicioAdmin.jsp", request, response);
                             break;
 
@@ -111,13 +139,13 @@ public class Controlador extends HttpServlet {
                                 request.setAttribute("mensajeError", "Error al anadir stock a un producto [ADMIN]");
                                 goToPage("/error.jsp", request, response);
                             }
-                            
-                            helper= new HelperVisualizarCDsAdmin(request, sesion);
+
+                            helper = new HelperVisualizarCDsAdmin(request, sesion);
                             if (!helper.ejecutar()) {
                                 request.setAttribute("mensajeError", "Error al actualizar cds [ADMIN]");
                                 goToPage("/error.jsp", request, response);
                             }
-                            
+
                             goToPage("/Controlador?action=mostrarProductoAdmin&id=" + request.getParameter("idProducto"), request, response);
 
                             break;
@@ -161,13 +189,13 @@ public class Controlador extends HttpServlet {
                                 request.setAttribute("mensajeError", "Error al acceder a los datos de la tienda");
                                 goToPage("/error.jsp", request, response);
                             }
-                            
-                            helper= new HelperVisualizarCDsAdmin(request, sesion);
+
+                            helper = new HelperVisualizarCDsAdmin(request, sesion);
                             if (!helper.ejecutar()) {
                                 request.setAttribute("mensajeError", "Error al actualizar cds [ADMIN]");
                                 goToPage("/error.jsp", request, response);
                             }
-                            
+
                             goToPage("/inicioAdmin.jsp", request, response);
 
                             break;
