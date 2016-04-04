@@ -23,40 +23,44 @@
     	<section id="contenido">
 	    	<article id="productos">
 		    	<table>
-		    		<c:set var="u" value="${sessionScope.usuario}"></c:set>
+		    		<c:set var="u" value="${requestScope.usuarioSolicitado}"></c:set>
                                 <form method="post" action="Controlador" onsubmit="return validar()">
-			    			<h1>
-			    				<input type="text" value="${u.getNombre()}" pattern="[A-Za-z]"{3,}>
-			    				<input type="text" value="${u.getAlias()}" pattern="[A-Za-z]"{3,}>
-			    			</h1>
+                                    <h1 class="nombre">${u.nombre}, ${u.alias}</h1>
+				    		
 				    		<td>
-				    			<figure id="imagen">${p.getImagen()}</figure>
-				    			<input type="file" name="file">
-				    		</td>
-				    		<td>
-					    		<p>Email:</p>
-					    			<input type="email" value="${u.getEmail()}">
-					    		</p>
-					    		<p>Categoría:</p>
-					    			<select>
-					    				<option value="basico">Básico</option>
-					    				<option value="vip">VIP</option>
-					    			</select>
-					    		</p>
-
-					    		<p>Administrador: </p>
-					    			<input type="number" value="${u.getAdministrador()}" min="0" max="1">
+					    		<p>Email: ${u.email}"></p>
+                                                        
+                                                        <p>Categoría:
+                                                        <c:choose>
+                                                            <c:when test="${u.categoria == 1}">
+                                                                <p>usuario VIP</p>
+                                                            </c:when>
+                                                            <c:when test="${u.categoria == 0}">
+                                                                <p>usuario básico</p>
+                                                            </c:when>
+                                                        </c:choose>
 					    		</p>
 
-					    		<p>Dirección:</p>
-					    		<input type="text" value="${u.getDireccion()}" pattern="[A-Za-z0-9\.\/]{5,}">
+                                                        <p>Tipo:
+					    		<c:choose>
+                                                            <c:when test="${u.administrador == true}">
+                                                                <p>Administrador</p>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <p>No administrador</p>
+                                                            </c:otherwise>
+                                                        </c:choose>
 					    		</p>
+                                                </td>
+                                                <td>
+					    		<p>Dirección: ${u.direccion}</p>
 
-					    		<p>Contraseña:</p>
-					    			<input type="text" value="u.getContrasena()" pattern="[A-Za-z0-9\.\,\-\_]{8,}">
+					    		<p>Contraseña:
+                                                            <input type="text" name="contrasena" value="${u.contrasena}" pattern="[A-Za-z0-9\.\,\-\_]{6,}">
 					    		</p>
-					    		<input type="submit" value="Guardar" name="guardarUsuario" id="actualizar" class="mover">
-					    		<input type="submit" value="Eliminar" name="eliminarUsuario" class="eliminar mover">
+                                                        <input type="hidden" name="action" value="modificarContrasena">
+                                                        <input type="hidden" name="idUsuario" value="${u.id}">
+					    		<input type="submit" value="Actualizar contraseña" name="guardarUsuario" id="actualizar" class="mover">
 				    		</td>
 
 						</form>

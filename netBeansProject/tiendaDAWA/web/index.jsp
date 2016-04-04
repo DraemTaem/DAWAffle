@@ -24,10 +24,10 @@
                 <div id="primeros">
 
                     <!--<label for="titulo">Titulo:</label>-->
-                    <input type="text" class="caja" name="titulo" placeholder="Título" pattern="[A-Za-z]{2,}">
+                    <input type="text" class="caja" name="titulo" placeholder="Título" pattern="[A-Za-z]{1,}">
 
                     <!--<label for="autor">Autor:</label>-->
-                    <input type="text" class="caja" name="autor" placeholder="Autor" pattern="[A-Za-z]{2,}">
+                    <input type="text" class="caja" name="autor" placeholder="Autor" pattern="[A-Za-z]{1,}">
 
                     <!--<label for="ano">Año:</label>-->
                     <input type="number" class="caja" placeholder="Año" name="ano" min="1399" max="${sessionScope.anoActual}">

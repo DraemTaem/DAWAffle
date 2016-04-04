@@ -25,7 +25,6 @@ public class HelperModificarContrasena implements controlador.Helper {
         }    // Devuelve NULL si la contraseña no se ha podido cambiar, si no devuelve un VO
 
         this.request.setAttribute("usuarioModificado", user);
-        
         return true;
     }
 
