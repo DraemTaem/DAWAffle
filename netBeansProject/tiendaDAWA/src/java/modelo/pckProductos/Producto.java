@@ -96,7 +96,7 @@ public class Producto {
             VOProducto aux = daoProducto.getDetallesProducto(this.getId());
 
             this.valoraciones = aux.getValoraciones();
-            
+
             this.stock = aux.getStock();
 
         }
@@ -112,15 +112,19 @@ public class Producto {
 
             DAOProducto daoProducto = factoria.crearDAOProducto();
 
+            if (daoProducto.checkCompra(new VOUsuario(idUsuario), new VOProducto(this.getId())) == false) {
+                return false;
+            }
+
             VOUsuario vou = new VOUsuario(idUsuario);
 
             VOValoracion vov = new VOValoracion(this.getId(), vou, comentario, puntuacion);
 
             boolean res1 = daoProducto.anadirValoracion(vov);
-            
+
             boolean res2 = this.leerValoraciones(true);
-            
-            return(res1 && res2);
+
+            return (res1 && res2);
 
         } else {
             return false;

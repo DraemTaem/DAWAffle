@@ -806,7 +806,7 @@ public class MySQLDAOProducto implements DAOProducto {
                     = "SELECT * FROM lineaspedido "
                     + "WHERE idPedido = ?;";
 
-            pstmt2 = con.prepareStatement(sqlPedidos);
+            pstmt2 = con.prepareStatement(sqlLineasPedido);
 
             ResultSet res = pstmt.executeQuery();
 

@@ -32,7 +32,6 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    
     public Usuario(String nombre, String contrasena, String correoElectronico, Integer categoria, boolean isAdmin, String alias, String direccion) {
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -82,7 +81,6 @@ public class Usuario {
         this.id = id;
     }
 
-    
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
@@ -157,18 +155,20 @@ public class Usuario {
 
         int res = daoUsuario.checkCategoria(vou);
 
-        if (res == -1) {
+        if(res == -1){
             return false;
-        } else if (res == 0 || res == 1) {
-            this.setCategoria(res);
-            return true;
         }
+        
+        VOUsuario vou2 = daoUsuario.getUsuarioByAlias(this.alias);
 
-        return false;
+        this.setCategoria(vou2.getCategoria());
+
+       
+        
+        return true;
 
     }
 
-    
     public boolean RegistrarUsuario() {
         VOUsuario user = null;
 

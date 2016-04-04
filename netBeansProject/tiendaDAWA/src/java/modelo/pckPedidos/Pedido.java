@@ -43,6 +43,7 @@ public class Pedido {
         if (this.usuario.getCategoria() == 1) {
             this.precioTotal = this.precioTotal * 0.8f;
         }
+        
     }
 
     public ArrayList<LineaPedido> getLineasPedido() {

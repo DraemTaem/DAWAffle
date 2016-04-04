@@ -256,7 +256,7 @@ public class Controlador extends HttpServlet {
                     
                     helper = new HelperIntroducirValoracion(sesion, user.getId(), Integer.parseInt(request.getParameter("idProducto")), Integer.parseInt(request.getParameter("valoracion")), request.getParameter("comentario"));
                     if (!helper.ejecutar()) {
-                        request.setAttribute("mensajeError", "No se puede valorar dos veces el mismo producto");
+                        request.setAttribute("mensajeError", "No se puede realizar la valoracion (Se debe haber comprado el producto y no haberlo valorado anteriormente)");
                         goToPage("/error.jsp", request, response);
                     }
                     
@@ -464,11 +464,11 @@ public class Controlador extends HttpServlet {
 
                 case ("registrarUsuario"):
 
-                    this.validarRequest("nombre", request, response);
-                    this.validarRequest("alias", request, response);
-                    this.validarRequest("contrasena", request, response);
-                    this.validarRequest("email", request, response);
-                    this.validarRequest("direccion", request, response);
+                    this.validarRequestRegistro("nombre", request, response);
+                    this.validarRequestRegistro("alias", request, response);
+                    this.validarRequestRegistro("contrasena", request, response);
+                    this.validarRequestRegistro("email", request, response);
+                    this.validarRequestRegistro("direccion", request, response);
 
                     helper = new HelperRegistrarUsuario(request.getParameter("nombre"), request.getParameter("alias"), request.getParameter("contrasena"), request.getParameter("email"), request.getParameter("direccion"));
                     if (!helper.ejecutar()) {
@@ -522,6 +522,20 @@ public class Controlador extends HttpServlet {
 
     private void validarRequest(String aValidar, HttpServletRequest request, HttpServletResponse response) {
         if (request.getParameter(aValidar) == null) {
+            try {
+                request.setAttribute("mensajeError", "Falta el campo [" + aValidar + "]");
+                goToPage("/error.jsp", request, response);
+            } catch (ServletException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+    
+    private void validarRequestRegistro(String aValidar, HttpServletRequest request, HttpServletResponse response) {
+        if (request.getParameter(aValidar) == null || request.getParameter(aValidar).equals("")) {
             try {
                 request.setAttribute("mensajeError", "Falta el campo [" + aValidar + "]");
                 goToPage("/error.jsp", request, response);
