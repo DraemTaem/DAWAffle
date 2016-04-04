@@ -96,6 +96,7 @@ public class Tienda {
         VOCd voc = new VOCd(-1, nombre, descripcion, precio, imagen, tipo, stock, autor, pais, ano);
 
         return daoProducto.registrarCD(voc);
+        
 
     }
 
@@ -116,16 +117,15 @@ public class Tienda {
         return voc;
 
     }
-    
-    public boolean anadirStock(Integer idProducto, Integer unidades){
-        
+
+    public boolean anadirStock(Integer idProducto, Integer unidades) {
+
         FactoriaDAO factoria = FactoriaDAO.newFactoria();
 
         DAOProducto daoProducto = factoria.crearDAOProducto();
-        
+
         return daoProducto.anadirUnidades(new VOProducto(idProducto), unidades);
-    
-    
+
     }
 
     public ArrayList<CD> busquedaLocal(Float precioMaximo, String titulo, String autor, Integer ano) {
@@ -170,7 +170,6 @@ public class Tienda {
             alvop.remove(cd);
         }
 
-        
         return alvop;
 
     }

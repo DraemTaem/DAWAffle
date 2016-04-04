@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import controlador.PaqueteHelperCarrito.*;
 import controlador.PaqueteHelperPago.*;
 import controlador.PaqueteHelperPrincipal.*;
+import controlador.PaqueteHelperProductos.HelperAnadirCD;
 import controlador.PaqueteHelperProductos.HelperAnadirStock;
 import controlador.PaqueteHelperProductos.HelperBusquedaCD;
 import controlador.PaqueteHelperProductos.HelperMostrarTienda;
+import controlador.PaqueteHelperProductos.HelperVisualizarCDsAdmin;
 import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
 import controlador.PaqueteHelperUsuarios.HelperRegistrarUsuario;
@@ -70,6 +72,35 @@ public class Controlador extends HttpServlet {
                     /*----------------------------------------------------------------------------------------------*/
                     System.out.println("ADMIN MODE");
                     switch (action) {
+                        case ("irAAnadirCD"):
+                            goToPage("/nuevoProducto.jsp", request, response);
+                            break;
+
+                        case ("anadirCD"):
+                            this.validarRequest("nombre", request, response);
+                            this.validarRequest("descripcion", request, response);
+                            this.validarRequest("autor", request, response);
+                            this.validarRequest("url", request, response);
+                            this.validarRequest("pais", request, response);
+                            this.validarRequest("precio", request, response);
+                            this.validarRequest("unidades", request, response);
+                            this.validarRequest("ano", request, response);
+
+                            // (String nombre, String descripcion, String autor, String pais, Integer stock, Float precio, String url, String ano, HttpSession session) {
+                            helper = new HelperAnadirCD(request.getParameter("nombre"), request.getParameter("descripcion"), request.getParameter("autor"), request.getParameter("pais"), Integer.parseInt(request.getParameter("unidades")), Float.parseFloat(request.getParameter("precio")), request.getParameter("url"), request.getParameter("ano"), sesion);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al anadir stock a un producto [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+                            
+                            helper= new HelperVisualizarCDsAdmin(request, sesion);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al actualizar cds [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+                            
+                            goToPage("/inicioAdmin.jsp", request, response);
+                            break;
 
                         case ("agregarUnidades"):
                             this.validarRequest("unidades", request, response);
@@ -80,7 +111,14 @@ public class Controlador extends HttpServlet {
                                 request.setAttribute("mensajeError", "Error al anadir stock a un producto [ADMIN]");
                                 goToPage("/error.jsp", request, response);
                             }
-                            goToPage("/Controlador?action=mostrarProductoAdmin&id="+request.getParameter("idProducto"), request, response);
+                            
+                            helper= new HelperVisualizarCDsAdmin(request, sesion);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al actualizar cds [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+                            
+                            goToPage("/Controlador?action=mostrarProductoAdmin&id=" + request.getParameter("idProducto"), request, response);
 
                             break;
 
@@ -123,6 +161,13 @@ public class Controlador extends HttpServlet {
                                 request.setAttribute("mensajeError", "Error al acceder a los datos de la tienda");
                                 goToPage("/error.jsp", request, response);
                             }
+                            
+                            helper= new HelperVisualizarCDsAdmin(request, sesion);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al actualizar cds [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+                            
                             goToPage("/inicioAdmin.jsp", request, response);
 
                             break;

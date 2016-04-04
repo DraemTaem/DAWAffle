@@ -23,7 +23,7 @@
         <nav>
             <ul id="menu">
                 <li><a href="Controlador?action=irAPrincipal">Inicio</a></li>
-                <li><a href="Controlador?action=productos">Añadir productos TODO</a></li>
+                <li><a href="Controlador?action=irAAnadirCD">Añadir productos</a></li>
                 <li><a href="Controlador?action=usuarios">Gestionar usuarios TODO</a></li>
                 <li><a href="Controlador?action=cerrarSesion">Cerrar sesión</a></li>
             </ul>

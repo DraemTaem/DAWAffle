@@ -600,7 +600,7 @@ public class MySQLDAOProducto implements DAOProducto {
 
                 String sqlInsert3
                         = "INSERT INTO inventario (idProducto, stock) "
-                        + "VALUES (?, 0);";
+                        + "VALUES (?, ?);";
 
                 pstmt4 = con.prepareStatement(sqlInsert3);
 
@@ -608,6 +608,7 @@ public class MySQLDAOProducto implements DAOProducto {
                 if (generatedKeys.next()) {
                     pstmt3.setInt(1, generatedKeys.getInt(1));
                     pstmt4.setInt(1, generatedKeys.getInt(1));
+                    pstmt4.setInt(2, producto.getStock());
                 } else {
                     con.rollback();
                     return false;

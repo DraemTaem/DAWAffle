@@ -24,19 +24,28 @@
 	    	<article id="productos">
 	    	<h1 class="nombre">Introducción de un nuevo producto</h1>
 	    	<table>
-	    		<form method="post" action="">
-	    			<h1><input type="text" placeholder="Nombre producto" pattern="[A-Za-z]"{3,}></h1>
+	    		<form method="post" action="Controlador">
+                            <input type="hidden" name="action" value="anadirCD">
+                            <h1><input type="text" name="nombre" placeholder="Nombre producto" pattern="[A-Za-z áéíóúÁÉÍÓÚ]{3,}"></h1>
 		    		<td>
 		    		<p>Imagen:</p>
-		    		<input type="file" name="file"></td>
-		    		<td>
+                                <input type="text" name="url"</td>
+		    		
 			    		<p>Descripción:</p>
-			    		<textarea id="textarea" placeholder="Introduce una breve descripción sobre el producto"></textarea></p>
+                                        <textarea id="textarea"name="descripcion" placeholder="Introduce una breve descripción sobre el producto"></textarea></p>
 			    		<p>Unidades: </p>
-			    		<input type="number" min="0">
+			    		<input type="number" name="unidades" min="0">
 			    		</p>
+                                        </td>
+                                        <td>
 			    		<p>Precio: </p>
-			    		<input type="text" pattern="[0-9\.]{1,}">
+                                        <input type="text" name="precio" pattern="[0-9\.]{1,}">
+                                        <p>Autor: </p>
+                                        <input type="text" name="autor">
+                                        <p>País: </p>
+                                        <input type="text" name="pais">
+                                        <p>Año: </p>
+                                        <input type="text" name="ano">
 			    		</p>
 			    		<input type="submit" value="Guardar" name="anadirProducto" id="actualizar" class="mover">
 		    		</td>
