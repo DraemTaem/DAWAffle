@@ -107,7 +107,7 @@ public class Controlador extends HttpServlet {
             switch (action) {
                 case ("buscarItems"):
                     float preciof;
-                    if (request.getParameter("precio") != null) {
+                    if (request.getParameter("precio") != null && !request.getParameter("precio").equals("")) {
                         preciof = Float.parseFloat(request.getParameter("precio"));
                     } else {
                         preciof = -1;

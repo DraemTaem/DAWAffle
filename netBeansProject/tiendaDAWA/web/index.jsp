@@ -48,7 +48,7 @@
                 <table>
                     <c:choose>
                     <c:when test="${requestScope.resultadoBusqueda != null}">
-                        <c:forEach var="p" items="${sessionScope.resultadoBusqueda}">
+                        <c:forEach var="p" items="${requestScope.resultadoBusqueda}">
                         <tr>
                         <div id="datosCD">
                             <td><img src="${p.imagen}" width="200" height="200"></td>

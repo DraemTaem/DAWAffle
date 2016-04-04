@@ -120,10 +120,12 @@ public class Tienda {
 
         ArrayList<CD> alvop = (ArrayList<CD>) this.productosDisponibles.clone();
 
+        ArrayList<CD> toRemove = new ArrayList<>();
+
         if (precioMaximo != -1) {
             for (CD p : alvop) {
                 if (p.getPrecio() > precioMaximo) {
-                    alvop.remove(p);
+                    toRemove.add(p);
                 }
             }
         }
@@ -131,7 +133,7 @@ public class Tienda {
         if (titulo != null && !titulo.equals("")) {
             for (CD p : alvop) {
                 if (!p.getNombre().contains(titulo)) {
-                    alvop.remove(p);
+                    toRemove.add(p);
                 }
             }
         }
@@ -139,19 +141,23 @@ public class Tienda {
         if (autor != null && !autor.equals("")) {
             for (CD p : alvop) {
                 if (!p.getAutor().contains(autor)) {
-                    alvop.remove(p);
+                    toRemove.add(p);
                 }
             }
         }
 
-        if (precioMaximo != -1) {
+        if (ano != -1) {
             for (CD p : alvop) {
                 if (p.getAno() != ano) {
-                    alvop.remove(p);
+                    toRemove.add(p);
                 }
             }
         }
-        
+
+        for (CD cd : toRemove) {
+            alvop.remove(cd);
+        }
+
         return alvop;
 
     }

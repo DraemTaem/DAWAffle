@@ -42,7 +42,7 @@ public class HelperBusquedaCD implements controlador.Helper {
 
         int anoi;
 
-        if (ano != null) {
+        if (ano != null && !ano.equals("")) {
             anoi = Integer.parseInt(ano);
         } else {
             anoi = -1;
