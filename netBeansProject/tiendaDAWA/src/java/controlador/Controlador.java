@@ -18,7 +18,9 @@ import controlador.PaqueteHelperProductos.HelperVisualizarCDsAdmin;
 import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
 import controlador.PaqueteHelperUsuarios.HelperBorrarUsuario;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
+import controlador.PaqueteHelperUsuarios.HelperModificarContrasena;
 import controlador.PaqueteHelperUsuarios.HelperRegistrarUsuario;
+import controlador.PaqueteHelperUsuarios.HelperVisualizacionCuentaIndividual;
 import controlador.PaqueteHelperUsuarios.HelperVisualizacionDeListaCuentas;
 import java.io.InputStream;
 import java.util.logging.Level;
@@ -74,6 +76,34 @@ public class Controlador extends HttpServlet {
                     /*----------------------------------------------------------------------------------------------*/
                     System.out.println("ADMIN MODE");
                     switch (action) {
+                        
+                        case("modificarContrasena"):
+                            this.validarRequest("contrasena", request, response);
+                            this.validarRequest("idUsuario", request, response);
+                            
+                            helper = new HelperModificarContrasena(request, Integer.parseInt(request.getParameter("idUsuario")), request.getParameter("contrasena"));
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al modificar contraseña [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+
+                            goToPage("/Controlador?action=verUsuarioAdmin&idUsuario="+request.getParameter("idUsuario"), request, response);
+                            
+                            break;
+                        
+                        case("verUsuarioAdmin"):
+                            this.validarRequest("idUsuario", request, response);
+                            
+                            helper = new HelperVisualizacionCuentaIndividual(Integer.parseInt(request.getParameter("idUsuario")), request);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al visualizar la cuenta [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+
+                            goToPage("/descripcionAdminUsuario.jsp", request, response);
+                            
+                            
+                            break;
                         
                         case("eliminarUsuario"):
                             this.validarRequest("idUsuario", request, response);

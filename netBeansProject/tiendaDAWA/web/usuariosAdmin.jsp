@@ -28,7 +28,7 @@
                     <c:forEach var="u" items="${requestScope.listaCuentas.usuarios}">
                         <tr>
                         <div id="datosUsuario">
-                            <td><a href="descripcionAdminUsuario.html"><p class=""nombre>${u.nombre}</p></a>
+                            <td><a href="Controlador?action=verUsuarioAdmin&idUsuario=${u.id}"><p class=""nombre>${u.nombre}</p></a>
                                 <p>Correo electrónico: ${u.email}, dirección: ${u.direccion}</p></td>
                         </div>
                         <form method="post" action="Controlador" onsubmit="return validar()">

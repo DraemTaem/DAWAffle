@@ -16,12 +16,16 @@ public class HelperVisualizacionCuentaIndividual implements controlador.Helper {
 
     @Override
     public boolean ejecutar() {
-        VOUsuario user = null;
-        if (user != null) {
-            peticion.setAttribute("usuarioSolicitado", GestorUsuarios.visualizarCuenta(id));
+
+        VOUsuario vou = GestorUsuarios.visualizarCuenta(id);
+
+        if (vou == null) {
+            return false;
+        } else {
+            peticion.setAttribute("usuarioSolicitado", vou);
             return true;
         }
-        return false;
+
     }
 
 }
