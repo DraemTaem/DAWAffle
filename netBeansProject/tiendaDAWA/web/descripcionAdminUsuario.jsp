@@ -24,7 +24,7 @@
 	    	<article id="productos">
 		    	<table>
 		    		<c:set var="u" value="${requestScope.usuarioSolicitado}"></c:set>
-                                <form method="post" action="Controlador" onsubmit="return validar()">
+                                <form method="post" action="Controlador">
                                     <h1 class="nombre">${u.nombre}, ${u.alias}</h1>
 				    		
 				    		<td>

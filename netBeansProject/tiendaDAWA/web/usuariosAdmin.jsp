@@ -31,7 +31,7 @@
                             <td><a href="Controlador?action=verUsuarioAdmin&idUsuario=${u.id}"><p class=""nombre>${u.nombre}</p></a>
                                 <p>Correo electrónico: ${u.email}, dirección: ${u.direccion}</p></td>
                         </div>
-                        <form method="post" action="Controlador" onsubmit="return validar()">
+                        <form method="post" action="Controlador">
                             <input type="hidden" name="idUsuario" value="${u.id}">
                             <input type="hidden" name="action" value="eliminarUsuario">
                             <td><input type="submit" class="eliminar" name="eliminarUsuario" value="Eliminar"></td>
