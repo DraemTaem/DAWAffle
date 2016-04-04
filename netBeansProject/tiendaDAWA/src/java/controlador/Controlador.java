@@ -16,6 +16,8 @@ import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
 import controlador.PaqueteHelperUsuarios.HelperIniciarSesion;
 import controlador.PaqueteHelperUsuarios.HelperRegistrarUsuario;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import modelo.pckPedidos.Pedido;
 import modelo.pckUsuarios.Usuario;
@@ -94,6 +96,8 @@ public class Controlador extends HttpServlet {
                                 request.setAttribute("mensajeError", "Error al acceder a los datos de la tienda");
                                 goToPage("/error.jsp", request, response);
                             }
+                            goToPage("/inicioAdmin.jsp", request, response);
+                            
                             break;
 
                     }
@@ -106,6 +110,13 @@ public class Controlador extends HttpServlet {
             /*----------------------------------------------------------------------------------------------*/
             switch (action) {
                 case ("buscarItems"):
+                    
+                    this.validarRequest("titulo", request, response);
+                    this.validarRequest("autor", request, response);
+                    this.validarRequest("ano", request, response);
+                    this.validarRequest("precio", request, response);
+                    
+                    
                     float preciof;
                     if (request.getParameter("precio") != null && !request.getParameter("precio").equals("")) {
                         preciof = Float.parseFloat(request.getParameter("precio"));
@@ -123,6 +134,9 @@ public class Controlador extends HttpServlet {
 
                 case ("anadirItem"):
 
+                    this.validarRequest("idProducto", request, response);
+                    this.validarRequest("cantidad", request, response);
+
                     if (sesion.getAttribute("usuario") == null) {
                         request.setAttribute("mensajeError", "Necesitas estar logueado para acceder a esta sección .");
                         goToPage("/usuarios.jsp", request, response);
@@ -137,6 +151,8 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case ("eliminarLinea"):
+
+                    this.validarRequest("idEliminar", request, response);
 
                     helper = new HelperEliminarLineaCarrito((Usuario) sesion.getAttribute("usuario"), Integer.parseInt(request.getParameter("idEliminar")));
                     if (!helper.ejecutar()) {
@@ -249,6 +265,9 @@ public class Controlador extends HttpServlet {
 
                 case ("iniciarSesion"):
 
+                    this.validarRequest("alias", request, response);
+                    this.validarRequest("contrasena", request, response);
+
                     helper = new HelperIniciarSesion(request.getParameter("alias"), request.getParameter("contrasena"), sesion);
                     if (!helper.ejecutar()) {
                         request.setAttribute("mensajeError", "Error al iniciar sesion (Usuario/Contrasena incorrectos).");
@@ -259,6 +278,8 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case ("mostrarProducto"):
+
+                    this.validarRequest("id", request, response);
 
                     helper = new HelperVisualizarProducto(Integer.parseInt(request.getParameter("id")), sesion, request);
                     if (!helper.ejecutar()) {
@@ -282,6 +303,13 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case ("registrarUsuario"):
+
+                    this.validarRequest("nombre", request, response);
+                    this.validarRequest("alias", request, response);
+                    this.validarRequest("contrasena", request, response);
+                    this.validarRequest("email", request, response);
+                    this.validarRequest("direccion", request, response);
+
                     helper = new HelperRegistrarUsuario(request.getParameter("nombre"), request.getParameter("alias"), request.getParameter("contrasena"), request.getParameter("email"), request.getParameter("direccion"));
                     if (!helper.ejecutar()) {
                         request.setAttribute("mensajeError", "Error al registrar usuario (Datos duplicados).");
@@ -303,6 +331,7 @@ public class Controlador extends HttpServlet {
                         goToPage("/error.jsp", request, response);
                     }
                     goToPage("/index.jsp", request, response);
+                    break;
             }
 
         }
@@ -329,6 +358,20 @@ public class Controlador extends HttpServlet {
     private void goToPage(String address, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = getServletContext().getRequestDispatcher(address);
         rd.forward(request, response);
+    }
+
+    private void validarRequest(String aValidar, HttpServletRequest request, HttpServletResponse response) {
+        if (request.getParameter(aValidar) == null) {
+            try {
+                request.setAttribute("mensajeError", "Falta el campo [" + aValidar + "]");
+                goToPage("/error.jsp", request, response);
+            } catch (ServletException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 
 }

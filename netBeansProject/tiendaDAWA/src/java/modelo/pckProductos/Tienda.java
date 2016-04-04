@@ -4,6 +4,7 @@ import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import modelo.pckAccesoADatos.pckDAOInterfaz.DAOProducto;
 import modelo.pckAccesoADatos.pckDAOInterfaz.FactoriaDAO;
 import modelo.pckAccesoADatos.pckVO.VOCd;
@@ -148,7 +149,7 @@ public class Tienda {
 
         if (ano != -1) {
             for (CD p : alvop) {
-                if (p.getAno() != ano) {
+                if (!Objects.equals(p.getAno(), ano)) {
                     toRemove.add(p);
                 }
             }
@@ -158,6 +159,7 @@ public class Tienda {
             alvop.remove(cd);
         }
 
+        
         return alvop;
 
     }

@@ -103,7 +103,7 @@ public class Pedido {
         String to = this.usuario.getCorreoElectronico();
 
         //Completamos el asunto del email
-        String subject = "Pedido DAWA: ID [" + this.getId() + "]";
+        String subject = "Pedido DAWA";
 
         String cate = "";
 

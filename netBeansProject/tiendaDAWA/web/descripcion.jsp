@@ -27,6 +27,7 @@
 	    		<h1 class="nombre">${p.nombre}</h1>
                         <td><figure id="imagen"><img src="${p.imagen}" width="300" height="300"></figure></td>
 	    		<td><p>${p.descripcion}</p>
+                        <p>Año: ${p.ano}</p>
 	    		<p>Unidades: ${p.stock}</p>
 	    		<p>Precio: ${p.precio}</p>
 	    		<form method="post" id="seleccionar" action="Controlador">
