@@ -684,7 +684,7 @@ public class MySQLDAOProducto implements DAOProducto {
 
             String sqlStock
                     = "SELECT stock FROM inventario "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;";
 
             pstmt = con.prepareStatement(sqlStock);
             pstmt.setInt(1, producto.getId());
@@ -692,7 +692,7 @@ public class MySQLDAOProducto implements DAOProducto {
             String sqlUpdate
                     = "UPDATE inventario "
                     + "SET stock = ? "
-                    + "WHERE id = ?;";
+                    + "WHERE idProducto = ?;";
 
             pstmt2 = con.prepareStatement(sqlUpdate);
 

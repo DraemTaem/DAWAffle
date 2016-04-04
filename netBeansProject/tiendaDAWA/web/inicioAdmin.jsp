@@ -23,23 +23,35 @@
         <section id="contenido">
             <div id="productos">
                 <table>
-
-                    <c:forEach var="p" items="${sessionScope.productos.lista}">
+                    <c:choose>
+                    <c:when test="${requestScope.resultadoBusqueda != null}">
+                        <c:forEach var="p" items="${requestScope.resultadoBusqueda}">
                         <tr>
                         <div id="datosCD">
-                            <td>${p.getImagen()}</td>
-                            <td><a href="descripcionAdminProducto.html"><p class=""nombre>${p.getTitulo()}, ${p.getAutor()}</p></a>
-                                <p>Precio: ${p.getPrecio()}€, código: ${p.getCodigo()}</p></td>
+                            <td><img src="${p.imagen}" width="200" height="200"></td>
+                            <td><a href="Controlador?action=mostrarProductoAdmin&id=${p.id}"><p class=""nombre>${p.nombre}, ${p.autor}</p></a>
+                                <p>Precio: ${p.precio}€, código: ${p.id}</p></td>
                         </div>
-                        <form method="post" id="seleccionar" onsubmit="return validar()">
-                            <input type="hidden" value="${p.getCodigo()}">
-                            <td><input type="submit" class="eliminar" name="eliminarProducto" value="Eliminar"></td>
-                        </form>
                         </tr>
-                    </c:forEach>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="p" items="${sessionScope.tienda.productosDisponibles}">
+                        <tr>
+                        <div id="datosCD">
+                            <td><img src="${p.imagen}" width="200" height="200"></td>
+                            <td><a href="Controlador?action=mostrarProductoAdmin&id=${p.id}"><p class=""nombre>${p.nombre}, ${p.autor}</p></a>
+                                <p>Precio: ${p.precio}€, código: ${p.id}</p></td>
+                        </div>
+                        </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                    </c:choose>
                 </table>
             </div>
         </section>
     </center>
 </body>
 </html>
+
+

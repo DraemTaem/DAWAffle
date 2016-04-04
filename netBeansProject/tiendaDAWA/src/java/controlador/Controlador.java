@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import controlador.PaqueteHelperCarrito.*;
 import controlador.PaqueteHelperPago.*;
 import controlador.PaqueteHelperPrincipal.*;
+import controlador.PaqueteHelperProductos.HelperAnadirStock;
 import controlador.PaqueteHelperProductos.HelperBusquedaCD;
 import controlador.PaqueteHelperProductos.HelperMostrarTienda;
 import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
@@ -67,8 +68,34 @@ public class Controlador extends HttpServlet {
                     /*----------------------------------------------------------------------------------------------*/
                     /*-------------------------------SECCIÓN DEL ADMINISTRADOR--------------------------------------*/
                     /*----------------------------------------------------------------------------------------------*/
-
+                    System.out.println("ADMIN MODE");
                     switch (action) {
+
+                        case ("agregarUnidades"):
+                            this.validarRequest("unidades", request, response);
+                            this.validarRequest("idProducto", request, response);
+
+                            helper = new HelperAnadirStock(Integer.parseInt(request.getParameter("unidades")), Integer.parseInt(request.getParameter("idProducto")), sesion);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al anadir stock a un producto [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+                            goToPage("/Controlador?action=mostrarProductoAdmin&id="+request.getParameter("idProducto"), request, response);
+
+                            break;
+
+                        case ("mostrarProductoAdmin"):
+
+                            this.validarRequest("id", request, response);
+
+                            helper = new HelperVisualizarProducto(Integer.parseInt(request.getParameter("id")), sesion, request);
+                            if (!helper.ejecutar()) {
+                                request.setAttribute("mensajeError", "Error al acceder a la página de ver producto [ADMIN]");
+                                goToPage("/error.jsp", request, response);
+                            }
+                            goToPage("/descripcionAdminProducto.jsp", request, response);
+
+                            break;
 
                         case ("cerrarSesion"):
 
@@ -97,7 +124,7 @@ public class Controlador extends HttpServlet {
                                 goToPage("/error.jsp", request, response);
                             }
                             goToPage("/inicioAdmin.jsp", request, response);
-                            
+
                             break;
 
                     }
@@ -110,13 +137,12 @@ public class Controlador extends HttpServlet {
             /*----------------------------------------------------------------------------------------------*/
             switch (action) {
                 case ("buscarItems"):
-                    
+
                     this.validarRequest("titulo", request, response);
                     this.validarRequest("autor", request, response);
                     this.validarRequest("ano", request, response);
                     this.validarRequest("precio", request, response);
-                    
-                    
+
                     float preciof;
                     if (request.getParameter("precio") != null && !request.getParameter("precio").equals("")) {
                         preciof = Float.parseFloat(request.getParameter("precio"));
@@ -273,8 +299,12 @@ public class Controlador extends HttpServlet {
                         request.setAttribute("mensajeError", "Error al iniciar sesion (Usuario/Contrasena incorrectos).");
                         goToPage("/error.jsp", request, response);
                     }
-                    goToPage("/index.jsp", request, response);
-
+                    Usuario aux = (Usuario) sesion.getAttribute("usuario");
+                    if (aux.isIsAdmin()) {
+                        goToPage("/inicioAdmin.jsp", request, response);
+                    } else {
+                        goToPage("/index.jsp", request, response);
+                    }
                     break;
 
                 case ("mostrarProducto"):

@@ -116,6 +116,17 @@ public class Tienda {
         return voc;
 
     }
+    
+    public boolean anadirStock(Integer idProducto, Integer unidades){
+        
+        FactoriaDAO factoria = FactoriaDAO.newFactoria();
+
+        DAOProducto daoProducto = factoria.crearDAOProducto();
+        
+        return daoProducto.anadirUnidades(new VOProducto(idProducto), unidades);
+    
+    
+    }
 
     public ArrayList<CD> busquedaLocal(Float precioMaximo, String titulo, String autor, Integer ano) {
 
