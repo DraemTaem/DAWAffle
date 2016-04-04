@@ -1,0 +1,11 @@
+(En el directorio classes) javac -cp %SAPI% controlador/*.java modelo/*.java controlador/PaqueteHelperCarrito/*.java controlador/PaqueteHelperPago/*.java controlador/PaqueteHelperPrincipal/*.java
+
+(En el directorio raiz) jar -cvf tiendasimple.war *
+
+
+(En el directorio classes) 
+javac -cp "%SAPI%;C:\Users\gladi\Documents\GitHub\DAWAffle\Entrega\tiendaDAWA\WEB-INF\lib\*" controlador/*.java controlador/PaqueteHelperCarrito/*.java controlador/PaqueteHelperPago/*.java controlador/PaqueteHelperPrincipal/*.java controlador/PaqueteHelperProductos/*.java controlador/PaqueteHelperUsuarios/*.java modelo/pckPedidos/*.java modelo/pckProductos/*.java modelo/pckUsuarios/*.java modelo/pckAccesoADatos/pckDAOInterfaz/*.java modelo/pckAccesoADatos/pckDAOMySQL/*.java modelo/pckAccesoADatos/pckVO/*.java
+
+(En el directorio raiz)
+
+jar -cvf tiendaDAWA.war *
