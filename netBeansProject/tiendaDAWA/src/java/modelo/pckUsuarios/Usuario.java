@@ -10,6 +10,7 @@ import modelo.pckAccesoADatos.pckVO.VOUsuario;
 
 public class Usuario {
 
+    private Integer id;
     private String nombre;
     private String contrasena;
     private String correoElectronico;
@@ -19,6 +20,19 @@ public class Usuario {
     private String alias;
     private String direccion;
 
+    public Usuario(Integer id, String nombre, String contrasena, String correoElectronico, Integer categoria, boolean isAdmin, String alias, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+        this.correoElectronico = correoElectronico;
+        this.carrito = new Carrito();
+        this.categoria = categoria;
+        this.isAdmin = isAdmin;
+        this.alias = alias;
+        this.direccion = direccion;
+    }
+
+    
     public Usuario(String nombre, String contrasena, String correoElectronico, Integer categoria, boolean isAdmin, String alias, String direccion) {
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -60,6 +74,15 @@ public class Usuario {
         return direccion;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }

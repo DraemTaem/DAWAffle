@@ -13,6 +13,7 @@ import controlador.PaqueteHelperPrincipal.*;
 import controlador.PaqueteHelperProductos.HelperAnadirCD;
 import controlador.PaqueteHelperProductos.HelperAnadirStock;
 import controlador.PaqueteHelperProductos.HelperBusquedaCD;
+import controlador.PaqueteHelperProductos.HelperIntroducirValoracion;
 import controlador.PaqueteHelperProductos.HelperMostrarTienda;
 import controlador.PaqueteHelperProductos.HelperVisualizarCDsAdmin;
 import controlador.PaqueteHelperProductos.HelperVisualizarProducto;
@@ -239,6 +240,32 @@ public class Controlador extends HttpServlet {
             /*-------------------------------SECCIÓN DEL USUARIO NORMAL-------------------------------------*/
             /*----------------------------------------------------------------------------------------------*/
             switch (action) {
+                
+                case("realizarComentario"):
+                    
+                    if (sesion.getAttribute("usuario") == null) {
+                        request.setAttribute("mensajeError", "Necesitas estar logueado para acceder a esta sección .");
+                        goToPage("/usuarios.jsp", request, response);
+                    }
+                    
+                    this.validarRequest("idProducto", request, response);
+                    this.validarRequest("comentario", request, response);
+                    this.validarRequest("valoracion", request, response);
+                    
+                    Usuario user = (Usuario) sesion.getAttribute("usuario");
+                    
+                    helper = new HelperIntroducirValoracion(sesion, user.getId(), Integer.parseInt(request.getParameter("idProducto")), Integer.parseInt(request.getParameter("valoracion")), request.getParameter("comentario"));
+                    if (!helper.ejecutar()) {
+                        request.setAttribute("mensajeError", "No se puede valorar dos veces el mismo producto");
+                        goToPage("/error.jsp", request, response);
+                    }
+                    
+                    
+                    goToPage("/Controlador?action=mostrarProducto&id="+request.getParameter("idProducto"), request, response);
+                    
+                    
+                    break;
+                
                 case ("buscarItems"):
 
                     this.validarRequest("titulo", request, response);

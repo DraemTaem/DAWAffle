@@ -85,9 +85,9 @@ public class Producto {
         this.stock = stock;
     }
 
-    public boolean leerValoraciones() {
+    public boolean leerValoraciones(boolean force) {
 
-        if (this.valoraciones == null) {
+        if (this.valoraciones == null || force) {
 
             FactoriaDAO factoria = FactoriaDAO.newFactoria();
 
@@ -96,6 +96,7 @@ public class Producto {
             VOProducto aux = daoProducto.getDetallesProducto(this.getId());
 
             this.valoraciones = aux.getValoraciones();
+            
             this.stock = aux.getStock();
 
         }
@@ -115,7 +116,11 @@ public class Producto {
 
             VOValoracion vov = new VOValoracion(this.getId(), vou, comentario, puntuacion);
 
-            return daoProducto.anadirValoracion(vov);
+            boolean res1 = daoProducto.anadirValoracion(vov);
+            
+            boolean res2 = this.leerValoraciones(true);
+            
+            return(res1 && res2);
 
         } else {
             return false;

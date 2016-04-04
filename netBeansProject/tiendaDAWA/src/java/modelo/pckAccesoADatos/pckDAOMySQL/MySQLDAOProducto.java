@@ -112,7 +112,7 @@ public class MySQLDAOProducto implements DAOProducto {
                     = "SELECT * FROM usuarios "
                     + "WHERE id = ?;";
 
-            pstmt5 = con.prepareStatement(sqlValoraciones);
+            pstmt5 = con.prepareStatement(sqlUsuario);
 
             ResultSet res = pstmt.executeQuery();
 
@@ -140,12 +140,16 @@ public class MySQLDAOProducto implements DAOProducto {
                             while (res4.next()) {
                                 pstmt5.setInt(1, res4.getInt("idUsuario"));
                                 res5 = pstmt5.executeQuery();
+                                if(res5.next()){
                                 user = new VOUsuario(res4.getInt("idUsuario"));
                                 user.setNombre(res5.getString("nombre"));
                                 user.setAlias(res5.getString("alias"));
                                 user.setEmail(res5.getString("email"));
                                 val = new VOValoracion(res.getInt("id"), user, res4.getString("comentario"), res4.getInt("nota"));
                                 valoraciones.add(val);
+                                }else{
+                                    return null;
+                                }
                             }
                             prod.setValoraciones(new VOColeccionValoraciones(valoraciones));
                             return prod;

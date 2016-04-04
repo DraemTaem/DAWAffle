@@ -34,7 +34,7 @@ public class HelperVisualizarProducto implements controlador.Helper {
         Producto p = tienda.getProductoById(id);
 
         if (p != null) {
-            p.leerValoraciones();
+            p.leerValoraciones(false);
             this.request.setAttribute("producto", p);
             return true;
         } else {
